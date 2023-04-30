@@ -6,14 +6,16 @@ import Footer from "./components/footerComponent/footer";
 import Login from "./components/loginComponent/login";
 import Navbar from "./components/NavbarbefComponent/navbarbef";
 import NavbarAfter from "./components/NavbaraftComponent/navbaraft";
+import NavbarMenu from "./components/NavbarMenuComponent/navbarMenu";
 
 function App() {
 	return (
 		<div className="App">
+			<NavbarMenu />
 			{/* <Navbar /> */}
-			<NavbarAfter />
+			{/* <NavbarAfter /> */}
 			{/* <Login /> */}
-			<Footer />
+			{/* <Footer /> */}
 		</div>
 	);
 }
