@@ -75,7 +75,7 @@ ul {
 	transition: background-color 0.15s;
 	height: 37px;
 	width: 37px;
-	padding: 1px;
+	padding: 3px 0 0 8px;
 	border-radius: 50%;
 }
 .li-bottomright:hover {

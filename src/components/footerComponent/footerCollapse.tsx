@@ -16,7 +16,7 @@ const FooterCollapse: FunctionComponent<FooterCollapseProps> = () => {
 						</li>
 						<li className="li-link">
 							<Link to="/" className="link">
-								Graphics & Designs
+								Programming & Development
 							</Link>
 						</li>
 						<li className="li-link">
@@ -31,42 +31,12 @@ const FooterCollapse: FunctionComponent<FooterCollapseProps> = () => {
 						</li>
 						<li className="li-link">
 							<Link to="/" className="link">
-								Video & Animation
+								Online Courses
 							</Link>
 						</li>
 						<li className="li-link">
 							<Link to="/" className="link">
-								Music & Audio
-							</Link>
-						</li>
-						<li className="li-link">
-							<Link to="/" className="link">
-								Programming & Tech
-							</Link>
-						</li>
-						<li className="li-link">
-							<Link to="/" className="link">
-								Data
-							</Link>
-						</li>
-						<li className="li-link">
-							<Link to="/" className="link">
-								Business
-							</Link>
-						</li>
-						<li className="li-link">
-							<Link to="/" className="link">
-								Lifestyle
-							</Link>
-						</li>
-						<li className="li-link">
-							<Link to="/" className="link">
-								Photography
-							</Link>
-						</li>
-						<li className="li-link">
-							<Link to="/" className="link">
-								Sitemap
+								Design
 							</Link>
 						</li>
 					</ul>
