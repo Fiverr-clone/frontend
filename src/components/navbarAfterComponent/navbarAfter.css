@@ -2,7 +2,7 @@
 p {
 	font-family: "Roboto", sans-serif;
 }
-nav {
+.navbar-after {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
@@ -10,59 +10,60 @@ nav {
 	padding: 10px 10px;
 	width: 100%;
 }
-nav li {
+.navbar-after li {
 	margin: 0 10px;
 }
 
-nav a {
+.navbar-after a {
 	color: #1dbf73;
 	text-decoration: none;
 }
-nav ul {
+.navbar-after ul {
 	list-style: none;
 	display: flex;
 	margin: 0;
 	padding: 0;
 }
 
-nav ul li {
+.navbar-after ul li {
 	display: inline-block;
 	margin-right: 20px;
 }
 
-nav ul li:last-child {
+.navbar-after ul li:last-child {
 	margin-right: 0;
 }
 
-nav ul li a {
+.navbar-after ul li a {
 	color: #494747;
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 18px;
 }
-nav ul li a.Business {
+.navbar-after ul li a.Business {
 	color: rgb(53, 11, 143);
 }
-nav ul li a:hover {
+.navbar-after ul li a:hover {
 	color: #1dbf73;
 }
-nav ul li a.Business:hover {
+.navbar-after ul li a.Business:hover {
 	color: #1dbf73;
 }
 
-nav ul li a.join-link {
+.navbar-after ul li a.join-link {
 	color: #1dbf73;
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 18px;
 	border: 1px solid #1dbf73;
 	padding: 10px 20px;
+	border-radius: 5px;
 }
-nav ul li a.join-link:hover {
+.navbar-after ul li a.join-link:hover {
 	background-color: #1dbf73;
 	color: rgb(253, 253, 253);
 }
-button {
+.search-icon {
 	background-color: black;
 	border: 1px solid black;
 	padding: 1px;
@@ -70,12 +71,12 @@ button {
 	height: 60px;
 	margin-left: 50px;
 }
-button search {
+.search-icon search {
 	color: rgb(248, 246, 246);
 	font-size: 16px;
 }
 
-nav ul li a.join-link:active {
+.navbar-after ul li a.join-link:active {
 	background-color: #1dbf73;
 }
 

@@ -13,7 +13,7 @@ const SearchBar = () => {
 				style={{ fontSize: "16px" }}
 			/>
 
-			<button
+			<button className="search-icon"
 				style={{
 					backgroundColor: "black",
 					border: "1px solid black",

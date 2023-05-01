@@ -1,14 +1,15 @@
 import { FunctionComponent } from "react";
 import React from "react";
-import Logo from "../../assets/FiverrLogoWhite.svg";
+import Logo from "../../assets/FiverrLogoSVG.svg";
 import { Link } from "react-router-dom";
-import "./navbarbef.css";
+import Searchbar from "./Searchbar";
+import "./navbarAfter.css";
 
-interface NavbarProps {}
+interface NavbarAfterProps {}
 
-const Navbar: FunctionComponent<NavbarProps> = () => {
+const NavbarAfter: FunctionComponent<NavbarAfterProps> = () => {
 	return (
-		<nav>
+		<nav className="navbar-after">
 			<ul>
 				<li>
 					<img
@@ -27,7 +28,12 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
 					/>
 				</li>
 				<li>
-					<Link to="/">FIverr Business</Link>
+					<Searchbar />
+				</li>
+				<li>
+					<Link to="/" className="Business">
+						FIverr Business
+					</Link>
 				</li>
 				<li>
 					<Link to="/">Explore</Link>
@@ -49,4 +55,4 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
 	);
 };
 
-export default Navbar;
+export default NavbarAfter;

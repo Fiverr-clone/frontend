@@ -4,18 +4,18 @@ import { Counter } from "./features/counter/Counter";
 import "./App.css";
 import Footer from "./components/footerComponent/footer";
 import Login from "./components/loginComponent/login";
-import Navbar from "./components/NavbarbefComponent/navbarbef";
-import NavbarAfter from "./components/NavbaraftComponent/navbaraft";
-import NavbarMenu from "./components/NavbarMenuComponent/navbarMenu";
+import NavbarBefore from "./components/navbarBeforeComponent/navbarBefore";
+import NavbarAfter from "./components/navbarAfterComponent/navbarAfter";
+import NavbarMenu from "./components/navbarMenuComponent/navbarMenu";
 
 function App() {
 	return (
 		<div className="App">
+			{/* <NavbarBefore /> */}
+			<NavbarAfter />
 			<NavbarMenu />
-			{/* <Navbar /> */}
-			{/* <NavbarAfter /> */}
 			{/* <Login /> */}
-			{/* <Footer /> */}
+			<Footer />
 		</div>
 	);
 }
