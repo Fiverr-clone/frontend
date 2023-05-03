@@ -99,7 +99,7 @@ const LoginForm: FunctionComponent<LoginFormProps> = () => {
 			</div>
 			<div id="join">
 				<span id="not-member">Not a member yet?</span>
-				<Link to="/" id="join-now">
+				<Link to="/join" id="join-now">
 					<span>Join now</span>
 				</Link>
 			</div>
