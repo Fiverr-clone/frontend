@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
 #login {
 	width: 400px !important;
-	height: 575px !important;
-
-	height: fit-content;
+	height: 575px;
 
 	position: absolute;
 	top: 50%;
@@ -14,6 +12,7 @@
 	border-radius: 4px;
 	box-shadow: 0 0 8px #95979d;
 }
+
 #login-h4 {
 	padding: 33px 0 25px;
 	color: #404145;
@@ -118,7 +117,11 @@
 .remember-checkbox {
 	margin: 0 0 16px 0;
 }
-
+.error-message {
+	color: red;
+	font-size: 14px;
+	font-weight: 600;
+}
 /* /////////////////// */
 
 #remember-forgot {
@@ -139,7 +142,7 @@
 	align-items: center;
 }
 #remember-span,
-#not-member {
+#not-member-span {
 	color: #404145;
 }
 
@@ -149,7 +152,7 @@
 	text-decoration: none;
 	font-weight: 600;
 }
-#join {
+#join-signin {
 	padding: 12px 0;
 	border-top: 1px solid #e4e5e7;
 	display: flex;
@@ -157,4 +160,5 @@
 	text-align: center;
 	align-items: center;
 	gap: 8px;
+	font-size: 14px;
 }

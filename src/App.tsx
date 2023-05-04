@@ -1,33 +1,38 @@
 import React from "react";
-import {  Route ,Routes, useNavigate} from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 import logo from "./logo.svg";
-import { Counter } from "./features/counter/Counter";
 import "./App.css";
 import Footer from "./components/footerComponent/footer";
 import Login from "./components/loginComponent/login";
 import NavbarBefore from "./components/navbarBeforeComponent/navbarBefore";
 import NavbarAfter from "./components/navbarAfterComponent/navbarAfter";
-import NavbarMenu from "./components/NavbarMenuComponent/navbarMenu";
+import NavbarMenu from "./components/navbarMenuComponent/navbarMenu";
 import Join from "./components/joinComponent/joinForm";
+import { useSelector } from "react-redux";
+import {
+	selectCurrentToken,
+	selectCurrentUser,
+} from "./features/actions/authSlice";
 
 function App() {
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/join" element={<Join />} />
-		<Route path="/signin" element={<Login />} />
-      </Routes>
+	// const user = useSelector(selectCurrentUser, selectCurrentToken);
+	return (
+		<div className="App">
+			<Routes>
+				<Route path="/join" element={<Join />} />
+				<Route path="/signin" element={<Login />} />
+			</Routes>
 
-      {/* <NavbarBefore /> */}
-      {/*<NavbarAfter />
+			{/* <NavbarBefore /> */}
+			{/*<NavbarAfter />
       <NavbarMenu />
       <Login />
 
          */}
-      {/*<Footer />*/}
-    </div>
-  );
+			{/*<Footer />*/}
+		</div>
+	);
 }
 
 export default App;

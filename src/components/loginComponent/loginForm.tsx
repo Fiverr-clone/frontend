@@ -1,22 +1,24 @@
 import { FunctionComponent, useState } from "react";
 import "./login.css";
 import google from "../../assets/socialicons/google.svg";
-
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faApple } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../features/actions/authSlice";
 
-interface LoginFormProps {}
+interface LoginFormProps {
+	onError: (value: boolean) => void;
+}
 
-const LoginForm: FunctionComponent<LoginFormProps> = () => {
+const LoginForm: FunctionComponent<LoginFormProps> = ({ onError }) => {
 	const [data, setData] = useState({
 		email: "",
 		password: "",
 	});
-
-	const handleMouseDownPassword = (e: any) => {
-		e.preventDefault();
-	};
+	const [error, setError] = useState(false);
+	const dispatch = useDispatch();
 
 	const handleChange = (e: any) => {
 		const value = e.target.value;
@@ -25,13 +27,37 @@ const LoginForm: FunctionComponent<LoginFormProps> = () => {
 			[e.target.name]: value,
 		});
 	};
+
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
+
 		const userData = {
 			email: data.email,
 			password: data.password,
 		};
-		// add later axios code
+		axios
+			.post("http://localhost:8000/api/signin", userData)
+			.then((response) => {
+				if (response.status === 200) {
+					console.log("userId : ", response.data.userId);
+					console.log("token : ", response.data.token);
+					dispatch(
+						login({
+							userId: response.data.userId,
+							token: response.data.token,
+							isLogged: true,
+						})
+					);
+				}
+			})
+			.catch((error) => {
+				if (error.response.status === 401) {
+					setError(true);
+					onError(true);
+				} else {
+					console.log("An error occurred:", error.message);
+				}
+			});
 	};
 	return (
 		<>
@@ -71,6 +97,10 @@ const LoginForm: FunctionComponent<LoginFormProps> = () => {
 							onChange={handleChange}
 							className="input-field"
 							placeholder="Email / Username"
+							style={{
+								border: error ? "1px solid red" : "1px solid #c5c6c9",
+							}}
+							required
 						/>
 						<input
 							type="password"
@@ -79,7 +109,16 @@ const LoginForm: FunctionComponent<LoginFormProps> = () => {
 							onChange={handleChange}
 							className="input-field"
 							placeholder="Password"
+							style={{
+								border: error ? "1px solid red" : "1px solid #c5c6c9",
+							}}
+							required
 						/>
+						{error && (
+							<p className="error-message">
+								Wrong email or password, please try again!
+							</p>
+						)}
 						<button type="submit" className="signin-btn">
 							Continue
 						</button>
@@ -97,8 +136,8 @@ const LoginForm: FunctionComponent<LoginFormProps> = () => {
 					</div>
 				</form>
 			</div>
-			<div id="join">
-				<span id="not-member">Not a member yet?</span>
+			<div id="join-signin">
+				<span id="not-member-span">Not a member yet?</span>
 				<Link to="/join" id="join-now">
 					<span>Join now</span>
 				</Link>

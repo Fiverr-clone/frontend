@@ -10,9 +10,9 @@ interface JoinFormProps {}
 
 const JoinForm: FunctionComponent<JoinFormProps> = () => {
 	const [joindata, setjoinData] = useState({
-        firstName:"",
-        lastName :"",
-        username :"",
+		firstName: "",
+		lastName: "",
+		username: "",
 		email: "",
 		password: "",
 	});
@@ -31,9 +31,9 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
 		const userjoinData = {
-            firstName:joindata.firstName,
-            lastName :joindata.lastName,
-            username :joindata.username,
+			firstName: joindata.firstName,
+			lastName: joindata.lastName,
+			username: joindata.username,
 			email: joindata.email,
 			password: joindata.password,
 		};
@@ -70,7 +70,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 					</div>
 					{/* Input join */}
 					<div className="input-join">
-                    <input
+						<input
 							type="text"
 							name="firstName"
 							value={joindata.firstName}
@@ -78,7 +78,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 							className="input-field"
 							placeholder="Choose a First name"
 						/>
-                        <input
+						<input
 							type="text"
 							name="lastName"
 							value={joindata.lastName}
@@ -86,7 +86,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 							className="input-field"
 							placeholder="Choose a Last name"
 						/>
-                        <input
+						<input
 							type="text"
 							name="username"
 							value={joindata.username}
@@ -113,7 +113,6 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 						<button type="submit" className="join-btn">
 							Join
 						</button>
-						
 					</div>
 				</form>
 			</div>
