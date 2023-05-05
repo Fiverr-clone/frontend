@@ -21,6 +21,8 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ onError }) => {
 	const dispatch = useDispatch();
 
 	const handleChange = (e: any) => {
+		setError(false);
+		onError(false);
 		const value = e.target.value;
 		setData({
 			...data,
@@ -39,8 +41,6 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ onError }) => {
 			.post("http://localhost:8000/api/signin", userData)
 			.then((response) => {
 				if (response.status === 200) {
-					console.log("userId : ", response.data.userId);
-					console.log("token : ", response.data.token);
 					dispatch(
 						login({
 							userId: response.data.userId,

@@ -10,10 +10,6 @@ import NavbarAfter from "./components/navbarAfterComponent/navbarAfter";
 import NavbarMenu from "./components/navbarMenuComponent/navbarMenu";
 import Join from "./components/joinComponent/joinForm";
 import { useSelector } from "react-redux";
-import {
-	selectCurrentToken,
-	selectCurrentUser,
-} from "./features/actions/authSlice";
 
 function App() {
 	// const user = useSelector(selectCurrentUser, selectCurrentToken);
