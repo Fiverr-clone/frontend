@@ -3,16 +3,16 @@ import "./join.css";
 
 import JoinForm from "./joinForm";
 
-interface joinProps {}
+interface JoinProps {}
 
-const join: FunctionComponent<joinProps> = () => {
+const Join: FunctionComponent<JoinProps> = () => {
 	return (
 		<>
 			<div id="join">
-				<h4 id="join-h4">Join Fiverr</h4>
+				<h4 id="join-h4">Join Us</h4>
 				<JoinForm />
 			</div>
 		</>
 	);
 };
-export default join;
+export default Join;

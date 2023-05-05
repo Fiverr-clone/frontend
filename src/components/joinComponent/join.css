@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
 #join {
-	width: 400px !important;
-	height: 575px !important;
-
-	height: fit-content;
+	width: 405px !important;
+	height: 670px;
 
 	position: absolute;
 	top: 50%;
@@ -15,7 +13,7 @@
 	box-shadow: 0 0 8px #95979d;
 }
 #join-h4 {
-	padding: 33px 0 25px;
+	padding: 30px 0 20px;
 	color: #404145;
 	font-size: 24px;
 	font-weight: 700;
@@ -37,7 +35,7 @@
 .form-separator-span {
 	font-size: 14px;
 	font-weight: 600;
-	line-height: 24px;
+	line-height: 33px;
 	text-transform: uppercase;
 	padding: 0 8px;
 	background-color: #fff;
@@ -50,8 +48,8 @@
 }
 .join-social-btn {
 	border-radius: 5px;
-	margin: 5px 0;
-	padding: 6px 0 6px 12px;
+	margin: 4px 0;
+	padding: 8px 0 8px 12px;
 	width: 100%;
 	display: inline-flex;
 	align-items: center;
@@ -144,13 +142,14 @@
 }
 
 #forgot-link,
-#SignIn {
+#signin-now {
 	color: #1dbf73;
 	text-decoration: none;
 	font-weight: 600;
 }
 #Signin {
 	padding: 12px 0;
+	margin: 15px 0;
 	border-top: 1px solid #e4e5e7;
 	display: flex;
 	justify-content: center;

@@ -8,11 +8,9 @@ import Login from "./components/loginComponent/login";
 import NavbarBefore from "./components/navbarBeforeComponent/navbarBefore";
 import NavbarAfter from "./components/navbarAfterComponent/navbarAfter";
 import NavbarMenu from "./components/navbarMenuComponent/navbarMenu";
-import Join from "./components/joinComponent/joinForm";
-import { useSelector } from "react-redux";
+import Join from "./components/joinComponent/join";
 
 function App() {
-	// const user = useSelector(selectCurrentUser, selectCurrentToken);
 	return (
 		<div className="App">
 			<Routes>

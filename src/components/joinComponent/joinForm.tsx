@@ -17,10 +17,6 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 		password: "",
 	});
 
-	const handleMouseDownPassword = (e: any) => {
-		e.preventDefault();
-	};
-
 	const handleChange = (e: any) => {
 		const value = e.target.value;
 		setjoinData({
@@ -76,7 +72,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 							value={joindata.firstName}
 							onChange={handleChange}
 							className="input-field"
-							placeholder="Choose a First name"
+							placeholder="First name"
 						/>
 						<input
 							type="text"
@@ -84,7 +80,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 							value={joindata.lastName}
 							onChange={handleChange}
 							className="input-field"
-							placeholder="Choose a Last name"
+							placeholder="Last name"
 						/>
 						<input
 							type="text"
@@ -92,7 +88,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 							value={joindata.username}
 							onChange={handleChange}
 							className="input-field"
-							placeholder="Choose a Username"
+							placeholder="Username"
 						/>
 						<input
 							type="text"
@@ -100,7 +96,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 							value={joindata.email}
 							onChange={handleChange}
 							className="input-field"
-							placeholder="Choose a Email "
+							placeholder="Email "
 						/>
 						<input
 							type="password"
@@ -108,7 +104,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 							value={joindata.password}
 							onChange={handleChange}
 							className="input-field"
-							placeholder="Choose a Password"
+							placeholder="Password"
 						/>
 						<button type="submit" className="join-btn">
 							Join
@@ -118,7 +114,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 			</div>
 			<div id="Signin">
 				<span id="member">Already a member?</span>
-				<Link to="/signin" id="SignIn">
+				<Link to="/signin" id="signin-now">
 					<span>Sign In</span>
 				</Link>
 			</div>
