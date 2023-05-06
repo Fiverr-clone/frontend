@@ -9,6 +9,7 @@ import NavbarBefore from "./components/navbarBeforeComponent/navbarBefore";
 import NavbarAfter from "./components/navbarAfterComponent/navbarAfter";
 import NavbarMenu from "./components/navbarMenuComponent/navbarMenu";
 import Join from "./components/joinComponent/join";
+import Welcome from "./components/loginComponent/welcome";
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 			<Routes>
 				<Route path="/join" element={<Join />} />
 				<Route path="/signin" element={<Login />} />
+				<Route path="/welcome" element={<Welcome />} />
 			</Routes>
 
 			{/* <NavbarBefore /> */}

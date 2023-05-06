@@ -40,9 +40,7 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ onError }) => {
 			password: data.password,
 		};
 		axios
-			.post("http://localhost:8000/api/signin", userData, {
-				withCredentials: true,
-			})
+			.post("http://localhost:8000/api/signin", userData)
 			.then((response) => {
 				if (response.status === 200) {
 					Cookies.set("userId", response.data.userId);
@@ -54,6 +52,7 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ onError }) => {
 							isLogged: true,
 						})
 					);
+					navigate("/welcome");
 				}
 			})
 			.catch((error) => {
