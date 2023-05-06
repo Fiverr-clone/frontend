@@ -7,14 +7,16 @@ import Footer from "./components/footerComponent/footer";
 import Login from "./components/loginComponent/login";
 import NavbarBefore from "./components/navbarBeforeComponent/navbarBefore";
 import NavbarAfter from "./components/navbarAfterComponent/navbarAfter";
-import NavbarMenu from "./components/navbarMenuComponent/navbarMenu";
+//import NavbarMenu from "./components/navbarMenuComponent/navbarMenu";
 import Join from "./components/joinComponent/join";
 import Welcome from "./components/loginComponent/welcome";
 
 function App() {
 	return (
 		<div className="App">
+			
 			<Routes>
+				
 				<Route path="/join" element={<Join />} />
 				<Route path="/signin" element={<Login />} />
 				<Route path="/welcome" element={<Welcome />} />

@@ -1,14 +1,20 @@
 import { FunctionComponent, useState } from "react";
 import "./join.css";
 import google from "../../assets/socialicons/google.svg";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faApple } from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
 
-interface JoinFormProps {}
 
-const JoinForm: FunctionComponent<JoinFormProps> = () => {
+interface JoinFormProps {
+	onError: (value: boolean) => void;
+}
+
+const JoinForm: FunctionComponent<JoinFormProps> = ({ onError }) => {
+	const navigate = useNavigate();
 	const [joindata, setjoinData] = useState({
 		firstName: "",
 		lastName: "",
@@ -16,14 +22,19 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 		email: "",
 		password: "",
 	});
-
+	const [error, setError] = useState(false);
 	const handleChange = (e: any) => {
+		setError(false);
+		onError(false);
 		const value = e.target.value;
 		setjoinData({
 			...joindata,
 			[e.target.name]: value,
 		});
 	};
+
+
+	
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
 		const userjoinData = {
@@ -33,8 +44,27 @@ const JoinForm: FunctionComponent<JoinFormProps> = () => {
 			email: joindata.email,
 			password: joindata.password,
 		};
-		// add later axios code
+		axios
+			.post("http://localhost:8000/api/join",userjoinData)
+			.then((response) => {
+				if (response.status === 200) {
+					Cookies.set("userId", response.data.userId);
+					Cookies.set("token", response.data.token);
+					
+			
+				}
+			})
+			.catch((error) => {
+				if (error.response.status === 401) {
+					setError(true);
+					onError(true);
+				} else {
+					console.log("An error occurred:", error.message);
+				}
+			});
 	};
+		
+	
 	return (
 		<>
 			<div className="join-form-div">
