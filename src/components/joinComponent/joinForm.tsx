@@ -47,15 +47,18 @@ const JoinForm: FunctionComponent<JoinFormProps> = ({ onError }) => {
 		axios
 			.post("http://localhost:8000/api/join",userjoinData)
 			.then((response) => {
-				if (response.status === 200) {
-					Cookies.set("userId", response.data.userId);
-					Cookies.set("token", response.data.token);
+				if (response.status === 201) {
+					console.log(response.data);
+					console.log("userId",response.data.userId);
+					console.log("token",response.data.token);
+					// Cookies.set("userId", response.data.userId);
+					// Cookies.set("token", response.data.token);
 					
 			
 				}
 			})
 			.catch((error) => {
-				if (error.response.status === 401) {
+				if (error.response && error.response.status && error.response.status === 500){
 					setError(true);
 					onError(true);
 				} else {
