@@ -2,9 +2,10 @@ import { FunctionComponent, useState } from "react";
 import "./login.css";
 import google from "../../assets/socialicons/google.svg";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faApple } from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/actions/authSlice";
 
@@ -13,6 +14,7 @@ interface LoginFormProps {
 }
 
 const LoginForm: FunctionComponent<LoginFormProps> = ({ onError }) => {
+	const navigate = useNavigate();
 	const [data, setData] = useState({
 		email: "",
 		password: "",
@@ -38,9 +40,13 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ onError }) => {
 			password: data.password,
 		};
 		axios
-			.post("http://localhost:8000/api/signin", userData)
+			.post("http://localhost:8000/api/signin", userData, {
+				withCredentials: true,
+			})
 			.then((response) => {
 				if (response.status === 200) {
+					Cookies.set("userId", response.data.userId);
+					Cookies.set("token", response.data.token);
 					dispatch(
 						login({
 							userId: response.data.userId,
