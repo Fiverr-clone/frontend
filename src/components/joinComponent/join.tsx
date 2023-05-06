@@ -13,11 +13,12 @@ const Join: FunctionComponent<JoinProps> = () => {
 	};
 	return (
 		<>
-			<div id="join"
-			style={{
-				height: error ? "620px " : "575px ",
-			}}>
-			
+			<div
+				id="join"
+				style={{
+					height: error ? "685px " : "670px ",
+				}}
+			>
 				<h4 id="join-h4">Join Us</h4>
 				<JoinForm onError={handleError} />
 			</div>

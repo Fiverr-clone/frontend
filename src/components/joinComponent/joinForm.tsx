@@ -8,7 +8,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faApple } from "@fortawesome/free-brands-svg-icons";
 
-
 interface JoinFormProps {
 	onError: (value: boolean) => void;
 }
@@ -33,8 +32,6 @@ const JoinForm: FunctionComponent<JoinFormProps> = ({ onError }) => {
 		});
 	};
 
-
-	
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
 		const userjoinData = {
@@ -45,20 +42,15 @@ const JoinForm: FunctionComponent<JoinFormProps> = ({ onError }) => {
 			password: joindata.password,
 		};
 		axios
-			.post("http://localhost:8000/api/join",userjoinData)
+			.post("http://localhost:8000/api/join", userjoinData)
 			.then((response) => {
 				if (response.status === 201) {
-					console.log(response.data);
-					console.log("userId",response.data.userId);
-					console.log("token",response.data.token);
-					// Cookies.set("userId", response.data.userId);
-					// Cookies.set("token", response.data.token);
-					
-			
+					Cookies.set("userId", response.data.userId);
+					Cookies.set("token", response.data.token);
 				}
 			})
 			.catch((error) => {
-				if (error.response && error.response.status && error.response.status === 500){
+				if (error.response && error.response.status === 500) {
 					setError(true);
 					onError(true);
 				} else {
@@ -66,8 +58,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = ({ onError }) => {
 				}
 			});
 	};
-		
-	
+
 	return (
 		<>
 			<div className="join-form-div">
@@ -123,12 +114,16 @@ const JoinForm: FunctionComponent<JoinFormProps> = ({ onError }) => {
 							className="input-field"
 							placeholder="Username"
 						/>
+						{error && <p className="error-message-join">Email already taken</p>}
 						<input
 							type="text"
 							name="email"
 							value={joindata.email}
 							onChange={handleChange}
 							className="input-field"
+							style={{
+								border: error ? "1px solid red" : "1px solid #c5c6c9",
+							}}
 							placeholder="Email "
 						/>
 						<input

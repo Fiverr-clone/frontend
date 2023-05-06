@@ -2,13 +2,12 @@
 #join {
 	width: 405px !important;
 	height: 670px;
-
+	margin: 15px 0;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	font-family: "Open Sans", sans-serif;
-
 	border-radius: 4px;
 	box-shadow: 0 0 8px #95979d;
 }
@@ -78,6 +77,12 @@
 	display: flex;
 	text-align: center;
 	align-items: center;
+}
+.error-message-join {
+	margin: -9px 0 5px 0;
+	color: red;
+	font-size: 14px;
+	font-weight: 600;
 }
 
 /* //// INPUT JOIN //// */
