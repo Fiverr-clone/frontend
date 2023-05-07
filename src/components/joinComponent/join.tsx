@@ -17,6 +17,7 @@ const Join: FunctionComponent<JoinProps> = () => {
 				id="join"
 				style={{
 					height: error ? "685px " : "670px ",
+					margin: error ? "15px 0" : "",
 				}}
 			>
 				<h4 id="join-h4">Join Us</h4>

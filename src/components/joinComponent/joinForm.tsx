@@ -22,6 +22,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = ({ onError }) => {
 		password: "",
 	});
 	const [error, setError] = useState(false);
+
 	const handleChange = (e: any) => {
 		setError(false);
 		onError(false);
@@ -45,8 +46,9 @@ const JoinForm: FunctionComponent<JoinFormProps> = ({ onError }) => {
 			.post("http://localhost:8000/api/join", userjoinData)
 			.then((response) => {
 				if (response.status === 201) {
-					Cookies.set("userId", response.data.userId);
-					Cookies.set("token", response.data.token);
+					alert("a verification link was sent to your email");
+					// Cookies.set("userId", response.data.userId);
+					// Cookies.set("token", response.data.token);
 				}
 			})
 			.catch((error) => {

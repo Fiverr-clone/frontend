@@ -10,16 +10,16 @@ import NavbarAfter from "./components/navbarAfterComponent/navbarAfter";
 //import NavbarMenu from "./components/navbarMenuComponent/navbarMenu";
 import Join from "./components/joinComponent/join";
 import Welcome from "./components/loginComponent/welcome";
+import EmailVerify from "./components/emailVerifyComponent/emailVerify";
 
 function App() {
 	return (
 		<div className="App">
-			
 			<Routes>
-				
 				<Route path="/join" element={<Join />} />
 				<Route path="/signin" element={<Login />} />
 				<Route path="/welcome" element={<Welcome />} />
+				<Route path="/:id/verify/:emailToken" element={<EmailVerify />} />
 			</Routes>
 
 			{/* <NavbarBefore /> */}
