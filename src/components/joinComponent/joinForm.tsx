@@ -91,6 +91,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = ({ onError }) => {
 					{/* Input join */}
 					<div className="input-join">
 						<input
+							required
 							type="text"
 							name="firstName"
 							value={joindata.firstName}
@@ -99,6 +100,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = ({ onError }) => {
 							placeholder="First name"
 						/>
 						<input
+							required
 							type="text"
 							name="lastName"
 							value={joindata.lastName}
@@ -107,15 +109,24 @@ const JoinForm: FunctionComponent<JoinFormProps> = ({ onError }) => {
 							placeholder="Last name"
 						/>
 						<input
+							required
 							type="text"
 							name="username"
 							value={joindata.username}
 							onChange={handleChange}
 							className="input-field"
 							placeholder="Username"
+							style={{
+								border: error ? "1px solid red" : "1px solid #c5c6c9",
+							}}
 						/>
-						{error && <p className="error-message-join">Email already taken</p>}
+						{error && (
+							<p className="error-message-join">
+								Email or Username already taken
+							</p>
+						)}
 						<input
+							required
 							type="text"
 							name="email"
 							value={joindata.email}
@@ -127,6 +138,7 @@ const JoinForm: FunctionComponent<JoinFormProps> = ({ onError }) => {
 							placeholder="Email "
 						/>
 						<input
+							required
 							type="password"
 							name="password"
 							value={joindata.password}

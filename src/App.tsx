@@ -15,10 +15,8 @@ import Welcome from "./components/loginComponent/welcome";
 function App() {
 	return (
 		<div className="App">
-			
 			<Routes>
-				
-			<Route path="/join" element={<Join />} />
+				<Route path="/join" element={<Join />} />
 				<Route path="/signin" element={<Login />} />
 				<Route path="/add-service" element={<AddService />} />
 				<Route path="/welcome" element={<Welcome />} />

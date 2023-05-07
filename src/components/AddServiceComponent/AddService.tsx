@@ -16,7 +16,7 @@ const AddService: FunctionComponent<AddServiceProps> = () => {
 			<div
 				id="AddService"
 				style={{
-					height: error ? "685px " : "670px ",
+					// height: error ? "685px " : "670px ",
 				}}
 			>
 				<h4 id="AddService-h4">Add New Service </h4>
