@@ -2,13 +2,13 @@ import { FunctionComponent } from "react";
 import React from "react";
 import Logo from "../../assets/FiverrLogoWhite.svg";
 import { Link } from "react-router-dom";
-import "./navbarbef.css";
+import "./navbarBefore.css";
 
 interface NavbarBeforeProps {}
 
 const NavbarBefore: FunctionComponent<NavbarBeforeProps> = () => {
 	return (
-		<nav>
+		<nav className="nav-before">
 			<ul>
 				<li>
 					<img
@@ -37,10 +37,10 @@ const NavbarBefore: FunctionComponent<NavbarBeforeProps> = () => {
 					<Link to="/">Become a Seller</Link>
 				</li>
 				<li>
-					<Link to="/">Sign In</Link>
+					<Link to="/signin">Sign In</Link>
 				</li>
 				<li>
-					<Link to="/" className="join-link">
+					<Link to="/join" className="join-link">
 						Join
 					</Link>
 				</li>

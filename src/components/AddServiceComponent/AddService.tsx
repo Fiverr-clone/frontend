@@ -4,6 +4,7 @@ import "./AddService.css";
 import AddServiceForm from "./AddServiceForm";
 import NavbarMenu from "../navbarMenuComponent/navbarMenu";
 import NavbarAfter from "../navbarAfterComponent/navbarAfter";
+import NavbarBefore from "../navbarBeforeComponent/navbarBefore";
 
 interface AddServiceProps {}
 
@@ -15,6 +16,7 @@ const AddService: FunctionComponent<AddServiceProps> = () => {
 	};
 	return (
 		<>
+			<NavbarBefore />
 			<NavbarAfter />
 			<NavbarMenu />
 			<div

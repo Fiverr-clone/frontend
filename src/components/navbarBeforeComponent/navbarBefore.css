@@ -1,9 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-p {
-	font-family: "Roboto", sans-serif;
-}
-nav {
+
+.nav-before {
 	display: flex;
+	font-family: "Roboto", sans-serif;
 	/*justify-content: space-between;*/
 	justify-content: flex-end;
 	align-items: center;
@@ -12,41 +11,41 @@ nav {
 	padding: 10px 10px;
 	width: 100%;
 }
-nav li {
+.nav-before li {
 	margin: 0 10px;
 }
 
-nav a {
+.nav-before a {
 	color: #1dbf73;
 	text-decoration: none;
 }
-nav {
-	background: #0d0d0d;
+.nav-before {
+	background: #ff9e9e;
 }
 
-nav ul {
+.nav-before ul {
 	list-style: none;
 	display: flex;
 	margin: 0;
 	padding: 0;
 }
 
-nav ul li {
+.nav-before ul li {
 	display: inline-block;
 	margin-right: 20px;
 }
 
-nav ul li:last-child {
+.nav-before ul li:last-child {
 	margin-right: 0;
 }
 
-nav ul li a {
+.nav-before ul li a {
 	color: #f9f6f6;
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 18px;
 }
-nav ul li a.join-link {
+.nav-before ul li a.join-link {
 	color: #f9f6f6;
 	text-decoration: none;
 	font-weight: bold;
@@ -55,6 +54,6 @@ nav ul li a.join-link {
 	padding: 10px 20px;
 }
 
-nav ul li a.join-link:active {
+.nav-before ul li a.join-link:active {
 	color: rgb(6, 248, 131);
 }

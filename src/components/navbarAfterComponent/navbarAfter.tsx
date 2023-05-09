@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../../assets/FiverrLogoSVG.svg";
 import { Link } from "react-router-dom";
 import Searchbar from "./Searchbar";
@@ -17,19 +17,14 @@ const NavbarAfter: FunctionComponent<NavbarAfterProps> = () => {
 						height={"30px"}
 						width={"auto"}
 						alt="Fiverr Logo"
-						style={{
-							position: "absolute",
-							top: "0",
-							left: "0",
-							marginLeft: "20px",
-							padding: "0 20px",
-							marginTop: "20px",
-						}}
+						className="navbar-after-logo"
 					/>
 				</li>
 				<li>
 					<Searchbar />
 				</li>
+			</ul>
+			<ul>
 				<li>
 					<Link to="/" className="Business">
 						FIverr Business
@@ -43,10 +38,10 @@ const NavbarAfter: FunctionComponent<NavbarAfterProps> = () => {
 					<Link to="/">Become a Seller</Link>
 				</li>
 				<li>
-					<Link to="/">Sign In</Link>
+					<Link to="/signin">Sign In</Link>
 				</li>
 				<li>
-					<Link to="/" className="join-link">
+					<Link to="/join" className="join-link">
 						Join
 					</Link>
 				</li>
