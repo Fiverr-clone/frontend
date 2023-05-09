@@ -2,7 +2,6 @@ import { FunctionComponent, useState, useEffect } from "react";
 import "./AddService.css";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { Link, useNavigate } from "react-router-dom";
 
 interface AddServiceFormProps {
 	onError: (value: boolean) => void;
@@ -21,18 +20,15 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 	onError,
 }) => {
 	const token = Cookies.get("token");
-	const cookieUserId: string = Cookies.get("userId") || "";
 	const [categories, setCategories] = useState<Category[]>([]);
 	const [subCategories, setSubCategories] = useState<SubCategory[]>([]);
 	const [error, setError] = useState(false);
 	const [imageFile, setImageFile] = useState("");
 	const [Servicedata, setServiceData] = useState({
-		userId: cookieUserId,
 		title: "",
 		category: "",
 		subCategory: "",
 		description: "",
-		// image: "",
 		price: "",
 		deadline: "",
 		buyerInstruction: "",
@@ -40,7 +36,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 	useEffect(() => {
 		const fetchCategories = async () => {
 			try {
-				const response = await fetch("http://localhost:8000/api/categories"); // replace with your actual API endpoint
+				const response = await fetch("http://localhost:8000/api/categories");
 				const data = await response.json();
 				setCategories(data);
 			} catch (error) {
@@ -53,6 +49,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 		const categoryId = e.target.value;
 		try {
 			const response = await axios.get(
+				// `/api/sub-category/${categoryId}`
 				`http://localhost:8000/api/sub-category/${categoryId}`
 			);
 			setSubCategories(response.data);
@@ -102,7 +99,6 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
 		const userServiceData = new FormData();
-		// userServiceData.append("userId", cookieUserId);
 		userServiceData.append("title", Servicedata.title);
 		userServiceData.append("category", Servicedata.category);
 		userServiceData.append("subCategory", Servicedata.subCategory);
@@ -110,17 +106,11 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 		userServiceData.append("price", Servicedata.price);
 		userServiceData.append("deadline", Servicedata.deadline);
 		userServiceData.append("buyerInstruction", Servicedata.buyerInstruction);
-		// if (imageFile) {
 		userServiceData.append("image", imageFile);
-		// }
-		console.log(Servicedata);
-		console.log(imageFile);
-
 		axios
 			.post("http://localhost:8000/api/add-service", userServiceData, {
 				headers: {
-					"Content-Type": "multipart/form-data",
-					Authorization: `Bearer ${token}`,
+					Authorization: `${token}`,
 				},
 			})
 			.then((response) => {
@@ -155,7 +145,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 							}}
 							required
 						/>
-						<label htmlFor="category">Category:</label>
+						<p>Category:</p>
 						<select
 							id="category"
 							name="category"
@@ -195,7 +185,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 							className="input-field"
 							placeholder="Choose a description"
 						/>
-						<label htmlFor="image">Image:</label>
+						<p>Image:</p>
 						<input
 							type="file"
 							id="image"

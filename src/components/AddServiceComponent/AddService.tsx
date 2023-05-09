@@ -2,6 +2,8 @@ import { FunctionComponent, useState } from "react";
 import "./AddService.css";
 
 import AddServiceForm from "./AddServiceForm";
+import NavbarMenu from "../navbarMenuComponent/navbarMenu";
+import NavbarAfter from "../navbarAfterComponent/navbarAfter";
 
 interface AddServiceProps {}
 
@@ -13,11 +15,15 @@ const AddService: FunctionComponent<AddServiceProps> = () => {
 	};
 	return (
 		<>
+			<NavbarAfter />
+			<NavbarMenu />
 			<div
 				id="AddService"
-				style={{
-					// height: error ? "685px " : "670px ",
-				}}
+				style={
+					{
+						// height: error ? "685px " : "670px ",
+					}
+				}
 			>
 				<h4 id="AddService-h4">Add New Service </h4>
 				<AddServiceForm onError={handleError} />
