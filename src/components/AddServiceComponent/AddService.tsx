@@ -6,6 +6,7 @@ import NavbarMenu from "../navbarMenuComponent/navbarMenu";
 import NavbarAfter from "../navbarAfterComponent/navbarAfter";
 import NavbarBefore from "../navbarBeforeComponent/navbarBefore";
 
+import AddServiceNotes from "./AddServiceNotes";
 interface AddServiceProps {}
 
 const AddService: FunctionComponent<AddServiceProps> = () => {
@@ -29,6 +30,7 @@ const AddService: FunctionComponent<AddServiceProps> = () => {
 			>
 				<h4 id="AddService-h4">Add New Service </h4>
 				<AddServiceForm onError={handleError} />
+				<AddServiceNotes />
 			</div>
 		</>
 	);
