@@ -2,7 +2,7 @@ import { FunctionComponent, useState } from "react";
 import "./AddService.css";
 
 import AddServiceForm from "./AddServiceForm";
-
+import AddServiceNotes from "./AddServiceNotes";
 interface AddServiceProps {}
 
 const AddService: FunctionComponent<AddServiceProps> = () => {
@@ -21,6 +21,7 @@ const AddService: FunctionComponent<AddServiceProps> = () => {
 			>
 				<h4 id="AddService-h4">Add New Service </h4>
 				<AddServiceForm onError={handleError} />
+				<AddServiceNotes />
 			</div>
 		</>
 	);

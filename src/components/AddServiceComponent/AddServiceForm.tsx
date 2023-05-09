@@ -139,7 +139,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 
 	return (
 		<>
-			<div className="AddService-form-div">
+			<div >
 				<form onSubmit={handleSubmit} className="AddService-form">
 					{/* Input AddService */}
 					<div className="input-AddService">
@@ -150,12 +150,10 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 							value={Servicedata.title}
 							onChange={handleChange}
 							className="input-field"
-							style={{
-								border: error ? "1px solid red" : "1px solid #c5c6c9",
-							}}
-							required
+							placeholder="Choose a title"
+							
 						/>
-						<label htmlFor="category">Category:</label>
+						<p>Category</p>
 						<select
 							id="category"
 							name="category"
@@ -164,6 +162,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 								handleCategoryChange(e);
 								handleChange(e);
 							}}
+							className="input-field"
 						>
 							<option value="">Select a category</option>
 							{categories.map((category) => (
@@ -195,7 +194,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 							className="input-field"
 							placeholder="Choose a description"
 						/>
-						<label htmlFor="image">Image:</label>
+						<p>Image</p>
 						<input
 							type="file"
 							id="image"
@@ -221,14 +220,14 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 							className="input-field"
 							placeholder="Choose a deadline"
 						/>
-						<p>Buyer Instruction</p>
+						<p>Buyer Instructions</p>
 						<textarea
 							maxLength={150}
 							name="buyerInstruction"
 							value={Servicedata.buyerInstruction}
 							onChange={handleChange}
 							className="input-field"
-							placeholder="Choose a buyer Instruction"
+							placeholder="Add buyer Instructions"
 						/>
 
 						<button type="submit" className="AddService-btn">
