@@ -3,9 +3,7 @@ import "./AddService.css";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-interface AddServiceFormProps {
-	onError: (value: boolean) => void;
-}
+interface AddServiceFormProps {}
 
 interface Category {
 	_id: string;
@@ -16,13 +14,10 @@ interface SubCategory {
 	category_id: string;
 	name: string;
 }
-const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
-	onError,
-}) => {
+const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 	const token = Cookies.get("token");
 	const [categories, setCategories] = useState<Category[]>([]);
 	const [subCategories, setSubCategories] = useState<SubCategory[]>([]);
-	const [error, setError] = useState(false);
 	const [imageFile, setImageFile] = useState("");
 	const [Servicedata, setServiceData] = useState({
 		title: "",
@@ -30,7 +25,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 		subCategory: "",
 		description: "",
 		price: "",
-		deadline: "",
+		deliveryTime: "",
 		buyerInstruction: "",
 	});
 	useEffect(() => {
@@ -64,8 +59,6 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 	};
 
 	const handleChange = (e: any) => {
-		setError(false);
-		onError(false);
 		const value = e.target.value;
 		if (e.target.name === "category") {
 			const selectedCategory = categories.find(
@@ -104,7 +97,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 		userServiceData.append("subCategory", Servicedata.subCategory);
 		userServiceData.append("description", Servicedata.description);
 		userServiceData.append("price", Servicedata.price);
-		userServiceData.append("deadline", Servicedata.deadline);
+		userServiceData.append("deliveryTime", Servicedata.deliveryTime);
 		userServiceData.append("buyerInstruction", Servicedata.buyerInstruction);
 		userServiceData.append("image", imageFile);
 		axios
@@ -129,7 +122,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 
 	return (
 		<>
-			<div >
+			<div>
 				<form onSubmit={handleSubmit} className="AddService-form">
 					{/* Input AddService */}
 					<div className="input-AddService">
@@ -141,7 +134,6 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 							onChange={handleChange}
 							className="input-field"
 							placeholder="Choose a title"
-							
 						/>
 						<p>Category</p>
 						<select
@@ -175,9 +167,9 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 								</option>
 							))}
 						</select>
-						<p>description</p>
+						<p>Description</p>
 						<textarea
-							maxLength={100}
+							maxLength={350}
 							name="description"
 							value={Servicedata.description}
 							onChange={handleChange}
@@ -201,15 +193,16 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = ({
 							className="input-field"
 							placeholder="Choose a price"
 						/>
-						<p>Deadline</p>
+						<p>Delivery time</p>
 						<input
-							type="date"
-							name="deadline"
-							value={Servicedata.deadline}
+							type="number"
+							name="deliveryTime"
+							value={Servicedata.deliveryTime}
 							onChange={handleChange}
 							className="input-field"
-							placeholder="Choose a deadline"
+							placeholder="Choose a delivery time (days)"
 						/>
+
 						<p>Buyer Instructions</p>
 						<textarea
 							maxLength={150}

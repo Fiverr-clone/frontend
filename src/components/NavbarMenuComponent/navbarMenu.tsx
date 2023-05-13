@@ -15,10 +15,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 						<ul className="subcategory-nav-ul">
 							<li className="subcategory-nav-li">
 								<Link
-									to="/programming-development/css-html-programming"
+									to="/programming-development/html-css-programming"
 									className="category-nav-link"
 								>
-									CSS & HTML Programming
+									HTML & CSS Programming
 								</Link>
 							</li>
 							<li className="subcategory-nav-li">

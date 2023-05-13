@@ -1,103 +1,98 @@
-#AddService{
-    background: #efeff3;
-    position: relative;
-    height: 50rem;
+#AddService {
+	background: #efeff3;
+	position: relative;
+	height: 55rem;
 }
-  .AddServiceNotes {
+.AddServiceNotes {
 	width: 480px !important;
 	height: 870px;
 	margin-bottom: 15px;
-    margin-top: 40px ;
+	margin-top: 40px;
 	position: absolute;
 	font-family: "Open Sans", sans-serif;
 	border-radius: 4px;
-    /* background: none; */
-	
-    left: 850px; 
-  top: 15px; 
-  background: inherit;
+	/* background: none; */
+
+	left: 850px;
+	top: 15px;
+	background: inherit;
 }
-.AddServiceNotes_title1{
-    color: gray; 
-  font-weight: bold; 
-  font-size: 20px; 
-  text-align: left; 
+.AddServiceNotes_title1 {
+	color: gray;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: left;
 }
-.AddServiceNotes_title2{
-    color: #1dbf73; 
-    font-weight: bold; 
-    font-size: 16px; 
-    text-align: left; 
+.AddServiceNotes_title2 {
+	color: #1dbf73;
+	font-weight: bold;
+	font-size: 16px;
+	text-align: left;
 }
-.AddServiceNotes_parag{
-    color: rgb(27, 26, 26); 
-    font-weight: bold; 
-    font-size: 16px; 
-    text-align: left; 
+.AddServiceNotes_parag {
+	color: rgb(27, 26, 26);
+	font-weight: bold;
+	font-size: 16px;
+	text-align: left;
 }
-  .AddService-form {
+.AddService-form {
 	width: 805px !important;
-	height: 920px;
+	height: 975px;
+	/* height: 920px; */
 	/* margin: 15px 0; */
-    margin-bottom: 15px ;
-    margin-left: 20px ;
+	margin-bottom: 15px;
+	margin-left: 20px;
 	position: absolute;
 	font-family: "Open Sans", sans-serif;
 	border-radius: 4px;
 	box-shadow: 0 0 8px #95979d;
-    background-color: white;
-    padding: 50px;
+	background-color: white;
+	padding: 50px;
 }
-  .input-field {
-    
-    border: 2px solid #d1d5d3;  
-    font-weight: bold;  
-    color: rgb(103, 98, 98);  
-  }
- 
-  .AddService-form textarea::placeholder {
-    color: rgb(103, 98, 98); 
-  }
-  
- 
-input[type="file"] {
-    background-color: #1dbf73; 
-    color: white; 
-  }
-  
-  
-  select {
-    
-    border: 2px solid gray; 
-  }
-  h4 {
-    color: #1dbf73;
-    font-size: 35px;
-    font-weight: bold;
-    text-align: left;
-    margin-left: 260px;
-  }
-  
-  
-  .AddService-form p {
-    
-    font-size: 24px;
-    font-weight: bold; 
-    color: rgb(92 90 90); 
-    text-align: left; 
-    margin: 0; 
-  }
-  
-  textarea {
+.input-field {
+	border: 2px solid #d1d5d3;
+	font-weight: bold;
+	color: rgb(103, 98, 98);
+}
 
-    border: 2px solid gray;  
-  }
-  
-  .AddService-btn {
-  
-    background-color: #1dbf73;  
-    color: white;  
-    width: 20%;
+.AddService-form textarea::placeholder {
+	color: rgb(103, 98, 98);
+}
+
+input[type="file"] {
+	background-color: #1dbf73;
+	color: white;
+}
+
+select {
+	border: 2px solid gray;
+}
+h4 {
+	color: #1dbf73;
+	font-size: 35px;
+	font-weight: bold;
+	text-align: left;
+	margin-left: 260px;
+}
+
+.AddService-form p {
+	font-size: 22px;
+	font-weight: bold;
+	color: rgb(92 90 90);
+	text-align: left;
+	margin: 0;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+textarea {
+	border: 2px solid gray;
+}
+
+.AddService-btn {
+	background-color: #1dbf73;
+	color: white;
+	width: 20%;
 	display: inline-block;
 	box-sizing: border-box;
 	position: relative;
@@ -109,5 +104,4 @@ input[type="file"] {
 	line-height: 100%;
 	text-decoration: none;
 	text-align: center;
-  }
-  
+}

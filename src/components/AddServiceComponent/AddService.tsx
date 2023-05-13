@@ -7,14 +7,10 @@ import NavbarAfter from "../navbarAfterComponent/navbarAfter";
 import NavbarBefore from "../navbarBeforeComponent/navbarBefore";
 
 import AddServiceNotes from "./AddServiceNotes";
+import Footer from "../footerComponent/footer";
 interface AddServiceProps {}
 
 const AddService: FunctionComponent<AddServiceProps> = () => {
-	const [error, setError] = useState(false);
-
-	const handleError = (value: boolean) => {
-		setError(value);
-	};
 	return (
 		<>
 			<NavbarBefore />
@@ -29,9 +25,10 @@ const AddService: FunctionComponent<AddServiceProps> = () => {
 				}
 			>
 				<h4 id="AddService-h4">Add New Service </h4>
-				<AddServiceForm onError={handleError} />
+				<AddServiceForm />
 				<AddServiceNotes />
 			</div>
+			<Footer />
 		</>
 	);
 };
