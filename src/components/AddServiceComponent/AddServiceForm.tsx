@@ -169,7 +169,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 						</select>
 						<p>Description</p>
 						<textarea
-							maxLength={350}
+							maxLength={2500}
 							name="description"
 							value={Servicedata.description}
 							onChange={handleChange}
@@ -205,7 +205,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 
 						<p>Buyer Instructions</p>
 						<textarea
-							maxLength={150}
+							maxLength={1500}
 							name="buyerInstruction"
 							value={Servicedata.buyerInstruction}
 							onChange={handleChange}
