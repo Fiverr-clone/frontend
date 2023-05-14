@@ -1,23 +1,15 @@
 import { FunctionComponent, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import "./navbarMenu.css";
 
-interface NavbarMenuProps {}
+interface NavbarMenuProps {
+	SubCategoryId: (value: string) => void;
+}
 
-const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
-	const handleCategoryClick = (categoryId: String) => {};
+const NavbarMenu: FunctionComponent<NavbarMenuProps> = ({ SubCategoryId }) => {
+	const handleCategoryClick = (categoryId: string) => {};
 	const handleSubcategoryClick = (subcategoryId: string) => {
-		axios
-			.post(`http://localhost:8000/api/services/${subcategoryId}`)
-			.then((response) => {
-				// console.log(response.data);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-
-		// console.log(`Sending ${subcategoryId} to the backend...`);
+		SubCategoryId(subcategoryId);
 	};
 
 	return (

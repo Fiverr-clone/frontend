@@ -45,9 +45,6 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ onError }) => {
 				if (response.status === 200) {
 					Cookies.set("userId", response.data.userId);
 					Cookies.set("token", response.data.token);
-					// console.log(response.data);
-					// console.log("userId",response.data.userId);
-					// console.log("token",response.data.token);
 					dispatch(
 						login({
 							userId: response.data.userId,

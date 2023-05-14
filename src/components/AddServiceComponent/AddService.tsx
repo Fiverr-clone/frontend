@@ -11,11 +11,17 @@ import Footer from "../footerComponent/footer";
 interface AddServiceProps {}
 
 const AddService: FunctionComponent<AddServiceProps> = () => {
+	const [subCatId, setSubCatId] = useState<String>("");
+
+	const handleSubCatId = (value: String) => {
+		setSubCatId(value);
+		// console.log(value);
+	};
 	return (
 		<>
 			<NavbarBefore />
 			<NavbarAfter />
-			<NavbarMenu />
+			<NavbarMenu SubCategoryId={handleSubCatId} />
 			<div
 				id="AddService"
 				style={
