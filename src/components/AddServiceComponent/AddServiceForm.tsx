@@ -90,7 +90,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 	};
 
 	const handleSubmit = (e: any) => {
-		e.preventDefault();
+		// e.preventDefault();
 		const userServiceData = new FormData();
 		userServiceData.append("title", Servicedata.title);
 		userServiceData.append("category", Servicedata.category);
@@ -134,6 +134,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 							onChange={handleChange}
 							className="input-field"
 							placeholder="Choose a title"
+							required
 						/>
 						<p>Category</p>
 						<select
@@ -145,6 +146,8 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 								handleChange(e);
 							}}
 							className="input-field"
+							required
+
 						>
 							<option value="">Select a category</option>
 							{categories.map((category) => (
@@ -159,6 +162,8 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 							value={Servicedata.subCategory}
 							onChange={handleChange}
 							className="input-field"
+							required
+
 						>
 							<option value="">Select a sub-category</option>
 							{subCategories.map((subCategory) => (
@@ -175,6 +180,8 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 							onChange={handleChange}
 							className="input-field"
 							placeholder="Choose a description"
+							required
+
 						/>
 						<p>Image</p>
 						<input
@@ -182,6 +189,8 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 							id="image"
 							name="image"
 							onChange={(e: any) => setImageFile(e.target.files[0])}
+							required
+
 						/>
 
 						<p>Price</p>
@@ -192,6 +201,8 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 							onChange={handleChange}
 							className="input-field"
 							placeholder="Choose a price"
+							required
+
 						/>
 						<p>Delivery time</p>
 						<input
@@ -201,6 +212,8 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 							onChange={handleChange}
 							className="input-field"
 							placeholder="Choose a delivery time (days)"
+							required
+
 						/>
 
 						<p>Buyer Instructions</p>

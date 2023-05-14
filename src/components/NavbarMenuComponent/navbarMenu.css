@@ -42,12 +42,13 @@
 	z-index: 3;
 	background-color: #fff;
 }
+.subcategory-nav-link,
 .category-nav-link {
 	text-decoration: none;
 	/* color: #404145; */
 	color: #74767e;
 }
-.category-nav-link:hover {
+.subcategory-nav-link:hover {
 	text-decoration: underline;
 	color: #4c4d52;
 }

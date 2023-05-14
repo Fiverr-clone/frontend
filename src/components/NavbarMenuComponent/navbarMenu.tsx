@@ -1,22 +1,50 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./navbarMenu.css";
 
 interface NavbarMenuProps {}
 
 const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
+	const handleCategoryClick = (categoryId: String) => {};
+	const handleSubcategoryClick = (subcategoryId: string) => {
+		axios
+			.post(`http://localhost:8000/api/services/${subcategoryId}`)
+			.then((response) => {
+				// console.log(response.data);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+
+		// console.log(`Sending ${subcategoryId} to the backend...`);
+	};
+
 	return (
 		<>
 			<nav className="navbar-menu">
 				<ul className="category-nav-ul">
 					{/* Programming & Development */}
 					<li className="category-nav-li">
-						<span className="category-span">Programming & Development</span>
+						<span className="category-span">
+							<Link
+								to="/programming-development"
+								className="category-nav-link"
+								id="programming-development"
+								onClick={() => handleCategoryClick("644e9aaaae1fb061ca402f45")}
+							>
+								Programming & Development
+							</Link>
+						</span>
 						<ul className="subcategory-nav-ul">
 							<li className="subcategory-nav-li">
 								<Link
 									to="/programming-development/html-css-programming"
-									className="category-nav-link"
+									className="subcategory-nav-link"
+									id="html-css-programming"
+									onClick={() =>
+										handleSubcategoryClick("644ecff1ae1fb061ca402f65")
+									}
 								>
 									HTML & CSS Programming
 								</Link>
@@ -24,7 +52,11 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/programming-development/java-dot-net-programming"
-									className="category-nav-link"
+									className="subcategory-nav-link"
+									id="java-dot-net-programming"
+									onClick={() =>
+										handleSubcategoryClick("644ed044ae1fb061ca402f66")
+									}
 								>
 									Java and .NET Programming
 								</Link>
@@ -32,7 +64,11 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/programming-development/php-programming"
-									className="category-nav-link"
+									className="subcategory-nav-link"
+									id="php-programming"
+									onClick={() =>
+										handleSubcategoryClick("644ed06dae1fb061ca402f67")
+									}
 								>
 									PHP Programming
 								</Link>
@@ -40,7 +76,11 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/programming-development/python-programming"
-									className="category-nav-link"
+									className="subcategory-nav-link"
+									id="python-programming"
+									onClick={() =>
+										handleSubcategoryClick("644ed08cae1fb061ca402f68")
+									}
 								>
 									Python Programming
 								</Link>
@@ -48,7 +88,11 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/programming-development/mobile-app-programming"
-									className="category-nav-link"
+									className="subcategory-nav-link"
+									id="mobile-app-programming"
+									onClick={() =>
+										handleSubcategoryClick("644ed0abae1fb061ca402f69")
+									}
 								>
 									Mobile Application Programming
 								</Link>
@@ -56,7 +100,11 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/programming-development/wordpress-services"
-									className="category-nav-link"
+									className="subcategory-nav-link"
+									id="644ed0d2ae1fb061ca402f6a"
+									onClick={() =>
+										handleSubcategoryClick("644ed0d2ae1fb061ca402f6a")
+									}
 								>
 									WordPress Services
 								</Link>
@@ -71,7 +119,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/digital-marketing/website-ads"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Website Ads
 								</Link>
@@ -79,7 +127,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/digital-marketing/content-marketing"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Content Marketing
 								</Link>
@@ -87,7 +135,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/digital-marketing/instagram-marketing"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Instagram Marketing
 								</Link>
@@ -95,7 +143,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/digital-marketing/facebook-marketing"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Facebook Marketing
 								</Link>
@@ -110,7 +158,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/writing-translation/translation-services"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Translation Services
 								</Link>
@@ -118,7 +166,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/writing-translation/summarising-services"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Summarising Services
 								</Link>
@@ -126,7 +174,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/writing-translation/sales-copy"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Sales Copy
 								</Link>
@@ -134,7 +182,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/writing-translation/scriptwriting"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Scriptwriting
 								</Link>
@@ -149,7 +197,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/online-courses/learn-programming"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Learn Programming
 								</Link>
@@ -157,7 +205,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/online-courses/learn-digital-marketing"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Learn Digital Marketing
 								</Link>
@@ -165,7 +213,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/online-courses/learn-english"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Learn English
 								</Link>
@@ -173,7 +221,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/online-courses/learn-french"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Learn French
 								</Link>
@@ -188,7 +236,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/design/book-cover-design"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Book Cover Design
 								</Link>
@@ -196,7 +244,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/design/business-card-design"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Business Card Design
 								</Link>
@@ -204,7 +252,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/design/presentation-design"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Presentation Design
 								</Link>
@@ -212,7 +260,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<li className="subcategory-nav-li">
 								<Link
 									to="/design/photo-editing-services"
-									className="category-nav-link"
+									className="subcategory-nav-link"
 								>
 									Photo Editing Services
 								</Link>
