@@ -30,7 +30,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							<Link
 								to="/programming-development"
 								className="category-nav-link"
-								id="programming-development"
+								id="644e9aaaae1fb061ca402f45"
 								onClick={() => handleCategoryClick("644e9aaaae1fb061ca402f45")}
 							>
 								Programming & Development
@@ -41,7 +41,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/programming-development/html-css-programming"
 									className="subcategory-nav-link"
-									id="html-css-programming"
+									id="644ecff1ae1fb061ca402f65"
 									onClick={() =>
 										handleSubcategoryClick("644ecff1ae1fb061ca402f65")
 									}
@@ -53,7 +53,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/programming-development/java-dot-net-programming"
 									className="subcategory-nav-link"
-									id="java-dot-net-programming"
+									id="644ed044ae1fb061ca402f66"
 									onClick={() =>
 										handleSubcategoryClick("644ed044ae1fb061ca402f66")
 									}
@@ -65,7 +65,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/programming-development/php-programming"
 									className="subcategory-nav-link"
-									id="php-programming"
+									id="644ed06dae1fb061ca402f67"
 									onClick={() =>
 										handleSubcategoryClick("644ed06dae1fb061ca402f67")
 									}
@@ -77,7 +77,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/programming-development/python-programming"
 									className="subcategory-nav-link"
-									id="python-programming"
+									id="644ed08cae1fb061ca402f68"
 									onClick={() =>
 										handleSubcategoryClick("644ed08cae1fb061ca402f68")
 									}
@@ -89,7 +89,7 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/programming-development/mobile-app-programming"
 									className="subcategory-nav-link"
-									id="mobile-app-programming"
+									id="644ed0abae1fb061ca402f69"
 									onClick={() =>
 										handleSubcategoryClick("644ed0abae1fb061ca402f69")
 									}
@@ -114,12 +114,25 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 
 					{/* Digital Marketing */}
 					<li className="category-nav-li">
-						<span className="category-span">Digital Marketing</span>
+						<span className="category-span">
+							<Link
+								to="/digital-marketing"
+								className="category-nav-link"
+								id="644e99fdae1fb061ca402f42"
+								onClick={() => handleCategoryClick("644e99fdae1fb061ca402f42")}
+							>
+								Digital Marketing
+							</Link>
+						</span>
 						<ul className="subcategory-nav-ul">
 							<li className="subcategory-nav-li">
 								<Link
 									to="/digital-marketing/website-ads"
 									className="subcategory-nav-link"
+									id="644ecdb4ae1fb061ca402f53"
+									onClick={() =>
+										handleSubcategoryClick("644ecdb4ae1fb061ca402f53")
+									}
 								>
 									Website Ads
 								</Link>
@@ -128,6 +141,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/digital-marketing/content-marketing"
 									className="subcategory-nav-link"
+									id="644ecdf4ae1fb061ca402f54"
+									onClick={() =>
+										handleSubcategoryClick("644ecdf4ae1fb061ca402f54")
+									}
 								>
 									Content Marketing
 								</Link>
@@ -136,6 +153,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/digital-marketing/instagram-marketing"
 									className="subcategory-nav-link"
+									id="644ece18ae1fb061ca402f55"
+									onClick={() =>
+										handleSubcategoryClick("644ece18ae1fb061ca402f55")
+									}
 								>
 									Instagram Marketing
 								</Link>
@@ -144,6 +165,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/digital-marketing/facebook-marketing"
 									className="subcategory-nav-link"
+									id="644ece37ae1fb061ca402f56"
+									onClick={() =>
+										handleSubcategoryClick("644ece37ae1fb061ca402f56")
+									}
 								>
 									Facebook Marketing
 								</Link>
@@ -153,12 +178,25 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 
 					{/* Writing & Translation */}
 					<li className="category-nav-li">
-						<span className="category-span">Writing & Translation</span>
+						<span className="category-span">
+							<Link
+								to="/writing-translation"
+								className="category-nav-link"
+								id="644e9a2eae1fb061ca402f43"
+								onClick={() => handleCategoryClick("644e9a2eae1fb061ca402f43")}
+							>
+								Writing & Translation
+							</Link>
+						</span>
 						<ul className="subcategory-nav-ul">
 							<li className="subcategory-nav-li">
 								<Link
 									to="/writing-translation/translation-services"
 									className="subcategory-nav-link"
+									id="644ece62ae1fb061ca402f59"
+									onClick={() =>
+										handleSubcategoryClick("644ece62ae1fb061ca402f59")
+									}
 								>
 									Translation Services
 								</Link>
@@ -167,6 +205,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/writing-translation/summarising-services"
 									className="subcategory-nav-link"
+									id="644eceaaae1fb061ca402f5a"
+									onClick={() =>
+										handleSubcategoryClick("644eceaaae1fb061ca402f5a")
+									}
 								>
 									Summarising Services
 								</Link>
@@ -175,6 +217,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/writing-translation/sales-copy"
 									className="subcategory-nav-link"
+									id="644ecedfae1fb061ca402f5b"
+									onClick={() =>
+										handleSubcategoryClick("644ecedfae1fb061ca402f5b")
+									}
 								>
 									Sales Copy
 								</Link>
@@ -183,6 +229,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/writing-translation/scriptwriting"
 									className="subcategory-nav-link"
+									id="644ecef8ae1fb061ca402f5c"
+									onClick={() =>
+										handleSubcategoryClick("644ecef8ae1fb061ca402f5c")
+									}
 								>
 									Scriptwriting
 								</Link>
@@ -192,12 +242,25 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 
 					{/* Online Courses */}
 					<li className="category-nav-li">
-						<span className="category-span">Online Courses</span>
+						<span className="category-span">
+							<Link
+								to="/online-courses"
+								className="category-nav-link"
+								id="644e9953ae1fb061ca402f40"
+								onClick={() => handleCategoryClick("644e9953ae1fb061ca402f40")}
+							>
+								Online Courses
+							</Link>
+						</span>
 						<ul className="subcategory-nav-ul">
 							<li className="subcategory-nav-li">
 								<Link
 									to="/online-courses/learn-programming"
 									className="subcategory-nav-link"
+									id="644ecc0eae1fb061ca402f4b"
+									onClick={() =>
+										handleSubcategoryClick("644ecc0eae1fb061ca402f4b")
+									}
 								>
 									Learn Programming
 								</Link>
@@ -206,6 +269,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/online-courses/learn-digital-marketing"
 									className="subcategory-nav-link"
+									id="644ecd2bae1fb061ca402f4e"
+									onClick={() =>
+										handleSubcategoryClick("644ecd2bae1fb061ca402f4e")
+									}
 								>
 									Learn Digital Marketing
 								</Link>
@@ -214,6 +281,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/online-courses/learn-english"
 									className="subcategory-nav-link"
+									id="644ecd69ae1fb061ca402f4f"
+									onClick={() =>
+										handleSubcategoryClick("644ecd69ae1fb061ca402f4f")
+									}
 								>
 									Learn English
 								</Link>
@@ -222,6 +293,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/online-courses/learn-french"
 									className="subcategory-nav-link"
+									id="644ecd8bae1fb061ca402f50"
+									onClick={() =>
+										handleSubcategoryClick("644ecd8bae1fb061ca402f50")
+									}
 								>
 									Learn French
 								</Link>
@@ -231,12 +306,25 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 
 					{/* Design */}
 					<li className="category-nav-li">
-						<span className="category-span">Design</span>
+						<span className="category-span">
+							<Link
+								to="/design"
+								className="category-nav-link"
+								id="644e9a8eae1fb061ca402f44"
+								onClick={() => handleCategoryClick("644e9a8eae1fb061ca402f44")}
+							>
+								Design
+							</Link>
+						</span>
 						<ul className="subcategory-nav-ul">
 							<li className="subcategory-nav-li">
 								<Link
 									to="/design/book-cover-design"
 									className="subcategory-nav-link"
+									id="644ecd8bae1fb061ca402f50"
+									onClick={() =>
+										handleSubcategoryClick("644ecf28ae1fb061ca402f5f")
+									}
 								>
 									Book Cover Design
 								</Link>
@@ -245,6 +333,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/design/business-card-design"
 									className="subcategory-nav-link"
+									id="644ecf65ae1fb061ca402f60"
+									onClick={() =>
+										handleSubcategoryClick("644ecf65ae1fb061ca402f60")
+									}
 								>
 									Business Card Design
 								</Link>
@@ -253,6 +345,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/design/presentation-design"
 									className="subcategory-nav-link"
+									id="644ecf87ae1fb061ca402f61"
+									onClick={() =>
+										handleSubcategoryClick("644ecf87ae1fb061ca402f61")
+									}
 								>
 									Presentation Design
 								</Link>
@@ -261,6 +357,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								<Link
 									to="/design/photo-editing-services"
 									className="subcategory-nav-link"
+									id="644ecfa6ae1fb061ca402f62"
+									onClick={() =>
+										handleSubcategoryClick("644ecfa6ae1fb061ca402f62")
+									}
 								>
 									Photo Editing Services
 								</Link>

@@ -147,7 +147,6 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 							}}
 							className="input-field"
 							required
-
 						>
 							<option value="">Select a category</option>
 							{categories.map((category) => (
@@ -163,7 +162,6 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 							onChange={handleChange}
 							className="input-field"
 							required
-
 						>
 							<option value="">Select a sub-category</option>
 							{subCategories.map((subCategory) => (
@@ -181,7 +179,6 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 							className="input-field"
 							placeholder="Choose a description"
 							required
-
 						/>
 						<p>Image</p>
 						<input
@@ -190,7 +187,6 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 							name="image"
 							onChange={(e: any) => setImageFile(e.target.files[0])}
 							required
-
 						/>
 
 						<p>Price</p>
@@ -202,7 +198,6 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 							className="input-field"
 							placeholder="Choose a price"
 							required
-
 						/>
 						<p>Delivery time</p>
 						<input
@@ -213,7 +208,6 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 							className="input-field"
 							placeholder="Choose a delivery time (days)"
 							required
-
 						/>
 
 						<p>Buyer Instructions</p>

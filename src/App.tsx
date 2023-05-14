@@ -8,20 +8,39 @@ import Welcome from "./components/loginComponent/welcome";
 import EmailVerify from "./components/emailVerifyComponent/emailVerify";
 import SubCat from "./components/subCategoryPage/subCategoryPage";
 
+import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+
+const client = new ApolloClient({
+	uri: "http://localhost:8000/graphql",
+	cache: new InMemoryCache(),
+});
+
 function App() {
 	return (
 		<div className="App">
-			<Routes>
-				<Route path="/join" element={<Join />} />
-				<Route path="/signin" element={<Login />} />
-				<Route path="/add-service" element={<AddService />} />
-				<Route path="/welcome" element={<Welcome />} />
-				<Route path="/:id/verify/:emailToken" element={<EmailVerify />} />
-				<Route
-					path="/programming-development/:subcategoryName"
-					element={<SubCat />}
-				/>
-			</Routes>
+			<ApolloProvider client={client}>
+				<Routes>
+					<Route path="/join" element={<Join />} />
+					<Route path="/signin" element={<Login />} />
+					<Route path="/add-service" element={<AddService />} />
+					<Route path="/welcome" element={<Welcome />} />
+					<Route path="/:id/verify/:emailToken" element={<EmailVerify />} />
+					<Route
+						path="/programming-development/:subcategoryName"
+						element={<SubCat />}
+					/>
+					<Route
+						path="/digital-marketing/:subcategoryName"
+						element={<SubCat />}
+					/>
+					<Route
+						path="/writing-translation/:subcategoryName"
+						element={<SubCat />}
+					/>
+					<Route path="/online-courses/:subcategoryName" element={<SubCat />} />
+					<Route path="/design/:subcategoryName" element={<SubCat />} />
+				</Routes>
+			</ApolloProvider>
 		</div>
 	);
 }
