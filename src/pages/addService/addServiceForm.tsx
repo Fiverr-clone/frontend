@@ -18,7 +18,9 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 	const token = Cookies.get("token");
 	const [categories, setCategories] = useState<Category[]>([]);
 	const [subCategories, setSubCategories] = useState<SubCategory[]>([]);
-	const [imageFile, setImageFile] = useState("");
+	const [fileData, setFileData] = useState("");
+	const [images, setFile] = useState("");
+	// const [imageFile, setImageFile] = useState("");
 	const [Servicedata, setServiceData] = useState({
 		title: "",
 		category: "",
@@ -40,11 +42,11 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 		};
 		fetchCategories();
 	}, []);
+
 	const handleCategoryChange = async (e: any) => {
 		const categoryId = e.target.value;
 		try {
 			const response = await axios.get(
-				// `/api/sub-category/${categoryId}`
 				`http://localhost:8000/api/sub-category/${categoryId}`
 			);
 			setSubCategories(response.data);
@@ -56,6 +58,12 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 			category: categoryId,
 			subCategory: "",
 		});
+	};
+
+	const handleFileChange = (e: any) => {
+		setFileData(e.target.files[0]);
+		setFile(e.target.value);
+		console.log(e.target.value);
 	};
 
 	const handleChange = (e: any) => {
@@ -99,7 +107,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 		userServiceData.append("price", Servicedata.price);
 		userServiceData.append("deliveryTime", Servicedata.deliveryTime);
 		userServiceData.append("buyerInstruction", Servicedata.buyerInstruction);
-		userServiceData.append("image", imageFile);
+		userServiceData.append("image", fileData);
 		axios
 			.post("http://localhost:8000/api/add-service", userServiceData, {
 				headers: {
@@ -181,11 +189,20 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 							required
 						/>
 						<p>Image</p>
-						<input
+						{/* <input
 							type="file"
 							id="image"
 							name="image"
 							onChange={(e: any) => setImageFile(e.target.files[0])}
+							required
+						/> */}
+						<input
+							type="file"
+							name="file"
+							value={images}
+							accept="image/*"
+							id="image"
+							onChange={handleFileChange}
 							required
 						/>
 
