@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 
 import NavbarAfter from "../navbarAfterComponent/navbarAfter";
-import NavbarMenu from "../NavbarMenuComponent/navbarMenu";
+import NavbarMenu from "../navbarMenuComponent/navbarMenu";
 
 const GET_SUBCAT_SERVICES = gql`
 	query getSubCatServices($id: ID!) {
@@ -28,12 +28,11 @@ const GET_SUBCAT_SERVICES = gql`
 interface SubCatProps {}
 
 const SubCat: FunctionComponent<SubCatProps> = () => {
-	const [subCatId, setSubCatId] = useState<string>(
-		localStorage.getItem("subCatId") || ""
-	);
+	const [subCatId, setSubCatId] = useState<string>("");
 
 	const handleSubCatId = (value: string) => {
 		setSubCatId(value);
+		localStorage.getItem("subCatId");
 	};
 
 	const { loading, error, data } = useQuery(GET_SUBCAT_SERVICES, {
@@ -50,6 +49,7 @@ const SubCat: FunctionComponent<SubCatProps> = () => {
 			<h1>programming-development</h1>
 			{loading && <p>Loading...</p>}
 			{error && <p>Something went wrong ! = value : {subCatId} </p>}
+			{subCatId === "" && <p>Please select a subcategory.</p>}
 			{!loading && !error && (
 				<table>
 					<thead>
@@ -60,11 +60,11 @@ const SubCat: FunctionComponent<SubCatProps> = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{data.subcategory.services.map((service: any) => (
-							<tr key={service.id}>
-								<td>{service.title}</td>
-								<td>{service.price}</td>
-								<td>{service.deliveryTime}</td>
+						{data.subcategory.services.map((subCatService: any) => (
+							<tr key={subCatService.id}>
+								<td>{subCatService.title}</td>
+								<td>{subCatService.price}</td>
+								<td>{subCatService.deliveryTime}</td>
 							</tr>
 						))}
 					</tbody>

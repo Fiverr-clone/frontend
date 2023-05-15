@@ -1,37 +1,38 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import NavbarAfter from "../navbarAfterComponent/navbarAfter";
-import NavbarMenu from "../NavbarMenuComponent/navbarMenu";
+import NavbarMenu from "../navbarMenuComponent/navbarMenu";
 import { gql, useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 
 const GET_CAT_SERVICES = gql`
-query getCategoryServices($id: ID!) {
-    category(id: $id) {
-      id
-      categoryName
-      services {
-        id
-        title
-        image
-        description
-        price
-        deliveryTime
-      }
-    }
-  }
+	query getCategoryServices($id: ID!) {
+		category(id: $id) {
+			id
+			categoryName
+			services {
+				id
+				title
+				image
+				description
+				price
+				deliveryTime
+			}
+		}
+	}
 `;
 interface CatProps {}
 
 const Cat: FunctionComponent<CatProps> = () => {
-	const [catId, setCatId] = useState<string>(
-		localStorage.getItem("catId") || ""
-	);
+	const [catId, setCatId] = useState<string>("");
 	const handleCatId = (value: string) => {
 		setCatId(value);
+		localStorage.getItem("catId");
 	};
+
 	useEffect(() => {
-		localStorage.setItem("subCatId", catId);
+		localStorage.setItem("catId", catId);
 	}, [catId]);
+
 	const { loading, error, data } = useQuery(GET_CAT_SERVICES, {
 		variables: { id: catId },
 	});
@@ -43,6 +44,7 @@ const Cat: FunctionComponent<CatProps> = () => {
 			<h1>works !!</h1>
 			{loading && <p>Loading...</p>}
 			{error && <p>Something went wrong ! = value : {catId} </p>}
+			{catId === "" && <p>Please select a subcategory.</p>}
 			{!loading && !error && (
 				<table>
 					<thead>
@@ -53,7 +55,7 @@ const Cat: FunctionComponent<CatProps> = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{data.subcategory.services.map((service: any) => (
+						{data.category.services.map((service: any) => (
 							<tr key={service.id}>
 								<td>{service.title}</td>
 								<td>{service.price}</td>

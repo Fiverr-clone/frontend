@@ -2,7 +2,7 @@ import { FunctionComponent, useState } from "react";
 import "./AddService.css";
 
 import AddServiceForm from "./AddServiceForm";
-import NavbarMenu from "../NavbarMenuComponent/navbarMenu";
+import NavbarMenu from "../navbarMenuComponent/navbarMenu";
 import NavbarAfter from "../navbarAfterComponent/navbarAfter";
 import NavbarBefore from "../navbarBeforeComponent/navbarBefore";
 
