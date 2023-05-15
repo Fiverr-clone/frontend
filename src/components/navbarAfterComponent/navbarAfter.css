@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 .navbar-after {
+	position: fixed;
 	font-family: "Roboto", sans-serif;
 	display: flex;
 	justify-content: flex-end;
@@ -9,6 +10,7 @@
 	padding: 10px 10px;
 	width: 100%;
 	gap: 150px;
+	background-color: white;
 }
 .navbar-after li {
 	margin: 0 10px;

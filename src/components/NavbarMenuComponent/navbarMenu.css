@@ -14,7 +14,7 @@
 	padding: 0px;
 	margin: 0px;
 	width: 100%;
-	position: relative;
+	position: fixed;
 	cursor: pointer;
 	border-radius: 5px;
 	border-bottom: 2px solid #e4e5e7;
@@ -22,6 +22,8 @@
 	background-color: #fff;
 	z-index: 5;
 }
+
+  
 .category-nav-li {
 	padding: 5px;
 	margin: 5px 5px 5px -6rem;
