@@ -46,7 +46,7 @@ const SubCat: FunctionComponent<SubCatProps> = () => {
 	return (
 		<>
 			<NavbarAfter />
-			<NavbarMenu SubCategoryId={handleSubCatId} />
+			<NavbarMenu CategoryId={handleSubCatId} />
 			<h1>programming-development</h1>
 			{loading && <p>Loading...</p>}
 			{error && <p>Something went wrong ! = value : {subCatId} </p>}

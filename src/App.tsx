@@ -6,9 +6,10 @@ import Join from "./components/joinComponent/join";
 import AddService from "./components/AddServiceComponent/AddService";
 import Welcome from "./components/loginComponent/welcome";
 import EmailVerify from "./components/emailVerifyComponent/emailVerify";
-import SubCat from "./components/subCategoryPage/subCategoryPage";
+import SubCat from "./components/servicePage/subCategoryPage";
 
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import Cat from "./components/servicePage/cat";
 
 const client = new ApolloClient({
 	uri: "http://localhost:8000/graphql",
@@ -39,6 +40,8 @@ function App() {
 					/>
 					<Route path="/online-courses/:subcategoryName" element={<SubCat />} />
 					<Route path="/design/:subcategoryName" element={<SubCat />} />
+
+					<Route path="/:categoryName" element={<Cat />} />
 				</Routes>
 			</ApolloProvider>
 		</div>

@@ -3,13 +3,19 @@ import { Link } from "react-router-dom";
 import "./navbarMenu.css";
 
 interface NavbarMenuProps {
-	SubCategoryId: (value: string) => void;
+	CategoryId: (value: string) => void;
+	// SubCategoryId: (catId: string | null, subCatId: string | null) => void;
 }
 
-const NavbarMenu: FunctionComponent<NavbarMenuProps> = ({ SubCategoryId }) => {
-	const handleCategoryClick = (categoryId: string) => {};
+const NavbarMenu: FunctionComponent<NavbarMenuProps> = ({ CategoryId }) => {
+	const handleCategoryClick = (categoryId: string) => {
+		console.log(categoryId);
+		CategoryId(categoryId);
+	};
 	const handleSubcategoryClick = (subcategoryId: string) => {
-		SubCategoryId(subcategoryId);
+		// SubCategoryId(subcategoryId || "");
+		console.log(subcategoryId);
+		CategoryId(subcategoryId);
 	};
 
 	return (
