@@ -1,5 +1,5 @@
 import { FunctionComponent, useState, useEffect } from "react";
-import "./AddService.css";
+import "./addService.css";
 import axios from "axios";
 import Cookies from "js-cookie";
 

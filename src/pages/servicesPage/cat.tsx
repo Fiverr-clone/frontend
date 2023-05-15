@@ -1,6 +1,6 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import NavbarAfter from "../navbarAfterComponent/navbarAfter";
-import NavbarMenu from "../navbarMenuComponent/navbarMenu";
+import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
+import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
 import { gql, useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 

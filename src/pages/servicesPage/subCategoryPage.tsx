@@ -2,8 +2,8 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 
-import NavbarAfter from "../navbarAfterComponent/navbarAfter";
-import NavbarMenu from "../navbarMenuComponent/navbarMenu";
+import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
+import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
 
 const GET_SUBCAT_SERVICES = gql`
 	query getSubCatServices($id: ID!) {

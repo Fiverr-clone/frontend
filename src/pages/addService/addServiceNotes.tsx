@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 
-import "./AddService.css";
+import "./addService.css";
 
 interface AddServiceNotesProps {}
 

@@ -1,13 +1,13 @@
 import { FunctionComponent, useState } from "react";
-import "./AddService.css";
+import "./addService.css";
 
-import AddServiceForm from "./AddServiceForm";
-import NavbarMenu from "../navbarMenuComponent/navbarMenu";
-import NavbarAfter from "../navbarAfterComponent/navbarAfter";
-import NavbarBefore from "../navbarBeforeComponent/navbarBefore";
+import AddServiceForm from "./addServiceForm";
+import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
+import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
+import NavbarBefore from "../../components/navbarBeforeComponent/navbarBefore";
 
-import AddServiceNotes from "./AddServiceNotes";
-import Footer from "../footerComponent/footer";
+import AddServiceNotes from "./addServiceNotes";
+import Footer from "../../components/footerComponent/footer";
 interface AddServiceProps {}
 
 const AddService: FunctionComponent<AddServiceProps> = () => {

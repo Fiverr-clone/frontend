@@ -1,15 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
-import Login from "./components/loginComponent/login";
-import Join from "./components/joinComponent/join";
-import AddService from "./components/AddServiceComponent/AddService";
-import Welcome from "./components/loginComponent/welcome";
-import EmailVerify from "./components/emailVerifyComponent/emailVerify";
-import SubCat from "./components/servicePage/subCategoryPage";
+import Login from "./pages/login/login";
+import Join from "./pages/join/join";
+import AddService from "./pages/addService/addService";
+import Welcome from "./pages/login/welcome";
+import EmailVerify from "./pages/emailVerification/emailVerify";
+import SubCat from "./pages/servicesPage/subCategoryPage";
 
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
-import Cat from "./components/servicePage/cat";
+import Cat from "./pages/servicesPage/cat";
 
 const client = new ApolloClient({
 	uri: "http://localhost:8000/graphql",
