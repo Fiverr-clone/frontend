@@ -30,7 +30,7 @@ ul {
 	padding: 20px;
 	margin-top: 20px;
 	display: flex;
-	gap: 80px;
+	gap: 50px;
 }
 .link {
 	text-decoration: none;
@@ -57,7 +57,7 @@ ul {
 	display: inline-flex;
 	padding-top: 30px;
 	border-top: 1px solid #e4e5e7;
-	gap: 40rem;
+	gap: 35rem;
 	float: left;
 	margin-left: 58px;
 }

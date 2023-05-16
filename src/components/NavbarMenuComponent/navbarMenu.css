@@ -13,8 +13,11 @@
 	font-size: 18px;
 	padding: 0px;
 	margin: 0px;
-	width: 100%;
-	position: fixed;
+	/* margin-top: 90px; */
+	/* margin-left: -685px; */
+	margin-left: -10px;
+	width: 110%;
+	/* position: fixed; */
 	cursor: pointer;
 	border-radius: 5px;
 	border-bottom: 2px solid #e4e5e7;
@@ -23,7 +26,6 @@
 	z-index: 5;
 }
 
-  
 .category-nav-li {
 	padding: 5px;
 	margin: 5px 5px 5px -6rem;
