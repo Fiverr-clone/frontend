@@ -63,7 +63,6 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 	const handleFileChange = (e: any) => {
 		setFileData(e.target.files[0]);
 		setFile(e.target.value);
-		console.log(e.target.value);
 	};
 
 	const handleChange = (e: any) => {
@@ -98,7 +97,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 	};
 
 	const handleSubmit = (e: any) => {
-		// e.preventDefault();
+		e.preventDefault();
 		const userServiceData = new FormData();
 		userServiceData.append("title", Servicedata.title);
 		userServiceData.append("category", Servicedata.category);
@@ -107,6 +106,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 		userServiceData.append("price", Servicedata.price);
 		userServiceData.append("deliveryTime", Servicedata.deliveryTime);
 		userServiceData.append("buyerInstruction", Servicedata.buyerInstruction);
+		// userServiceData.append("image", imageFile);
 		userServiceData.append("image", fileData);
 		axios
 			.post("http://localhost:8000/api/add-service", userServiceData, {
@@ -198,8 +198,8 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 						/> */}
 						<input
 							type="file"
-							name="file"
 							value={images}
+							name="file"
 							accept="image/*"
 							id="image"
 							onChange={handleFileChange}
