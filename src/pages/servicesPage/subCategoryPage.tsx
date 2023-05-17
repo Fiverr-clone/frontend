@@ -56,6 +56,7 @@ const SubCat: FunctionComponent<SubCatProps> = () => {
 						<tr>
 							<th>Service</th>
 							<th>Price</th>
+							<th>Image</th>
 							<th>Delivery Time</th>
 						</tr>
 					</thead>
@@ -64,6 +65,8 @@ const SubCat: FunctionComponent<SubCatProps> = () => {
 							<tr key={subCatService.id}>
 								<td>{subCatService.title}</td>
 								<td>{subCatService.price}</td>
+								<img src={subCatService.image} width={"40%"} />
+								{/* <td>{subCatService.image}</td> */}
 								<td>{subCatService.deliveryTime}</td>
 							</tr>
 						))}

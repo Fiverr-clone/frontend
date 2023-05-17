@@ -30,8 +30,13 @@ const Cat: FunctionComponent<CatProps> = () => {
 	};
 
 	useEffect(() => {
-		localStorage.setItem("catId", catId);
-	}, [catId]);
+		const storedCatId = localStorage.getItem("catId");
+		if (storedCatId) {
+			setCatId(storedCatId);
+		}
+	}, []);
+	// 	localStorage.setItem("catId", catId);
+	// }, [catId]);
 
 	const { loading, error, data } = useQuery(GET_CAT_SERVICES, {
 		variables: { id: catId },
@@ -51,6 +56,7 @@ const Cat: FunctionComponent<CatProps> = () => {
 						<tr>
 							<th>Service</th>
 							<th>Price</th>
+							<th>Image</th>
 							<th>Delivery Time</th>
 						</tr>
 					</thead>
@@ -59,6 +65,7 @@ const Cat: FunctionComponent<CatProps> = () => {
 							<tr key={service.id}>
 								<td>{service.title}</td>
 								<td>{service.price}</td>
+								<img src={service.image} width={"40%"} />
 								<td>{service.deliveryTime}</td>
 							</tr>
 						))}
