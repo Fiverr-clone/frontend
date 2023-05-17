@@ -34,7 +34,7 @@ const HomePage = () => {
 	return (
 		<div>
 			{scrolled ? (
-				<div id="home-navbar" style={{ position: "fixed" }}>
+				<div id="home-navbar" style={{ position: "fixed", width: "100%" }}>
 					<NavbarAfter />
 					<NavbarMenu CategoryId={handleSubCatId} />
 				</div>

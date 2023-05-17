@@ -8,8 +8,9 @@
 	align-items: center;
 	font-size: 40px;
 	padding: 10px 10px;
-	width: 110%;
-	gap: 100px;
+	/* width: 110%; */
+	gap: 10%;
+	/* gap: 100px; */
 	background-color: white;
 }
 .navbar-after li {
