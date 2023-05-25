@@ -2,6 +2,8 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 
+import "./subCategoryPage.css";
+
 import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
 import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
 
@@ -41,36 +43,69 @@ const SubCat: FunctionComponent<SubCatProps> = () => {
 		variables: { id: subCatId },
 	});
 
+	if (loading) return <p>Loading ...</p>;
+	if (error) return <p>Error </p>;
+	if (data) console.log(data);
+	// {loading && <p>Loading...</p>}
+	// {error && <p>Something went wrong !</p>}
+	// {!loading && !error && (
 	return (
 		<>
 			<NavbarAfter />
 			<NavbarMenu />
 			{/* <NavbarMenu CategoryId={handleSubCatId} /> */}
-			<h1>programming-development</h1>
-			{loading && <p>Loading...</p>}
-			{error && <p>Something went wrong !</p>}
-			{!loading && !error && (
-				<table>
-					<thead>
-						<tr>
-							<th>Service</th>
-							<th>Price</th>
-							<th>Image</th>
-							<th>Delivery Time</th>
-						</tr>
-					</thead>
-					<tbody>
-						{data.subcategory.services.map((subCatService: any) => (
-							<tr key={subCatService.id}>
-								<td>{subCatService.title}</td>
-								<td>{subCatService.price}</td>
-								<img src={subCatService.image} width={"40%"} />
-								<td>{subCatService.deliveryTime}</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
-			)}
+			{/* // <table>
+				// 	<thead>
+				// 		<tr>
+				// 			<th>Service</th>
+				// 			<th>Price</th>
+				// 			<th>Image</th>
+				// 			<th>Delivery Time</th>
+				// 		</tr>
+				// 	</thead>
+				// 	<tbody>
+				// 		{data.subcategory.services.map((subCatService: any) => (
+				// 			<tr key={subCatService.id}>
+				// 				<td>{subCatService.title}</td>
+				// 				<td>{subCatService.price}</td>
+				// 				<img src={subCatService.image} width={"40%"} />
+				// 				<td>{subCatService.deliveryTime}</td>
+				// 			</tr>
+				// 		))}
+				// 	</tbody>
+				// </table> */}
+			{data.subcategory.services.map((subCatService: any) => (
+				<div className="service__wrapper">
+					<div className="service__container">
+						<div className="service-info__container">
+							<h1 className="service-title">{subCatService.title}</h1>
+
+							<div className="service-info__description">
+								{subCatService.description}
+							</div>
+						</div>
+					</div>
+					<div className="service-freelancer__container">
+						{/* <NavLink
+							to={`/user/${data.service.freelancer._id}`}
+							className="service-freelancer__link"
+						> */}
+						<div className="service-freelancer__info">
+							<div className="service-freelancer__avatar">
+								<img src={subCatService.image} alt="avatar" />
+							</div>
+							<div className="service-freelancer__personal-info-wrapper">
+								<h3 className="service-freelancer__name">
+									{/* {subCatService.freelancer.username} */}
+									amina
+								</h3>
+								<div className="service-freelancer__level">Noob</div>
+							</div>
+						</div>
+						{/* </NavLink> */}
+					</div>
+				</div>
+			))}
 		</>
 	);
 };
