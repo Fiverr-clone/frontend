@@ -30,18 +30,12 @@ interface SubCatProps {}
 const SubCat: FunctionComponent<SubCatProps> = () => {
 	const [subCatId, setSubCatId] = useState<string>("");
 
-	// const handleSubCatId = (value: string) => {
-	// 	localStorage.setItem("subCatId", "");
-	// 	setSubCatId(value);
-	// 	localStorage.setItem("subCatId", value);
-	// };
-
 	useEffect(() => {
 		const storedSubCatId = localStorage.getItem("subCatId");
 		if (storedSubCatId) {
 			setSubCatId(storedSubCatId);
 		}
-	}, [subCatId]);
+	}, []);
 
 	const { loading, error, data } = useQuery(GET_SUBCAT_SERVICES, {
 		variables: { id: subCatId },
@@ -54,8 +48,7 @@ const SubCat: FunctionComponent<SubCatProps> = () => {
 			{/* <NavbarMenu CategoryId={handleSubCatId} /> */}
 			<h1>programming-development</h1>
 			{loading && <p>Loading...</p>}
-			{error && <p>Something went wrong ! = value : {subCatId} </p>}
-			{subCatId === "" && <p>Please select a subcategory.</p>}
+			{error && <p>Something went wrong !</p>}
 			{!loading && !error && (
 				<table>
 					<thead>
@@ -72,7 +65,6 @@ const SubCat: FunctionComponent<SubCatProps> = () => {
 								<td>{subCatService.title}</td>
 								<td>{subCatService.price}</td>
 								<img src={subCatService.image} width={"40%"} />
-								{/* <td>{subCatService.image}</td> */}
 								<td>{subCatService.deliveryTime}</td>
 							</tr>
 						))}

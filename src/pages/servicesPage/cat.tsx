@@ -34,18 +34,11 @@ const Cat: FunctionComponent<CatProps> = () => {
 		if (storedCatId) {
 			setCatId(storedCatId);
 		}
-	}, [catId]);
+	}, []);
 
 	const { loading, error, data } = useQuery(GET_CAT_SERVICES, {
 		variables: { id: catId },
 	});
-
-	useEffect(() => {
-		const storedCatId = localStorage.getItem("catId");
-		if (storedCatId) {
-			setCatId(storedCatId);
-		}
-	}, [catId]);
 
 	return (
 		<>
@@ -53,8 +46,7 @@ const Cat: FunctionComponent<CatProps> = () => {
 			<NavbarMenu />
 			<h1>works !!</h1>
 			{loading && <p>Loading...</p>}
-			{error && <p>Something went wrong ! = value : {catId} </p>}
-			{catId === "" && <p>Please select a subcategory.</p>}
+			{error && <p>Something went wrong ! </p>}
 			{!loading && !error && (
 				<table>
 					<thead>
@@ -77,7 +69,6 @@ const Cat: FunctionComponent<CatProps> = () => {
 					</tbody>
 				</table>
 			)}
-			<p>id : {catId}</p>
 		</>
 	);
 };
