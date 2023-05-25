@@ -11,6 +11,7 @@ import SubCat from "./pages/servicesPage/subCategoryPage";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import Cat from "./pages/servicesPage/cat";
 import HomePage from "./pages/home/home";
+import NavAfterLogin from "./components/navAfterLogin/navAfterLogin";
 
 const client = new ApolloClient({
 	uri: "http://localhost:8000/graphql",
@@ -22,6 +23,7 @@ function App() {
 		<div className="App">
 			<ApolloProvider client={client}>
 				<Routes>
+				<Route path="/navlogin" element={<NavAfterLogin />} />
 				<Route path="/" element={<HomePage />} />
 					<Route path="/join" element={<Join />} />
 					<Route path="/signin" element={<Login />} />
