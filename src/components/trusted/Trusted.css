@@ -1,0 +1,18 @@
+.trusted {
+    background-color: #fafafa;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+.trusted .container {
+    max-width: 760px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #828181;
+    font-weight: 500;
+}
+.trusted .container img {
+    height: 70px;
+    object-fit: contain;
+}
