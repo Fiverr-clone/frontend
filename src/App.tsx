@@ -6,6 +6,7 @@ import Join from "./pages/join/join";
 import AddService from "./pages/addService/addService";
 import EmailVerify from "./pages/emailVerification/emailVerify";
 import SubCategoryPage from "./pages/servicesPage/subCategoryPage";
+import UserServicesPage from "./pages/servicesPage/userServices";
 
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import CategoryPage from "./pages/servicesPage/categoryPage";
@@ -21,8 +22,8 @@ function App() {
 		<div className="App">
 			<ApolloProvider client={client}>
 				<Routes>
-					<Route path="/ve" element={<EmailVerify />} />
 					<Route path="/" element={<HomePage />} />
+					<Route path="/user" element={<UserServicesPage />} />
 					<Route path="/join" element={<Join />} />
 					<Route path="/signin" element={<Login />} />
 					<Route path="/add-service" element={<AddService />} />

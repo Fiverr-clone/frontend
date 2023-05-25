@@ -106,3 +106,33 @@
 	color: #1dbf7357;
 	background-color: rgba(255, 255, 255, 0.644);
 }
+.user-service-delete-btn {
+	cursor: pointer;
+	border: 1px solid #b41616;
+	border-radius: 5px;
+	padding: 5px 10px;
+	font-size: 16px;
+	font-weight: 600;
+	text-decoration: none;
+	color: #b41616;
+	background-color: white;
+	transition: all 0.3s ease-in-out;
+}
+.user-service-delete-btn:hover {
+	color: white;
+	background-color: #b41616;
+}
+.price-crud {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-top: 15px;
+}
+.service-price-1 {
+	font-size: 18px;
+	font-weight: 600;
+	margin-top: auto;
+	margin-left: 2rem;
+	letter-spacing: 1px;
+}
