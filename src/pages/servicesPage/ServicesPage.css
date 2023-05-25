@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 .services-wrapper {
+	font-family: "Roboto", sans-serif;
 	display: flex;
 	margin: 3rem 1.5rem 0 1.5rem;
 	height: 100%;
@@ -29,6 +32,7 @@
 	object-position: center;
 	width: 100%;
 	height: 100%;
+	box-shadow: 0px 0px 6px 0px rgb(122 122 122 / 57%);
 }
 .service-info-container {
 	display: flex;
@@ -39,8 +43,13 @@
 	width: 100%;
 }
 .service-freelancer-username {
+	color: black;
 	font-size: 13px;
-	margin-bottom: 4px;
+	font-weight: 600;
+	margin: 10px 0 5px;
+}
+.user-icon {
+	padding: 0 10px;
 }
 .service-title {
 	font-size: 14px;
@@ -49,18 +58,18 @@
 }
 .service-link {
 	text-decoration: none;
-	color: black;
+	color: #2d2e31;
 }
 .service-whole-container:hover .service-link {
 	text-decoration: underline;
-	color: black;
 }
 
 .service-price {
-	text-transform: uppercase;
 	font-size: 18px;
 	font-weight: 600;
 	margin-top: auto;
+	margin-left: 8rem;
+	letter-spacing: 1px;
 }
 .pagination-container {
 	display: flex;

@@ -4,6 +4,8 @@ import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
 import { gql, useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import Footer from "../../components/footerComponent/footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const GET_CAT_SERVICES = gql`
 	query getCategoryServices($id: ID!, $page: Int, $limit: Int) {
@@ -79,6 +81,11 @@ const CategoryPage: FunctionComponent<CatProps> = () => {
 							</div>
 							<div className="service-info-container">
 								<span className="service-freelancer-username">
+									<FontAwesomeIcon
+										icon={faUser}
+										style={{ color: "#404145" }}
+										className="user-icon"
+									/>
 									{service.user.username}
 								</span>
 								<span className="service-title">
@@ -86,7 +93,7 @@ const CategoryPage: FunctionComponent<CatProps> = () => {
 										{service.title}
 									</Link>
 								</span>
-								<span className="service-price">from {service.price} $</span>
+								<span className="service-price">From US${service.price} </span>
 							</div>
 						</div>
 					))}

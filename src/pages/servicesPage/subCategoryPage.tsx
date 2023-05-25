@@ -6,6 +6,8 @@ import "./ServicesPage.css";
 import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
 import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
 import Footer from "../../components/footerComponent/footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const GET_SUBCAT_SERVICES = gql`
 	query getSubCatServices($id: ID!, $page: Int, $limit: Int) {
@@ -86,6 +88,11 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 							</div>
 							<div className="service-info-container">
 								<span className="service-freelancer-username">
+									<FontAwesomeIcon
+										icon={faUser}
+										style={{ color: "#404145" }}
+										className="user-icon"
+									/>
 									{service.user.username}
 								</span>
 								<span className="service-title">
@@ -93,7 +100,7 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 										{service.title}
 									</Link>
 								</span>
-								<span className="service-price">from {service.price} $</span>
+								<span className="service-price">From US${service.price} </span>
 							</div>
 						</div>
 					))}
