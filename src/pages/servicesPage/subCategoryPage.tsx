@@ -6,6 +6,7 @@ import "./subCategoryPage.css";
 
 import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
 import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
+import Footer from "../../components/footerComponent/footer";
 
 const GET_SUBCAT_SERVICES = gql`
 	query getSubCatServices($id: ID!) {
@@ -55,39 +56,34 @@ const SubCat: FunctionComponent<SubCatProps> = () => {
 			{loading && <p>Loading...</p>}
 			{error && <p>Something went wrong ! </p>}
 			{!loading && !error && (
-				<div>
+				<div className="services-wrapper">
 					{data.subcategory.services.map((subCatService: any) => (
-						<div className="service__wrapper">
-							<div className="service__container">
-								<div className="service-info__container">
-									<h1 className="service-title">{subCatService.title}</h1>
-
-									<div className="service-info__description">
-										{subCatService.description}
-									</div>
-								</div>
+						<div className="service-whole-container" key={subCatService.id}>
+							<div className="image-container">
+								<img
+									src={subCatService.image}
+									className="service-img"
+									alt="Service"
+								/>
 							</div>
-							<div className="service-freelancer__container">
-								{/* <NavLink
-							to={`/user/${data.service.freelancer._id}`}
-							className="service-freelancer__link"
-						> */}
-								<div className="service-freelancer__info">
-									<div className="service-freelancer__avatar">
-										<img src={subCatService.image} alt="avatar" />
-									</div>
-									<div className="service-freelancer__personal-info-wrapper">
-										<h3 className="service-freelancer__name">
-											{subCatService.user.username}
-										</h3>
-									</div>
-								</div>
-								{/* </NavLink> */}
+							<div className="service-info-container">
+								<span className="service-freelancer-username">
+									{subCatService.user.username}
+								</span>
+								<span className="service-title">
+									<Link to="/" className="service-link">
+										{subCatService.title}
+									</Link>
+								</span>
+								<span className="service-price">
+									from {subCatService.price} $
+								</span>
 							</div>
 						</div>
 					))}
 				</div>
 			)}
+			<Footer />
 		</>
 	);
 };

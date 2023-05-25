@@ -2,6 +2,7 @@ import { FunctionComponent, useState, useEffect } from "react";
 import "./addService.css";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router";
 
 interface AddServiceFormProps {}
 
@@ -15,12 +16,12 @@ interface SubCategory {
 	name: string;
 }
 const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
+	const navigate = useNavigate();
 	const token = Cookies.get("token");
 	const [categories, setCategories] = useState<Category[]>([]);
 	const [subCategories, setSubCategories] = useState<SubCategory[]>([]);
 	const [fileData, setFileData] = useState("");
 	const [images, setFile] = useState("");
-	// const [imageFile, setImageFile] = useState("");
 	const [Servicedata, setServiceData] = useState({
 		title: "",
 		category: "",
@@ -117,6 +118,7 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 			.then((response) => {
 				if (response.status === 201) {
 					console.log(response.data);
+					navigate("/");
 				}
 			})
 			.catch((error) => {

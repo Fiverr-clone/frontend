@@ -19,7 +19,6 @@ const AddService: FunctionComponent<AddServiceProps> = () => {
 	};
 	return (
 		<>
-			<NavbarBefore />
 			<NavbarAfter />
 			<NavbarMenu />
 			<div
