@@ -27,7 +27,7 @@ const GET_CAT_SERVICES = gql`
 interface CatProps {}
 
 const CategoryPage: FunctionComponent<CatProps> = () => {
-	const ITEMS_PER_PAGE = 4;
+	const ITEMS_PER_PAGE = 8;
 	const [page, setPage] = useState(1);
 	const [catId, setCatId] = useState<string>("");
 
@@ -94,10 +94,16 @@ const CategoryPage: FunctionComponent<CatProps> = () => {
 			)}
 			{!loading && !error && (
 				<div className="pagination-controls" style={{ marginTop: "50px" }}>
-					<button onClick={handlePrevPage} disabled={page === 1}>
+					<button
+						className="pagination-btn"
+						onClick={handlePrevPage}
+						disabled={page === 1}
+					>
 						Previous
 					</button>
+					<span className="page-number">{page}</span>
 					<button
+						className="pagination-btn"
 						onClick={handleNextPage}
 						disabled={data.category.services.length < ITEMS_PER_PAGE}
 					>

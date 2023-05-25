@@ -2,22 +2,16 @@ import { FunctionComponent, useState } from "react";
 import { Link } from "react-router-dom";
 import "./navbarMenu.css";
 
-interface NavbarMenuProps {
-	// CategoryId: (value: string) => void;
-	// SubCategoryId: (catId: string | null, subCatId: string | null) => void;
-}
+interface NavbarMenuProps {}
 
 const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
-	const handleCategoryClick = (categoryId: string) => {
-		// console.log(categoryId);
-		// CategoryId(categoryId);
+	const handleCategoryClick = (categoryId: string, url: string) => {
 		localStorage.setItem("catId", categoryId);
+		window.location.href = url;
 	};
-	const handleSubcategoryClick = (subcategoryId: string) => {
-		// SubCategoryId(subcategoryId || "");
-		// console.log(subcategoryId);
-		// CategoryId(subcategoryId);
+	const handleSubcategoryClick = (subcategoryId: string, url: string) => {
 		localStorage.setItem("subCatId", subcategoryId);
+		window.location.href = url;
 	};
 
 	return (
@@ -31,7 +25,12 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								to="/programming-development"
 								className="category-nav-link"
 								id="644e9aaaae1fb061ca402f45"
-								onClick={() => handleCategoryClick("644e9aaaae1fb061ca402f45")}
+								onClick={() =>
+									handleCategoryClick(
+										"644e9aaaae1fb061ca402f45",
+										"/programming-development"
+									)
+								}
 							>
 								Programming & Development
 							</Link>
@@ -43,7 +42,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ecff1ae1fb061ca402f65"
 									onClick={() =>
-										handleSubcategoryClick("644ecff1ae1fb061ca402f65")
+										handleSubcategoryClick(
+											"644ecff1ae1fb061ca402f65",
+											"/programming-development/html-css-programming"
+										)
 									}
 								>
 									HTML & CSS Programming
@@ -55,7 +57,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ed044ae1fb061ca402f66"
 									onClick={() =>
-										handleSubcategoryClick("644ed044ae1fb061ca402f66")
+										handleSubcategoryClick(
+											"644ed044ae1fb061ca402f66",
+											"/programming-development/java-dot-net-programming"
+										)
 									}
 								>
 									Java and .NET Programming
@@ -67,7 +72,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ed06dae1fb061ca402f67"
 									onClick={() =>
-										handleSubcategoryClick("644ed06dae1fb061ca402f67")
+										handleSubcategoryClick(
+											"644ed06dae1fb061ca402f67",
+											"/programming-development/php-programming"
+										)
 									}
 								>
 									PHP Programming
@@ -79,7 +87,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ed08cae1fb061ca402f68"
 									onClick={() =>
-										handleSubcategoryClick("644ed08cae1fb061ca402f68")
+										handleSubcategoryClick(
+											"644ed08cae1fb061ca402f68",
+											"/programming-development/python-programming"
+										)
 									}
 								>
 									Python Programming
@@ -91,7 +102,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ed0abae1fb061ca402f69"
 									onClick={() =>
-										handleSubcategoryClick("644ed0abae1fb061ca402f69")
+										handleSubcategoryClick(
+											"644ed0abae1fb061ca402f69",
+											"/programming-development/mobile-app-programming"
+										)
 									}
 								>
 									Mobile Application Programming
@@ -103,7 +117,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ed0d2ae1fb061ca402f6a"
 									onClick={() =>
-										handleSubcategoryClick("644ed0d2ae1fb061ca402f6a")
+										handleSubcategoryClick(
+											"644ed0d2ae1fb061ca402f6a",
+											"/programming-development/wordpress-services"
+										)
 									}
 								>
 									WordPress Services
@@ -119,7 +136,12 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								to="/digital-marketing"
 								className="category-nav-link"
 								id="644e99fdae1fb061ca402f42"
-								onClick={() => handleCategoryClick("644e99fdae1fb061ca402f42")}
+								onClick={() =>
+									handleCategoryClick(
+										"644e99fdae1fb061ca402f42",
+										"/digital-marketing"
+									)
+								}
 							>
 								Digital Marketing
 							</Link>
@@ -131,7 +153,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ecdb4ae1fb061ca402f53"
 									onClick={() =>
-										handleSubcategoryClick("644ecdb4ae1fb061ca402f53")
+										handleSubcategoryClick(
+											"644ecdb4ae1fb061ca402f53",
+											"/digital-marketing/website-ads"
+										)
 									}
 								>
 									Website Ads
@@ -143,7 +168,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ecdf4ae1fb061ca402f54"
 									onClick={() =>
-										handleSubcategoryClick("644ecdf4ae1fb061ca402f54")
+										handleSubcategoryClick(
+											"644ecdf4ae1fb061ca402f54",
+											"/digital-marketing/content-marketing"
+										)
 									}
 								>
 									Content Marketing
@@ -155,7 +183,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ece18ae1fb061ca402f55"
 									onClick={() =>
-										handleSubcategoryClick("644ece18ae1fb061ca402f55")
+										handleSubcategoryClick(
+											"644ece18ae1fb061ca402f55",
+											"/digital-marketing/instagram-marketing"
+										)
 									}
 								>
 									Instagram Marketing
@@ -167,7 +198,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ece37ae1fb061ca402f56"
 									onClick={() =>
-										handleSubcategoryClick("644ece37ae1fb061ca402f56")
+										handleSubcategoryClick(
+											"644ece37ae1fb061ca402f56",
+											"/digital-marketing/facebook-marketing"
+										)
 									}
 								>
 									Facebook Marketing
@@ -183,7 +217,12 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								to="/writing-translation"
 								className="category-nav-link"
 								id="644e9a2eae1fb061ca402f43"
-								onClick={() => handleCategoryClick("644e9a2eae1fb061ca402f43")}
+								onClick={() =>
+									handleCategoryClick(
+										"644e9a2eae1fb061ca402f43",
+										"/writing-translation"
+									)
+								}
 							>
 								Writing & Translation
 							</Link>
@@ -195,7 +234,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ece62ae1fb061ca402f59"
 									onClick={() =>
-										handleSubcategoryClick("644ece62ae1fb061ca402f59")
+										handleSubcategoryClick(
+											"644ece62ae1fb061ca402f59",
+											"/writing-translation/translation-services"
+										)
 									}
 								>
 									Translation Services
@@ -207,7 +249,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644eceaaae1fb061ca402f5a"
 									onClick={() =>
-										handleSubcategoryClick("644eceaaae1fb061ca402f5a")
+										handleSubcategoryClick(
+											"644eceaaae1fb061ca402f5a",
+											"/writing-translation/summarising-services"
+										)
 									}
 								>
 									Summarising Services
@@ -219,7 +264,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ecedfae1fb061ca402f5b"
 									onClick={() =>
-										handleSubcategoryClick("644ecedfae1fb061ca402f5b")
+										handleSubcategoryClick(
+											"644ecedfae1fb061ca402f5b",
+											"/writing-translation/sales-copy"
+										)
 									}
 								>
 									Sales Copy
@@ -231,7 +279,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ecef8ae1fb061ca402f5c"
 									onClick={() =>
-										handleSubcategoryClick("644ecef8ae1fb061ca402f5c")
+										handleSubcategoryClick(
+											"644ecef8ae1fb061ca402f5c",
+											"/writing-translation/scriptwriting"
+										)
 									}
 								>
 									Scriptwriting
@@ -247,7 +298,12 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								to="/online-courses"
 								className="category-nav-link"
 								id="644e9953ae1fb061ca402f40"
-								onClick={() => handleCategoryClick("644e9953ae1fb061ca402f40")}
+								onClick={() =>
+									handleCategoryClick(
+										"644e9953ae1fb061ca402f40",
+										"/online-courses"
+									)
+								}
 							>
 								Online Courses
 							</Link>
@@ -259,7 +315,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ecc0eae1fb061ca402f4b"
 									onClick={() =>
-										handleSubcategoryClick("644ecc0eae1fb061ca402f4b")
+										handleSubcategoryClick(
+											"644ecc0eae1fb061ca402f4b",
+											"/online-courses/learn-programming"
+										)
 									}
 								>
 									Learn Programming
@@ -271,7 +330,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ecd2bae1fb061ca402f4e"
 									onClick={() =>
-										handleSubcategoryClick("644ecd2bae1fb061ca402f4e")
+										handleSubcategoryClick(
+											"644ecd2bae1fb061ca402f4e",
+											"/online-courses/learn-digital-marketing"
+										)
 									}
 								>
 									Learn Digital Marketing
@@ -283,7 +345,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ecd69ae1fb061ca402f4f"
 									onClick={() =>
-										handleSubcategoryClick("644ecd69ae1fb061ca402f4f")
+										handleSubcategoryClick(
+											"644ecd69ae1fb061ca402f4f",
+											"/online-courses/learn-english"
+										)
 									}
 								>
 									Learn English
@@ -295,7 +360,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ecd8bae1fb061ca402f50"
 									onClick={() =>
-										handleSubcategoryClick("644ecd8bae1fb061ca402f50")
+										handleSubcategoryClick(
+											"644ecd8bae1fb061ca402f50",
+											"/online-courses/learn-french"
+										)
 									}
 								>
 									Learn French
@@ -311,7 +379,9 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 								to="/design"
 								className="category-nav-link"
 								id="644e9a8eae1fb061ca402f44"
-								onClick={() => handleCategoryClick("644e9a8eae1fb061ca402f44")}
+								onClick={() =>
+									handleCategoryClick("644e9a8eae1fb061ca402f44", "/design")
+								}
 							>
 								Design
 							</Link>
@@ -323,7 +393,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ecd8bae1fb061ca402f50"
 									onClick={() =>
-										handleSubcategoryClick("644ecf28ae1fb061ca402f5f")
+										handleSubcategoryClick(
+											"644ecf28ae1fb061ca402f5f",
+											"/design/book-cover-design"
+										)
 									}
 								>
 									Book Cover Design
@@ -335,7 +408,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ecf65ae1fb061ca402f60"
 									onClick={() =>
-										handleSubcategoryClick("644ecf65ae1fb061ca402f60")
+										handleSubcategoryClick(
+											"644ecf65ae1fb061ca402f60",
+											"/design/business-card-design"
+										)
 									}
 								>
 									Business Card Design
@@ -347,7 +423,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ecf87ae1fb061ca402f61"
 									onClick={() =>
-										handleSubcategoryClick("644ecf87ae1fb061ca402f61")
+										handleSubcategoryClick(
+											"644ecf87ae1fb061ca402f61",
+											"/design/presentation-design"
+										)
 									}
 								>
 									Presentation Design
@@ -359,7 +438,10 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 									className="subcategory-nav-link"
 									id="644ecfa6ae1fb061ca402f62"
 									onClick={() =>
-										handleSubcategoryClick("644ecfa6ae1fb061ca402f62")
+										handleSubcategoryClick(
+											"644ecfa6ae1fb061ca402f62",
+											"/design/photo-editing-services"
+										)
 									}
 								>
 									Photo Editing Services
