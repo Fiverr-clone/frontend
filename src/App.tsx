@@ -5,12 +5,11 @@ import Login from "./pages/login/login";
 import Join from "./pages/join/join";
 import AddService from "./pages/addService/addService";
 import EmailVerify from "./pages/emailVerification/emailVerify";
-import SubCat from "./pages/servicesPage/subCategoryPage";
+import SubCategoryPage from "./pages/servicesPage/subCategoryPage";
 
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
-import Cat from "./pages/servicesPage/cat";
+import CategoryPage from "./pages/servicesPage/categoryPage";
 import HomePage from "./pages/home/home";
-import { ChakraProvider } from "@chakra-ui/react";
 
 const client = new ApolloClient({
 	uri: "http://localhost:8000/graphql",
@@ -20,38 +19,39 @@ const client = new ApolloClient({
 function App() {
 	return (
 		<div className="App">
-			<ChakraProvider>
-				<ApolloProvider client={client}>
-					<Routes>
-						<Route path="/ve" element={<EmailVerify />} />
-						<Route path="/" element={<HomePage />} />
-						<Route path="/join" element={<Join />} />
-						<Route path="/signin" element={<Login />} />
-						<Route path="/add-service" element={<AddService />} />
-						<Route path="/:id/verify/:emailToken" element={<EmailVerify />} />
-						<Route
-							path="/programming-development/:subcategoryName"
-							element={<SubCat />}
-						/>
-						<Route
-							path="/digital-marketing/:subcategoryName"
-							element={<SubCat />}
-						/>
-						<Route
-							path="/writing-translation/:subcategoryName"
-							element={<SubCat />}
-						/>
-						<Route
-							path="/online-courses/:subcategoryName"
-							element={<SubCat />}
-						/>
-						<Route path="/design/:subcategoryName" element={<SubCat />} />
+			<ApolloProvider client={client}>
+				<Routes>
+					<Route path="/ve" element={<EmailVerify />} />
+					<Route path="/" element={<HomePage />} />
+					<Route path="/join" element={<Join />} />
+					<Route path="/signin" element={<Login />} />
+					<Route path="/add-service" element={<AddService />} />
+					<Route path="/:id/verify/:emailToken" element={<EmailVerify />} />
+					<Route
+						path="/programming-development/:subcategoryName"
+						element={<SubCategoryPage />}
+					/>
+					<Route
+						path="/digital-marketing/:subcategoryName"
+						element={<SubCategoryPage />}
+					/>
+					<Route
+						path="/writing-translation/:subcategoryName"
+						element={<SubCategoryPage />}
+					/>
+					<Route
+						path="/online-courses/:subcategoryName"
+						element={<SubCategoryPage />}
+					/>
+					<Route
+						path="/design/:subcategoryName"
+						element={<SubCategoryPage />}
+					/>
 
-						<Route path="/:categoryName" element={<Cat />} />
-						{/* <Route path="/:categoryName" element={<Cat />} /> */}
-					</Routes>
-				</ApolloProvider>
-			</ChakraProvider>
+					<Route path="/:categoryName" element={<CategoryPage />} />
+					{/* <Route path="/:categoryName" element={<Cat />} /> */}
+				</Routes>
+			</ApolloProvider>
 		</div>
 	);
 }
