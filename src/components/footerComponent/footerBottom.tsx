@@ -19,9 +19,10 @@ const FooterBottom: FunctionComponent<FooterBottomProps> = () => {
 						<li className="li-bottomleft">
 							<img
 								src={Logo}
-								height={"18px"}
-								width={"auto"}
+								// height={"18px"}
+								// width={"auto"}
 								alt="Fiverr Logo"
+								className="footer-logo"
 							/>
 						</li>
 						<li className="li-bottomleft">

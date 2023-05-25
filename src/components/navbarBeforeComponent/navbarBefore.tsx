@@ -13,9 +13,10 @@ const NavbarBefore: FunctionComponent<NavbarBeforeProps> = () => {
 				<li>
 					<img
 						src={Logo}
-						height={"30px"}
-						width={"auto"}
+						// height={"30px"}
+						// width={"auto"}
 						alt="Fiverr Logo"
+						className="navbar-before-logo"
 						style={{
 							position: "absolute",
 							top: "0",

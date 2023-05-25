@@ -53,6 +53,10 @@ ul {
 	color: #b5b6ba;
 }
 /* ///////////////////////// */
+.footer-logo {
+	height: 18px;
+	width: auto;
+}
 #footer-bottom {
 	display: inline-flex;
 	padding-top: 30px;

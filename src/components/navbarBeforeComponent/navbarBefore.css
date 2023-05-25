@@ -11,6 +11,10 @@
 	padding: 10px 10px;
 	width: 100%;
 }
+.navbar-before-logo {
+	height: 30px;
+	width: auto;
+}
 .nav-before li {
 	margin: 0 10px;
 }

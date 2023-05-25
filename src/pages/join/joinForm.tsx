@@ -2,9 +2,8 @@ import { FunctionComponent, useState } from "react";
 import "./join.css";
 import google from "../../assets/socialicons/google.svg";
 import axios from "axios";
-import Cookies from "js-cookie";
 import { Link, useNavigate } from "react-router-dom";
-
+import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faApple } from "@fortawesome/free-brands-svg-icons";
 
@@ -46,9 +45,11 @@ const JoinForm: FunctionComponent<JoinFormProps> = ({ onError }) => {
 			.post("http://localhost:8000/api/join", userjoinData)
 			.then((response) => {
 				if (response.status === 201) {
-					alert("a verification link was sent to your email");
-					// Cookies.set("userId", response.data.userId);
-					// Cookies.set("token", response.data.token);
+					Swal.fire({
+						icon: "success",
+						title: "A verification link was been sent to your email",
+						showConfirmButton: true,
+					});
 				}
 			})
 			.catch((error) => {

@@ -23,8 +23,8 @@ const NavbarAfter: FunctionComponent<NavbarAfterProps> = () => {
 					<li>
 						<img
 							src={Logo}
-							height={"30px"}
-							width={"auto"}
+							// height={"30px"}
+							// width={"auto"}
 							alt="Fiverr Logo"
 							className="navbar-after-logo"
 						/>

@@ -52,7 +52,7 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ onError }) => {
 							isLogged: true,
 						})
 					);
-					navigate("/welcome");
+					navigate("/");
 				}
 			})
 			.catch((error) => {
