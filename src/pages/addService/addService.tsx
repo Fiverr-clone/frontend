@@ -21,7 +21,7 @@ const AddService: FunctionComponent<AddServiceProps> = () => {
 		<>
 			<NavbarBefore />
 			<NavbarAfter />
-			<NavbarMenu CategoryId={handleSubCatId} />
+			<NavbarMenu />
 			<div
 				id="AddService"
 				style={

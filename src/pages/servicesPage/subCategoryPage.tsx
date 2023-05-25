@@ -30,22 +30,28 @@ interface SubCatProps {}
 const SubCat: FunctionComponent<SubCatProps> = () => {
 	const [subCatId, setSubCatId] = useState<string>("");
 
-	const handleSubCatId = (value: string) => {
-		setSubCatId(value);
-		localStorage.getItem("subCatId");
-	};
+	// const handleSubCatId = (value: string) => {
+	// 	localStorage.setItem("subCatId", "");
+	// 	setSubCatId(value);
+	// 	localStorage.setItem("subCatId", value);
+	// };
+
+	useEffect(() => {
+		const storedSubCatId = localStorage.getItem("subCatId");
+		if (storedSubCatId) {
+			setSubCatId(storedSubCatId);
+		}
+	}, [subCatId]);
 
 	const { loading, error, data } = useQuery(GET_SUBCAT_SERVICES, {
 		variables: { id: subCatId },
 	});
-	useEffect(() => {
-		localStorage.setItem("subCatId", subCatId);
-	}, [subCatId]);
 
 	return (
 		<>
 			<NavbarAfter />
-			<NavbarMenu CategoryId={handleSubCatId} />
+			<NavbarMenu />
+			{/* <NavbarMenu CategoryId={handleSubCatId} /> */}
 			<h1>programming-development</h1>
 			{loading && <p>Loading...</p>}
 			{error && <p>Something went wrong ! = value : {subCatId} </p>}

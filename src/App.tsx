@@ -10,7 +10,6 @@ import SubCat from "./pages/servicesPage/subCategoryPage";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import Cat from "./pages/servicesPage/cat";
 import HomePage from "./pages/home/home";
-import CategoryService from "./pages/servicesPage/categoryServices";
 import { ChakraProvider } from "@chakra-ui/react";
 
 const client = new ApolloClient({
@@ -48,7 +47,7 @@ function App() {
 						/>
 						<Route path="/design/:subcategoryName" element={<SubCat />} />
 
-						<Route path="/:categoryName" element={<CategoryService />} />
+						<Route path="/:categoryName" element={<Cat />} />
 						{/* <Route path="/:categoryName" element={<Cat />} /> */}
 					</Routes>
 				</ApolloProvider>
