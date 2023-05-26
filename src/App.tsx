@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./pages/login/login";
 import Join from "./pages/join/join";
-import AddService from "./pages/addGig/addGig";
+import AddGig from "./pages/addGig/addGig";
 import EmailVerify from "./pages/emailVerification/emailVerify";
 import SubCategoryPage from "./pages/gigsPage/subCategoryPage";
 import UserServicesPage from "./pages/gigsPage/userGigs";
@@ -25,10 +25,10 @@ function App() {
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/user" element={<UserServicesPage />} />
-				<Route path="/navlogin" element={<NavAfterLogin />} />
+					<Route path="/navlogin" element={<NavAfterLogin />} />
 					<Route path="/join" element={<Join />} />
 					<Route path="/signin" element={<Login />} />
-					<Route path="/add-service" element={<AddService />} />
+					<Route path="/add-gig" element={<AddGig />} />
 					<Route path="/:id/verify/:emailToken" element={<EmailVerify />} />
 					<Route
 						path="/programming-development/:subcategoryName"

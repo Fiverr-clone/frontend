@@ -1,7 +1,7 @@
 #AddService {
 	background: #efeff3;
 	position: relative;
-	height: 55rem;
+	height: 58rem;
 }
 .AddServiceNotes {
 	width: 480px !important;
@@ -11,8 +11,6 @@
 	position: absolute;
 	font-family: "Open Sans", sans-serif;
 	border-radius: 4px;
-	/* background: none; */
-
 	left: 850px;
 	top: 15px;
 	background: inherit;
@@ -37,7 +35,7 @@
 }
 .AddService-form {
 	width: 805px !important;
-	height: 975px;
+	/* height: 975px; */
 	/* height: 920px; */
 	/* margin: 15px 0; */
 	margin-bottom: 15px;
@@ -68,11 +66,16 @@ select {
 	border: 2px solid gray;
 }
 h4 {
-	color: #1dbf73;
+	/* color: #1dbf73;
 	font-size: 35px;
 	font-weight: bold;
 	text-align: left;
-	margin-left: 260px;
+	margin-left: 260px; */
+
+	color: #414046;
+	font-size: 27px;
+	text-align: left;
+	padding: 30px;
 }
 
 .AddService-form p {
