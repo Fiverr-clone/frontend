@@ -1,10 +1,10 @@
 import { FunctionComponent, useState, useEffect } from "react";
-import "./addService.css";
+import "./addGig.css";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router";
 
-interface AddServiceFormProps {}
+interface AddGigFormProps {}
 
 interface Category {
 	_id: string;
@@ -15,7 +15,7 @@ interface SubCategory {
 	category_id: string;
 	name: string;
 }
-const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
+const AddGigForm: FunctionComponent<AddGigFormProps> = () => {
 	const navigate = useNavigate();
 	const token = Cookies.get("token");
 	const [categories, setCategories] = useState<Category[]>([]);
@@ -248,4 +248,4 @@ const AddServiceForm: FunctionComponent<AddServiceFormProps> = () => {
 		</>
 	);
 };
-export default AddServiceForm;
+export default AddGigForm;

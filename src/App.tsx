@@ -3,13 +3,13 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./pages/login/login";
 import Join from "./pages/join/join";
-import AddService from "./pages/addService/addService";
+import AddService from "./pages/addGig/addGig";
 import EmailVerify from "./pages/emailVerification/emailVerify";
-import SubCategoryPage from "./pages/servicesPage/subCategoryPage";
-import UserServicesPage from "./pages/servicesPage/userServices";
+import SubCategoryPage from "./pages/gigsPage/subCategoryPage";
+import UserServicesPage from "./pages/gigsPage/userGigs";
 
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
-import CategoryPage from "./pages/servicesPage/categoryPage";
+import CategoryPage from "./pages/gigsPage/categoryPage";
 import HomePage from "./pages/home/home";
 
 const client = new ApolloClient({
@@ -50,7 +50,6 @@ function App() {
 					/>
 
 					<Route path="/:categoryName" element={<CategoryPage />} />
-					{/* <Route path="/:categoryName" element={<Cat />} /> */}
 				</Routes>
 			</ApolloProvider>
 		</div>

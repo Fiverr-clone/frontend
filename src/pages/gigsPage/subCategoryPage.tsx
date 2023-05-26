@@ -1,17 +1,22 @@
 import { FunctionComponent, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { gql, useQuery } from "@apollo/client";
+import "./GigsPage.css";
+
 import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
 import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
-import { gql, useQuery } from "@apollo/client";
-import { Link } from "react-router-dom";
 import Footer from "../../components/footerComponent/footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const GET_CAT_SERVICES = gql`
-	query getCategoryServices($id: ID!, $page: Int, $limit: Int) {
-		category(id: $id) {
+const GET_SUBCAT_SERVICES = gql`
+	query getSubCatServices($id: ID!, $page: Int, $limit: Int) {
+		subcategory(id: $id) {
 			id
-			categoryName
+			name
+			category {
+				categoryName
+			}
 			services(page: $page, limit: $limit) {
 				id
 				userId
@@ -26,22 +31,24 @@ const GET_CAT_SERVICES = gql`
 		}
 	}
 `;
-interface CatProps {}
 
-const CategoryPage: FunctionComponent<CatProps> = () => {
+interface SubCatProps {}
+
+const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 	const ITEMS_PER_PAGE = 8;
 	const [page, setPage] = useState(1);
-	const [catId, setCatId] = useState<string>("");
+
+	const [subCatId, setSubCatId] = useState<string>("");
 
 	useEffect(() => {
-		const storedCatId = localStorage.getItem("catId");
-		if (storedCatId) {
-			setCatId(storedCatId);
+		const storedSubCatId = localStorage.getItem("subCatId");
+		if (storedSubCatId) {
+			setSubCatId(storedSubCatId);
 		}
 	}, []);
 
-	const { loading, error, data, fetchMore } = useQuery(GET_CAT_SERVICES, {
-		variables: { id: catId, page: 1, limit: ITEMS_PER_PAGE },
+	const { loading, error, data, fetchMore } = useQuery(GET_SUBCAT_SERVICES, {
+		variables: { id: subCatId, page: 1, limit: ITEMS_PER_PAGE },
 	});
 
 	const handlePrevPage = () => {
@@ -70,7 +77,7 @@ const CategoryPage: FunctionComponent<CatProps> = () => {
 			{error && <p>Something went wrong ! </p>}
 			{!loading && !error && (
 				<div className="services-wrapper">
-					{data.category.services.map((service: any) => (
+					{data.subcategory.services.map((service: any) => (
 						<div className="service-whole-container" key={service.id}>
 							<div className="image-container">
 								<img
@@ -112,7 +119,7 @@ const CategoryPage: FunctionComponent<CatProps> = () => {
 					<button
 						className="pagination-btn"
 						onClick={handleNextPage}
-						disabled={data.category.services.length < ITEMS_PER_PAGE}
+						disabled={data.subcategory.services.length < ITEMS_PER_PAGE}
 					>
 						Next
 					</button>
@@ -122,4 +129,5 @@ const CategoryPage: FunctionComponent<CatProps> = () => {
 		</>
 	);
 };
-export default CategoryPage;
+
+export default SubCategoryPage;
