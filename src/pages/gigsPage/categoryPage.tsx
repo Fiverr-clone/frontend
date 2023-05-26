@@ -27,9 +27,9 @@ const GET_CAT_SERVICES = gql`
 		}
 	}
 `;
-interface CatProps {}
+interface CategoryPageProps {}
 
-const CategoryPage: FunctionComponent<CatProps> = () => {
+const CategoryPage: FunctionComponent<CategoryPageProps> = () => {
 	const ITEMS_PER_PAGE = 8;
 	const [page, setPage] = useState(1);
 	const [catId, setCatId] = useState<string>("");

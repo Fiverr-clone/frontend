@@ -40,7 +40,7 @@
 .navbar-after-logo {
 	height: 30px;
 	width: auto;
-	margin-top: 18px;
+	margin-top: -9px;
 }
 .navbar-after ul li a {
 	color: #494747;

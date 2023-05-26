@@ -40,7 +40,7 @@
 }
 
 .nav-before ul li:last-child {
-	margin-right: 0;
+	margin-right: 15px;
 }
 
 .nav-before ul li a {
@@ -49,6 +49,10 @@
 	font-weight: bold;
 	font-size: 18px;
 }
+.nav-before ul li a:hover {
+	color: #cecece;
+	text-decoration: underline;
+}
 .nav-before ul li a.join-link {
 	color: #f9f6f6;
 	text-decoration: none;
@@ -56,6 +60,11 @@
 	font-size: 18px;
 	border: 1px solid rgb(249, 243, 243);
 	padding: 10px 20px;
+	border-radius: 5px;
+}
+.nav-before ul li a.join-link:hover {
+	background-color: #f9f6f6;
+	color: #013914;
 }
 
 .nav-before ul li a.join-link:active {

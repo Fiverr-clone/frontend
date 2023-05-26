@@ -1,33 +1,27 @@
 import { FunctionComponent, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../../assets/FiverrLogoSVG.svg";
 import { Link } from "react-router-dom";
 import Searchbar from "./Searchbar";
 import "./navbarAfter.css";
-import NavbarMenu from "../navbarMenuComponent/navbarMenu";
 
 interface NavbarAfterProps {}
 
 const NavbarAfter: FunctionComponent<NavbarAfterProps> = () => {
-	const [subCatId, setSubCatId] = useState<String>("");
-
-	const handleSubCatId = (value: String) => {
-		setSubCatId(value);
-		// console.log(value);
-	};
-
 	return (
 		<div>
 			<nav className="navbar-after">
 				<ul>
 					<li>
-						<img
-							src={Logo}
-							// height={"30px"}
-							// width={"auto"}
-							alt="Fiverr Logo"
-							className="navbar-after-logo"
-						/>
+						<Link to="/">
+							<img
+								src={Logo}
+								// height={"30px"}
+								// width={"auto"}
+								alt="Fiverr Logo"
+								className="navbar-after-logo"
+								style={{ cursor: "pointer" }}
+							/>
+						</Link>
 					</li>
 					<li>
 						<Searchbar />
