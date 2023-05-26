@@ -11,6 +11,7 @@ import UserServicesPage from "./pages/gigsPage/userGigs";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import CategoryPage from "./pages/gigsPage/categoryPage";
 import HomePage from "./pages/home/home";
+import NavAfterLogin from "./components/navAfterLogin/navAfterLogin";
 
 const client = new ApolloClient({
 	uri: "http://localhost:8000/graphql",
@@ -24,6 +25,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/user" element={<UserServicesPage />} />
+				<Route path="/navlogin" element={<NavAfterLogin />} />
 					<Route path="/join" element={<Join />} />
 					<Route path="/signin" element={<Login />} />
 					<Route path="/add-service" element={<AddService />} />

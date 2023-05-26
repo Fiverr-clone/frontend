@@ -6,6 +6,9 @@ import Featured from "../../components/featured/Featured";
 import Trusted from "../../components/trusted/Trusted";
 import Footer from "../../components/footerComponent/footer";
 import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
+import Slide from "../../components/Slide/Slide";
+import CatCard from "../../components/catCard/CatCard";
+import {cards}from "../../data";
 
 const HomePage = () => {
 	const [subCatId, setSubCatId] = useState<String>("");
@@ -44,6 +47,12 @@ const HomePage = () => {
 			<div className="navbar-menu-container">
 				<Featured />
 				<Trusted />
+				<Slide Show={5} Scroll={5}>
+  {cards.map((card) => (
+    <CatCard key={card.id} card={card} />
+  ))}
+</Slide>
+
 				<Footer />
 				{/* Contenu de votre page */}
 			</div>
