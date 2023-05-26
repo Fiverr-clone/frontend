@@ -1,20 +1,27 @@
-import { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../../assets/FiverrLogoSVG.svg";
 import { Link } from "react-router-dom";
 import Searchbar from "./Searchbar";
 import "./navAfterLogin.css";
 import NavbarMenu from "../navbarMenuComponent/navbarMenu";
+import bellImage from "../../assets/bell.png";
+import userImage from "../../assets/user.png";
+import emailImage from "../../assets/email.png";
 
 interface NavAfterLoginProps {}
 
 const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
-  const [subCatId, setSubCatId] = useState<String>("");
+  const [subCatId, setSubCatId] = useState<string>("");
+  const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
-  const handleSubCatId = (value: String) => {
+  const handleSubCatId = (value: string) => {
     setSubCatId(value);
-    // console.log(value);
+  };
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
   };
 
   return (
@@ -36,6 +43,12 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
         </ul>
         <ul>
           <li>
+            <img src={bellImage} alt="Bell Icon" className="small-icon" />
+          </li>
+          <li>
+            <img src={emailImage} alt="Email Icon" className="small-icon" />
+          </li>
+          <li>
             <Link to="/add-service" className="add1">
               Add Gig
             </Link>
@@ -44,10 +57,26 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
             <Link to="/">Orders</Link>
           </li>
           <li>
-            <FontAwesomeIcon icon={faBell} />
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faUser} />
+            <div className="user-icon-container" onClick={toggleDropdown}>
+              <img src={userImage} alt="User Icon" className="user-icon" />
+              {showDropdown && (
+                
+                  <ul>
+                    <div className="dropdown">
+                    <li>
+                      <Link to="/profile">Profile</Link>
+                    </li>
+                    <li>
+                      <Link to="/mygigs">My Gigs</Link>
+                    </li>
+                    <li>
+                      <Link to="/logout">Logout</Link>
+                    </li>
+                    </div>
+                  </ul>
+               
+              )}
+            </div>
           </li>
         </ul>
       </nav>

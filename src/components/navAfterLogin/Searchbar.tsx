@@ -7,15 +7,15 @@ import "./navAfterLogin.css";
 
 const SearchBar = () => {
 	return (
-		<div className="search-container">
+		<div className="search-container2">
 			<input
-				className="search-input"
+				className="search-input2"
 				type="text"
 				placeholder="What service are you looking for you today?"
 				style={{ fontSize: "16px" }}
 			/>
-			<button className="search-icon-btn">
-				<FontAwesomeIcon className="search-icon" icon={faSearch} />
+			<button className="search-icon-btn2">
+				<FontAwesomeIcon className="search-icon2" icon={faSearch} />
 			</button>
 		</div>
 	);
