@@ -44,6 +44,7 @@ const HomePage = () => {
 			) : (
 				<NavbarBefore />
 			)}
+			
 			<div className="navbar-menu-container">
 				<Featured />
 				<Trusted />
