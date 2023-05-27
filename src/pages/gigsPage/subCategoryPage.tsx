@@ -104,23 +104,25 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 							</div>
 						</div>
 					))}
-					<div className="pagination-controls" style={{ marginTop: "50px" }}>
-						<button
-							className="pagination-btn"
-							onClick={handlePrevPage}
-							disabled={page === 1}
-						>
-							Previous
-						</button>
-						<span className="page-number">{page}</span>
-						<button
-							className="pagination-btn"
-							onClick={handleNextPage}
-							disabled={data.subcategory.services.length < ITEMS_PER_PAGE}
-						>
-							Next
-						</button>
-					</div>
+				</div>
+			)}
+			{!loading && !error && (
+				<div className="pagination-controls" style={{ margin: "50px 0" }}>
+					<button
+						className="pagination-btn"
+						onClick={handlePrevPage}
+						disabled={page === 1}
+					>
+						Previous
+					</button>
+					<span className="page-number">{page}</span>
+					<button
+						className="pagination-btn"
+						onClick={handleNextPage}
+						disabled={data.subcategory.services.length < ITEMS_PER_PAGE}
+					>
+						Next
+					</button>
 				</div>
 			)}
 			<Footer />

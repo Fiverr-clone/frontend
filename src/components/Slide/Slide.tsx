@@ -3,21 +3,21 @@ import "./Slide.css";
 import Slider from "infinite-react-carousel";
 
 interface SlideProps {
-  children: ReactNode;
-  Show: number;
-  Scroll: number;
+	children: ReactNode;
+	slidesToShow: number;
+	arrowsScroll: number;
 }
 
-const Slide = ({ children, Show, Scroll }: SlideProps) => {
-  return (
-    <div className="slide">
-      <div className="container">
-        <Slider slidesToShow={Show} arrowsScroll={Scroll}>
-          {children}
-        </Slider>
-      </div>
-    </div>
-  );
+const Slide = ({ children, slidesToShow, arrowsScroll }: SlideProps) => {
+	return (
+		<div className="slide">
+			<div className="container">
+				<Slider slidesToShow={slidesToShow} arrowsScroll={arrowsScroll}>
+					{children}
+				</Slider>
+			</div>
+		</div>
+	);
 };
 
 export default Slide;
