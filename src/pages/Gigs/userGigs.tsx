@@ -2,11 +2,13 @@ import { FunctionComponent, useEffect, useState } from "react";
 import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
 import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
 import { gql, useMutation, useQuery } from "@apollo/client";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../components/footerComponent/footer";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
 import "./GigsPage.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 const GET_USER_SERVICES = gql`
 	query getUserServices($id: ID!, $page: Int, $limit: Int) {
@@ -32,6 +34,7 @@ const DELETE_SERVICE = gql`
 interface CatProps {}
 
 const UserServicesPage: FunctionComponent<CatProps> = () => {
+	const navigate = useNavigate();
 	const userid = Cookies.get("userId");
 	const ITEMS_PER_PAGE = 8;
 	const [page, setPage] = useState(1);
@@ -70,6 +73,12 @@ const UserServicesPage: FunctionComponent<CatProps> = () => {
 		}
 	};
 
+	const handleServiceClick = (serviceId: string) => {
+		localStorage.setItem("serviceId", serviceId);
+		console.log(serviceId);
+		navigate(`/gig/${serviceId}`);
+	};
+
 	const handleNextPage = () => {
 		setPage(page + 1);
 	};
@@ -87,14 +96,23 @@ const UserServicesPage: FunctionComponent<CatProps> = () => {
 		<>
 			<NavbarAfter />
 			<NavbarMenu />
-
+			<h4 className="category-gig-name">
+				<Link to="/">
+					<FontAwesomeIcon icon={faHouse} style={{ color: "#414046" }} />
+				</Link>
+				&nbsp; / &nbsp; My Gigs
+			</h4>
 			<span style={{ marginTop: "20px", marginBottom: "-40px" }}></span>
 			{loading && <p>Loading...</p>}
 			{error && <p>Something went wrong ! </p>}
 			{!loading && !error && (
 				<div className="services-wrapper">
 					{data.user.services.map((service: any) => (
-						<div className="service-whole-container" key={service.id}>
+						<div
+							className="service-whole-container"
+							key={service.id}
+							onClick={() => handleServiceClick(service.id)}
+						>
 							<div className="image-container">
 								<img
 									src={service.image}
@@ -106,10 +124,11 @@ const UserServicesPage: FunctionComponent<CatProps> = () => {
 								className="service-info-container"
 								style={{ marginTop: "10px" }}
 							>
-								<span className="service-title">
-									<Link to="/" className="service-link">
-										{service.title}
-									</Link>
+								<span
+									className="service-title"
+									onClick={() => handleServiceClick(service.id)}
+								>
+									{service.title}
 								</span>
 								<div className="price-crud">
 									<button

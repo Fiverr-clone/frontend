@@ -20,7 +20,9 @@ const Join: FunctionComponent<JoinProps> = () => {
 					margin: error ? "15px 0" : "",
 				}}
 			>
-				<h4 id="join-h4">Join Us</h4>
+				<h4 id="join-h4" style={{ marginLeft: "2rem" }}>
+					Join Us
+				</h4>
 				<JoinForm onError={handleError} />
 			</div>
 		</>

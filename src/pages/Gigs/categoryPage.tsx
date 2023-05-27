@@ -2,10 +2,10 @@ import { FunctionComponent, useEffect, useState } from "react";
 import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
 import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
 import { gql, useQuery } from "@apollo/client";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../components/footerComponent/footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faUser } from "@fortawesome/free-solid-svg-icons";
 import "./GigsPage.css";
 
 const GET_CAT_SERVICES = gql`
@@ -30,6 +30,7 @@ const GET_CAT_SERVICES = gql`
 interface CategoryPageProps {}
 
 const CategoryPage: FunctionComponent<CategoryPageProps> = () => {
+	const navigate = useNavigate();
 	const ITEMS_PER_PAGE = 8;
 	const [page, setPage] = useState(1);
 	const [catId, setCatId] = useState<string>("");
@@ -54,6 +55,13 @@ const CategoryPage: FunctionComponent<CategoryPageProps> = () => {
 	const handleNextPage = () => {
 		setPage(page + 1);
 	};
+
+	const handleServiceClick = (serviceId: string) => {
+		localStorage.setItem("serviceId", serviceId);
+		console.log(serviceId);
+		navigate(`/gig/${serviceId}`);
+	};
+
 	useEffect(() => {
 		fetchMore({
 			variables: { page, limit: ITEMS_PER_PAGE },
@@ -67,12 +75,24 @@ const CategoryPage: FunctionComponent<CategoryPageProps> = () => {
 		<>
 			<NavbarAfter />
 			<NavbarMenu />
+			{data && data.category && (
+				<h4 className="category-gig-name">
+					<Link to="/">
+						<FontAwesomeIcon icon={faHouse} style={{ color: "#414046" }} />
+					</Link>
+					&nbsp; / &nbsp; {data.category.categoryName}
+				</h4>
+			)}
 			{loading && <p>Loading...</p>}
 			{error && <p>Something went wrong ! </p>}
 			{!loading && !error && (
 				<div className="services-wrapper">
 					{data.category.services.map((service: any) => (
-						<div className="service-whole-container" key={service.id}>
+						<div
+							className="service-whole-container"
+							key={service.id}
+							onClick={() => handleServiceClick(service.id)}
+						>
 							<div className="image-container">
 								<img
 									src={service.image}
@@ -89,10 +109,11 @@ const CategoryPage: FunctionComponent<CategoryPageProps> = () => {
 									/>
 									{service.user.username}
 								</span>
-								<span className="service-title">
-									<Link to="/" className="service-link">
-										{service.title}
-									</Link>
+								<span
+									className="service-title"
+									onClick={() => handleServiceClick(service.id)}
+								>
+									{service.title}
 								</span>
 								<span className="service-price">From US${service.price} </span>
 							</div>

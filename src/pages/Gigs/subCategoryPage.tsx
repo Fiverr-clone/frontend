@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import "./GigsPage.css";
 
@@ -7,7 +7,7 @@ import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
 import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
 import Footer from "../../components/footerComponent/footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const GET_SUBCAT_SERVICES = gql`
 	query getSubCatServices($id: ID!, $page: Int, $limit: Int) {
@@ -35,6 +35,7 @@ const GET_SUBCAT_SERVICES = gql`
 interface SubCatProps {}
 
 const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
+	const navigate = useNavigate();
 	const ITEMS_PER_PAGE = 8;
 	const [page, setPage] = useState(1);
 
@@ -60,6 +61,11 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 	const handleNextPage = () => {
 		setPage(page + 1);
 	};
+	const handleServiceClick = (serviceId: string) => {
+		localStorage.setItem("serviceId", serviceId);
+		console.log(serviceId);
+		navigate(`/gig/${serviceId}`);
+	};
 	useEffect(() => {
 		fetchMore({
 			variables: { page, limit: ITEMS_PER_PAGE },
@@ -73,12 +79,25 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 		<>
 			<NavbarAfter />
 			<NavbarMenu />
+			{data && data.subcategory && (
+				<h4 className="category-gig-name">
+					<Link to="/">
+						<FontAwesomeIcon icon={faHouse} style={{ color: "#414046" }} />
+					</Link>
+					&nbsp; / &nbsp; {data.subcategory.name}&nbsp; / &nbsp;
+					{data.subcategory.category.categoryName}
+				</h4>
+			)}
 			{loading && <p>Loading...</p>}
 			{error && <p>Something went wrong ! </p>}
 			{!loading && !error && (
 				<div className="services-wrapper">
 					{data.subcategory.services.map((service: any) => (
-						<div className="service-whole-container" key={service.id}>
+						<div
+							className="service-whole-container"
+							key={service.id}
+							onClick={() => handleServiceClick(service.id)}
+						>
 							<div className="image-container">
 								<img
 									src={service.image}
@@ -95,10 +114,11 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 									/>
 									{service.user.username}
 								</span>
-								<span className="service-title">
-									<Link to="/" className="service-link">
-										{service.title}
-									</Link>
+								<span
+									className="service-title"
+									onClick={() => handleServiceClick(service.id)}
+								>
+									{service.title}
 								</span>
 								<span className="service-price">From US${service.price} </span>
 							</div>

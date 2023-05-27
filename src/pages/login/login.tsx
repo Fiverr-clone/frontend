@@ -21,7 +21,9 @@ const Login: FunctionComponent<LoginProps> = () => {
 					height: error ? "620px " : "575px ",
 				}}
 			>
-				<h4 id="login-h4">Sign In</h4>
+				<h4 id="login-h4" style={{ marginLeft: "2rem" }}>
+					Sign In
+				</h4>
 				<LoginForm onError={handleError} />
 			</div>
 		</>

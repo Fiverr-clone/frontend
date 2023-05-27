@@ -1,6 +1,13 @@
 import React, { FunctionComponent, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+	faBookmark,
+	faEnvelope,
+	faPenToSquare,
+	faRightFromBracket,
+	faTriangleCircleSquare,
+	faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import Logo from "../../assets/FiverrLogoSVG.svg";
 import { Link } from "react-router-dom";
 import Searchbar from "./Searchbar";
@@ -13,29 +20,20 @@ import emailImage from "../../assets/email.png";
 interface NavAfterLoginProps {}
 
 const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
-	const [subCatId, setSubCatId] = useState<string>("");
-	const [showDropdown, setShowDropdown] = useState<boolean>(false);
-
-	const handleSubCatId = (value: string) => {
-		setSubCatId(value);
-	};
-
-	// const toggleDropdown = () => {
-	// 	setShowDropdown(!showDropdown);
-	// };
-
 	return (
 		<div>
 			<nav className="navbar-after">
 				<ul>
 					<li>
-						<img
-							src={Logo}
-							height={"30px"}
-							width={"auto"}
-							alt="Fiverr Logo"
-							className="navbar-after-logo"
-						/>
+						<Link to="/">
+							<img
+								src={Logo}
+								height={"30px"}
+								width={"auto"}
+								alt="Fiverr Logo"
+								className="navbar-after-logo"
+							/>
+						</Link>
 					</li>
 					<li>
 						<Searchbar />
@@ -60,15 +58,55 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 						<div className="user-icon-container">
 							<img src={userImage} alt="User Icon" className="user-nav-icon" />
 							<ul>
+								<FontAwesomeIcon
+									icon={faTriangleCircleSquare}
+									className="triangle-icon"
+								/>
 								<div className="dropdown">
 									<li className="dropdown-li">
-										<Link to="/profile">Profile</Link>
+										<Link
+											to="/profile"
+											style={{ fontSize: "15px", fontWeight: "600" }}
+										>
+											<FontAwesomeIcon
+												icon={faPenToSquare}
+												style={{
+													paddingRight: "10px",
+												}}
+												className="icons"
+											/>
+											Profile
+										</Link>
 									</li>
 									<li className="dropdown-li">
-										<Link to="/mygigs">My Gigs</Link>
+										<Link
+											to="/mygigs"
+											style={{ fontSize: "15px", fontWeight: "600" }}
+										>
+											<FontAwesomeIcon
+												icon={faBookmark}
+												style={{
+													paddingRight: "14px",
+												}}
+												className="icons"
+											/>
+											My Gigs
+										</Link>
 									</li>
 									<li className="dropdown-li">
-										<Link to="/logout">Logout</Link>
+										<Link
+											to="/logout"
+											style={{ fontSize: "15px", fontWeight: "600" }}
+										>
+											<FontAwesomeIcon
+												icon={faRightFromBracket}
+												style={{
+													paddingRight: "12px",
+												}}
+												className="icons"
+											/>
+											Logout
+										</Link>
 									</li>
 								</div>
 							</ul>
@@ -76,7 +114,6 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 					</li>
 				</ul>
 			</nav>
-			{/* <NavbarMenu CategoryId={handleSubCatId} /> */}
 		</div>
 	);
 };

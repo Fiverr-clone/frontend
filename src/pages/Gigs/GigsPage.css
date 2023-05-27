@@ -3,7 +3,7 @@
 .services-wrapper {
 	font-family: "Roboto", sans-serif;
 	display: flex;
-	margin: 3rem 1.5rem;
+	margin: 0 1.5rem 3rem 1.5rem;
 	height: 100%;
 	gap: 40px;
 	flex-wrap: wrap;
@@ -33,6 +33,7 @@
 	width: 100%;
 	height: 100%;
 	box-shadow: 0px 0px 6px 0px rgb(122 122 122 / 57%);
+	cursor: pointer;
 }
 .service-info-container {
 	display: flex;
@@ -55,12 +56,13 @@
 	font-size: 14px;
 	font-weight: 600;
 	margin-bottom: 4px;
+	cursor: pointer;
 }
 .service-link {
 	text-decoration: none;
 	color: #2d2e31;
 }
-.service-whole-container:hover .service-link {
+.service-whole-container:hover .service-title {
 	text-decoration: underline;
 }
 
@@ -135,4 +137,16 @@
 	margin-top: auto;
 	margin-left: 2rem;
 	letter-spacing: 1px;
+}
+.category-gig-name {
+	font-size: 25px;
+	font-weight: 700;
+	margin-left: 1rem;
+}
+.category-gig-div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-top: 15px;
 }
