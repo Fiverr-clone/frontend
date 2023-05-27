@@ -15,9 +15,8 @@
 }
 .triangle-icon {
 	margin: 8px 0px 0px -5px;
-	color: #f9f9f9;
+	color: #f6f6f6;
 	position: absolute;
-	display: none !important;
 }
 .dropdown-li:hover .icons {
 	color: #1dbf73;
@@ -25,7 +24,7 @@
 .dropdown {
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 	/* display: none; */
-	background-color: #f9f9f9;
+	background-color: #f6f6f6;
 	position: absolute;
 	line-height: 30px;
 	margin-top: 21px;
@@ -35,7 +34,6 @@
 	width: 118px;
 	z-index: 0;
 }
-
 .small-icon {
 	width: 28px;
 	height: 28px;
@@ -48,17 +46,6 @@
 	width: 38px;
 	height: 38px;
 }
-.triangle-icon {
-	display: none;
-}
-/* .user-icon-container:hover .dropdown,
-.triangle-icon {
-	display: block;
-}
-.user-icon-container:hover .triangle-icon {
-	display: block !important;
-} */
-
 .search-container2 {
 	position: relative;
 	width: 650px;

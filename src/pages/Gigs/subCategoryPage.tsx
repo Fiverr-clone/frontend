@@ -84,8 +84,9 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 					<Link to="/">
 						<FontAwesomeIcon icon={faHouse} style={{ color: "#414046" }} />
 					</Link>
-					&nbsp; / &nbsp; {data.subcategory.name}&nbsp; / &nbsp;
-					{data.subcategory.category.categoryName}
+					&nbsp; / &nbsp;{data.subcategory.category.categoryName} &nbsp; /
+					&nbsp;
+					{data.subcategory.name}
 				</h4>
 			)}
 			{loading && <p>Loading...</p>}

@@ -26,7 +26,7 @@ function App() {
 			<ApolloProvider client={client}>
 				<Routes>
 					<Route path="/" element={<HomePage />} />
-					<Route path="/user" element={<UserServicesPage />} />
+					<Route path="/mygigs/:id" element={<UserServicesPage />} />
 					<Route path="/navlogin" element={<NavAfterLogin />} />
 					<Route path="/gig/:id" element={<Gig />} />
 					<Route path="/join" element={<Join />} />

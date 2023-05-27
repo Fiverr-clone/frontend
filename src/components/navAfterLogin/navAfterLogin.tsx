@@ -26,6 +26,7 @@ interface NavAfterLoginProps {}
 const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const userid = Cookies.get("userId");
 	const [userClicked, setUserClicked] = useState(false);
 	const HandleUserClick = () => {
 		setUserClicked(!userClicked);
@@ -35,6 +36,9 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 		Cookies.set("token", "");
 		dispatch(logout());
 		navigate("/");
+	};
+	const HandleUserGigs = () => {
+		navigate(`/mygigs/${userid}`);
 	};
 	return (
 		<div>
@@ -77,11 +81,9 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 								<FontAwesomeIcon
 									icon={faTriangleCircleSquare}
 									className="triangle-icon"
-									style={
-										{
-											// display: userClicked ? "block !important" : "none",
-										}
-									}
+									style={{
+										display: userClicked ? "block" : "none",
+									}}
 								/>
 								<div
 									className="dropdown"
@@ -104,9 +106,9 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 											Profile
 										</Link>
 									</li>
-									<li className="dropdown-li">
+									<li className="dropdown-li" onClick={HandleUserGigs}>
 										<Link
-											to="/mygigs"
+											to="#"
 											style={{ fontSize: "15px", fontWeight: "600" }}
 										>
 											<FontAwesomeIcon
