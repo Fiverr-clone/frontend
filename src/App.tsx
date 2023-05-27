@@ -12,6 +12,10 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import Cat from "./pages/servicesPage/cat";
 import HomePage from "./pages/home/home";
 import NavAfterLogin from "./components/navAfterLogin/navAfterLogin";
+import Gig from "./pages/Gig/Gig";
+import { useParams } from "react-router-dom";
+
+
 
 const client = new ApolloClient({
 	uri: "http://localhost:8000/graphql",
@@ -19,11 +23,17 @@ const client = new ApolloClient({
 });
 
 function App() {
+	
+
+ 
 	return (
 		<div className="App">
 			<ApolloProvider client={client}>
 				<Routes>
 				<Route path="/navlogin" element={<NavAfterLogin />} />
+				<Route path="/gig/:id" element={<Gig />} />
+
+
 				<Route path="/" element={<HomePage />} />
 					<Route path="/join" element={<Join />} />
 					<Route path="/signin" element={<Login />} />
@@ -53,3 +63,4 @@ function App() {
 }
 
 export default App;
+

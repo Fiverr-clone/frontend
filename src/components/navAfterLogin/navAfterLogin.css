@@ -7,6 +7,7 @@
     height: 38px;
   }
   
+  
   .search-container2 {
 	position: relative;
 	width: 650px;
@@ -54,7 +55,7 @@
 }
 
 .dropdown li {
-  display: block;
+  display: none;
   border-bottom: 1px solid #dddddd;
 }
 
@@ -72,6 +73,8 @@
 .dropdown li a:hover {
   background-color: #f0f0f0;
 }
-
+.user-icon-container:hover .dropdown{
+	display: grid;
+  }
 
   
