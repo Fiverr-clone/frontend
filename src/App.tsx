@@ -12,7 +12,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import CategoryPage from "./pages/Gigs/categoryPage";
 import HomePage from "./pages/home/home";
 import NavAfterLogin from "./components/navAfterLogin/navAfterLogin";
-// import Gig from "./pages/Gig/Gig";
+import Gig from "./pages/Gig/Gig";
 import { useParams } from "react-router-dom";
 
 const client = new ApolloClient({
@@ -28,7 +28,7 @@ function App() {
 					<Route path="/" element={<HomePage />} />
 					<Route path="/user" element={<UserServicesPage />} />
 					<Route path="/navlogin" element={<NavAfterLogin />} />
-					{/* <Route path="/gig/:id" element={<Gig />} /> */}
+					<Route path="/gig/:id" element={<Gig />} />
 					<Route path="/join" element={<Join />} />
 					<Route path="/signin" element={<Login />} />
 					<Route path="/add-gig" element={<AddGig />} />

@@ -139,9 +139,8 @@
 	letter-spacing: 1px;
 }
 .category-gig-name {
-	font-size: 25px;
-	font-weight: 700;
-	margin-left: 1rem;
+	font-size: 15px;
+	margin-left: 3rem;
 }
 .category-gig-div {
 	display: flex;

@@ -9,7 +9,7 @@ import {
 	faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../../assets/FiverrLogoSVG.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Searchbar from "./Searchbar";
 import "./navAfterLogin.css";
 import NavbarMenu from "../navbarMenuComponent/navbarMenu";
@@ -17,9 +17,25 @@ import bellImage from "../../assets/bell.png";
 import userImage from "../../assets/user.png";
 import emailImage from "../../assets/email.png";
 
+import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { logout } from "../../features/actions/authSlice";
+
 interface NavAfterLoginProps {}
 
 const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const [userClicked, setUserClicked] = useState(false);
+	const HandleUserClick = () => {
+		setUserClicked(!userClicked);
+	};
+	const HandleLogout = () => {
+		Cookies.set("userId", "");
+		Cookies.set("token", "");
+		dispatch(logout());
+		navigate("/");
+	};
 	return (
 		<div>
 			<nav className="navbar-after">
@@ -55,14 +71,24 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 						<Link to="/">Orders</Link>
 					</li>
 					<li>
-						<div className="user-icon-container">
+						<div className="user-icon-container" onClick={HandleUserClick}>
 							<img src={userImage} alt="User Icon" className="user-nav-icon" />
 							<ul>
 								<FontAwesomeIcon
 									icon={faTriangleCircleSquare}
 									className="triangle-icon"
+									style={
+										{
+											// display: userClicked ? "block !important" : "none",
+										}
+									}
 								/>
-								<div className="dropdown">
+								<div
+									className="dropdown"
+									style={{
+										display: userClicked ? "block" : "none",
+									}}
+								>
 									<li className="dropdown-li">
 										<Link
 											to="/profile"
@@ -93,9 +119,9 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 											My Gigs
 										</Link>
 									</li>
-									<li className="dropdown-li">
+									<li className="dropdown-li" onClick={HandleLogout}>
 										<Link
-											to="/logout"
+											to="#"
 											style={{ fontSize: "15px", fontWeight: "600" }}
 										>
 											<FontAwesomeIcon
@@ -114,6 +140,7 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 					</li>
 				</ul>
 			</nav>
+			<NavbarMenu />
 		</div>
 	);
 };
