@@ -6,7 +6,6 @@
 .slide .container {
 	width: 1400px;
 	position: relative;
-	z-index: -3;
 }
 .slide .carousel-initialized {
 	position: static;
@@ -21,7 +20,6 @@
 	top: 0;
 	bottom: 0;
 	margin: auto;
-	z-index: 1;
 }
 .slide .carousel-prev {
 	left: -25px;

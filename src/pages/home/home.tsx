@@ -37,14 +37,17 @@ const HomePage = () => {
 	return (
 		<div>
 			{scrolled ? (
-				<div id="home-navbar" style={{ position: "fixed", width: "100%" }}>
+				<div
+					id="home-navbar"
+					style={{ position: "fixed", width: "100%", zIndex: "10" }}
+				>
 					<NavbarAfter />
 					<NavbarMenu />
 				</div>
 			) : (
 				<NavbarBefore />
 			)}
-			
+
 			<div className="navbar-menu-container">
 				<Featured />
 				<Trusted />
