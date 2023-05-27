@@ -3,8 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../../assets/FiverrLogoSVG.svg";
 import { Link } from "react-router-dom";
-// import Searchbar from "./Searchbar";
-import Searchbar from "../navbarAfterComponent/Searchbar";
+import Searchbar from "./Searchbar";
 import "./navAfterLogin.css";
 import NavbarMenu from "../navbarMenuComponent/navbarMenu";
 import bellImage from "../../assets/bell.png";
@@ -21,9 +20,9 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 		setSubCatId(value);
 	};
 
-	const toggleDropdown = () => {
-		setShowDropdown(!showDropdown);
-	};
+	// const toggleDropdown = () => {
+	// 	setShowDropdown(!showDropdown);
+	// };
 
 	return (
 		<div>
@@ -58,23 +57,21 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 						<Link to="/">Orders</Link>
 					</li>
 					<li>
-						<div className="user-icon-container" onClick={toggleDropdown}>
-							<img src={userImage} alt="User Icon" className="user-icon" />
-							{showDropdown && (
-								<ul>
-									<div className="dropdown">
-										<li>
-											<Link to="/profile">Profile</Link>
-										</li>
-										<li>
-											<Link to="/mygigs">My Gigs</Link>
-										</li>
-										<li>
-											<Link to="/logout">Logout</Link>
-										</li>
-									</div>
-								</ul>
-							)}
+						<div className="user-icon-container">
+							<img src={userImage} alt="User Icon" className="user-nav-icon" />
+							<ul>
+								<div className="dropdown">
+									<li className="dropdown-li">
+										<Link to="/profile">Profile</Link>
+									</li>
+									<li className="dropdown-li">
+										<Link to="/mygigs">My Gigs</Link>
+									</li>
+									<li className="dropdown-li">
+										<Link to="/logout">Logout</Link>
+									</li>
+								</div>
+							</ul>
 						</div>
 					</li>
 				</ul>
