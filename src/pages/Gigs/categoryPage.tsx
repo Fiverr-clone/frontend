@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
 import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
 import { gql, useQuery } from "@apollo/client";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Footer from "../../components/footerComponent/footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faUser } from "@fortawesome/free-solid-svg-icons";
@@ -31,19 +31,20 @@ interface CategoryPageProps {}
 
 const CategoryPage: FunctionComponent<CategoryPageProps> = () => {
 	const navigate = useNavigate();
+	const { id } = useParams<{ id: string }>();
 	const ITEMS_PER_PAGE = 8;
 	const [page, setPage] = useState(1);
-	const [catId, setCatId] = useState<string>("");
+	// const [catId, setCatId] = useState<string>("");
 
-	useEffect(() => {
-		const storedCatId = localStorage.getItem("catId");
-		if (storedCatId) {
-			setCatId(storedCatId);
-		}
-	}, []);
+	// useEffect(() => {
+	// 	const storedCatId = localStorage.getItem("catId");
+	// 	if (storedCatId) {
+	// 		setCatId(storedCatId);
+	// 	}
+	// }, []);
 
 	const { loading, error, data, fetchMore } = useQuery(GET_CAT_SERVICES, {
-		variables: { id: catId, page: 1, limit: ITEMS_PER_PAGE },
+		variables: { id: id, page: 1, limit: ITEMS_PER_PAGE },
 	});
 
 	const handlePrevPage = () => {

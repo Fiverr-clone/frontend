@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import "./GigsPage.css";
 
@@ -36,20 +36,21 @@ interface SubCatProps {}
 
 const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 	const navigate = useNavigate();
+	const { id } = useParams<{ id: string }>();
 	const ITEMS_PER_PAGE = 8;
 	const [page, setPage] = useState(1);
 
-	const [subCatId, setSubCatId] = useState<string>("");
+	// const [subCatId, setSubCatId] = useState<string>("");
 
-	useEffect(() => {
-		const storedSubCatId = localStorage.getItem("subCatId");
-		if (storedSubCatId) {
-			setSubCatId(storedSubCatId);
-		}
-	}, []);
+	// useEffect(() => {
+	// 	const storedSubCatId = localStorage.getItem("subCatId");
+	// 	if (storedSubCatId) {
+	// 		setSubCatId(storedSubCatId);
+	// 	}
+	// }, []);
 
 	const { loading, error, data, fetchMore } = useQuery(GET_SUBCAT_SERVICES, {
-		variables: { id: subCatId, page: 1, limit: ITEMS_PER_PAGE },
+		variables: { id: id, page: 1, limit: ITEMS_PER_PAGE },
 	});
 
 	const handlePrevPage = () => {

@@ -52,7 +52,8 @@
 	/* color: #404145; */
 	color: #74767e;
 }
-.subcategory-nav-link:hover {
+.subcategory-nav-li:hover {
+	/* .subcategory-nav-link:hover { */
 	text-decoration: underline;
 	color: #4c4d52;
 }

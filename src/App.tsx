@@ -33,7 +33,7 @@ function App() {
 					<Route path="/signin" element={<Login />} />
 					<Route path="/add-gig" element={<AddGig />} />
 					<Route path="/:id/verify/:emailToken" element={<EmailVerify />} />
-					<Route
+					{/* <Route
 						path="/programming-development/:subcategoryName"
 						element={<SubCategoryPage />}
 					/>
@@ -52,9 +52,11 @@ function App() {
 					<Route
 						path="/design/:subcategoryName"
 						element={<SubCategoryPage />}
-					/>
+					/> */}
 
-					<Route path="/:categoryName" element={<CategoryPage />} />
+					<Route path="/subcategory/:id" element={<SubCategoryPage />} />
+					<Route path="/category/:id" element={<CategoryPage />} />
+					{/* <Route path="/:categoryName" element={<CategoryPage />} /> */}
 				</Routes>
 			</ApolloProvider>
 		</div>
