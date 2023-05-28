@@ -6,12 +6,12 @@ import Featured from "../../components/featured/Featured";
 import Trusted from "../../components/trusted/Trusted";
 import Footer from "../../components/footerComponent/footer";
 import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
-import Slide from "../../components/Slide/Slide";
+import Slide from "../../components/slide/Slide";
 import CatCard from "../../components/catCard/CatCard";
 import { cards } from "../../data";
+import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
 
 const HomePage = () => {
-	
 	const [scrolled, setScrolled] = useState(false);
 
 	const handleScroll = () => {
@@ -36,8 +36,9 @@ const HomePage = () => {
 					id="home-navbar"
 					style={{ position: "fixed", width: "100%", zIndex: "10" }}
 				>
-					<NavbarAfter />
-					<NavbarMenu />
+					{/* <NavbarAfter />
+					<NavbarMenu /> */}
+					<NavbarCombined />
 				</div>
 			) : (
 				<NavbarBefore />

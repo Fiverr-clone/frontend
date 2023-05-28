@@ -1,15 +1,12 @@
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
-import NavAfterLogin from "../../components/navAfterLogin/navAfterLogin";
-import navbarMenu from "../../components/navbarMenuComponent/navbarMenu";
-import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
-
+import Loading from "../../components/loading/loading";
 import Footer from "../../components/footerComponent/footer";
 import "./Gig.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
-import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
+import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
 // import { Types } from "mongoose";
 
 interface Service {
@@ -83,10 +80,9 @@ const Gig: React.FC = () => {
 	const { service } = data;
 	return (
 		<>
-			<NavbarAfter />
-			<NavbarMenu />
+			<NavbarCombined />
 			<div className="gig">
-				{loading && <p>Loading...</p>}
+				{loading && <Loading />}
 				{error && <p>Something went wrong ! </p>}
 				{!loading && !error && (
 					<div className="container">

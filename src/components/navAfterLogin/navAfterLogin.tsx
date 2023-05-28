@@ -146,7 +146,6 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 					</li>
 				</ul>
 			</nav>
-			<NavbarMenu />
 		</div>
 	);
 };

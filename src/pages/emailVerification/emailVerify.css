@@ -20,7 +20,7 @@
 /* /////// ERROR ///////////// */
 
 .emailVerify-error {
-	display: inline-grid;
+	display: grid;
 	align-items: baseline;
 	text-align: start;
 	justify-content: center;
@@ -41,12 +41,14 @@
 	line-height: 1.75rem;
 	margin: 5px 0;
 }
+.email-home-link:hover {
+	color: #fff;
+}
 .email-home-link {
 	text-decoration: none;
-	/* color: #22a373; */
+	color: #22a373;
 }
 .email-btn {
-	color: #22a373;
 	font-weight: 400;
 	width: 8rem;
 	padding: 10px 15px;
@@ -58,6 +60,5 @@
 }
 .email-btn:hover {
 	background-color: #22a373;
-	color: #fff;
 	border: 1px solid #22a373;
 }

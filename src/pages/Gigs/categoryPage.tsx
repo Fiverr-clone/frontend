@@ -7,6 +7,8 @@ import Footer from "../../components/footerComponent/footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faUser } from "@fortawesome/free-solid-svg-icons";
 import "./GigsPage.css";
+import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
+import Loading from "../../components/loading/loading";
 
 const GET_CAT_SERVICES = gql`
 	query getCategoryServices($id: ID!, $page: Int, $limit: Int) {
@@ -74,8 +76,7 @@ const CategoryPage: FunctionComponent<CategoryPageProps> = () => {
 	}, [page, fetchMore]);
 	return (
 		<>
-			<NavbarAfter />
-			<NavbarMenu />
+			<NavbarCombined />
 			{data && data.category && (
 				<h4 className="category-gig-name">
 					<Link to="/">
@@ -84,7 +85,7 @@ const CategoryPage: FunctionComponent<CategoryPageProps> = () => {
 					&nbsp; / &nbsp; {data.category.categoryName}
 				</h4>
 			)}
-			{loading && <p>Loading...</p>}
+			{loading && <Loading />}
 			{error && <p>Something went wrong ! </p>}
 			{!loading && !error && (
 				<div className="services-wrapper">
@@ -123,7 +124,14 @@ const CategoryPage: FunctionComponent<CategoryPageProps> = () => {
 				</div>
 			)}
 			{!loading && !error && (
-				<div className="pagination-controls" style={{ margin: "50px 0" }}>
+				<div
+					className="pagination-controls"
+					style={{
+						margin: "50px 0",
+						display: "flex",
+						justifyContent: "center",
+					}}
+				>
 					<button
 						className="pagination-btn"
 						onClick={handlePrevPage}

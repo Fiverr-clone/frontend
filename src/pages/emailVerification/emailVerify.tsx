@@ -2,7 +2,6 @@ import { FunctionComponent, useState, Fragment, useEffect } from "react";
 import "./emailVerify.css";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-// import { Button, ButtonGroup } from "@chakra-ui/react";
 import Error404 from "../../assets/error404.jpg";
 import EmailVerified from "../../assets/email-verified.svg";
 import Footer from "../../components/footerComponent/footer";
@@ -30,7 +29,7 @@ const EmailVerify: FunctionComponent<EmailVerifyProps> = () => {
 
 	return (
 		<Fragment>
-			{validUrl ? (
+			{/* {validUrl ? (
 				<div>
 					<div className="emailVerify-success">
 						<img src={EmailVerified} className="email-success-img" />
@@ -50,25 +49,25 @@ const EmailVerify: FunctionComponent<EmailVerifyProps> = () => {
 					</div>
 					<Footer />
 				</div>
-			) : (
-				<div className="emailVerify-error">
-					<img src={Error404} className="email-error404" />
-					<h1 className="email-header-error">Page not found</h1>
-					<p className="email-text">
-						We looked everywhere for this page.
-						<br />
-						Are you sure the verification link is correct ?
-						<br />
-						Please check your email.
-						<br />
-					</p>
-					<button className="email-btn">
-						<Link to="/" className="email-home-link">
-							home page
-						</Link>{" "}
-					</button>
-				</div>
-			)}
+			) : ( */}
+			<div className="emailVerify-error">
+				<img src={Error404} className="email-error404" />
+				<h1 className="email-header-error">Page not found</h1>
+				<p className="email-text">
+					We looked everywhere for this page.
+					<br />
+					Are you sure the verification link is correct ?
+					<br />
+					Please check your email.
+					<br />
+				</p>
+				<button className="email-btn">
+					<Link to="/" className="email-home-link">
+						home page
+					</Link>{" "}
+				</button>
+			</div>
+			{/* )} */}
 		</Fragment>
 	);
 };

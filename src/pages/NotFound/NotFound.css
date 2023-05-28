@@ -1,0 +1,38 @@
+.notfound {
+	display: grid;
+	align-items: baseline;
+	text-align: start;
+	justify-content: center;
+}
+.error404-img {
+	margin-top: 50px;
+	width: 250px;
+	height: auto;
+}
+.notfound-header-error {
+	text-transform: uppercase;
+	padding: 15px 0;
+	color: #22a373;
+	font-weight: 400;
+}
+.notfound-home-link:hover {
+	color: #fff;
+}
+.notfound-home-link {
+	text-decoration: none;
+	color: #22a373;
+}
+.notfound-home-btn {
+	font-weight: 400;
+	width: 8rem;
+	padding: 10px 15px;
+	border: 1px solid #22a373;
+	border-radius: 100px;
+	transition: all 0.3s ease-in-out;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+.notfound-home-btn:hover {
+	background-color: #22a373;
+	border: 1px solid #22a373;
+}

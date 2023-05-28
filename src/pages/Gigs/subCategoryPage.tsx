@@ -8,6 +8,8 @@ import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
 import Footer from "../../components/footerComponent/footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faUser } from "@fortawesome/free-solid-svg-icons";
+import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
+import Loading from "../../components/loading/loading";
 
 const GET_SUBCAT_SERVICES = gql`
 	query getSubCatServices($id: ID!, $page: Int, $limit: Int) {
@@ -40,15 +42,6 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 	const ITEMS_PER_PAGE = 8;
 	const [page, setPage] = useState(1);
 
-	// const [subCatId, setSubCatId] = useState<string>("");
-
-	// useEffect(() => {
-	// 	const storedSubCatId = localStorage.getItem("subCatId");
-	// 	if (storedSubCatId) {
-	// 		setSubCatId(storedSubCatId);
-	// 	}
-	// }, []);
-
 	const { loading, error, data, fetchMore } = useQuery(GET_SUBCAT_SERVICES, {
 		variables: { id: id, page: 1, limit: ITEMS_PER_PAGE },
 	});
@@ -78,8 +71,7 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 	}, [page, fetchMore]);
 	return (
 		<>
-			<NavbarAfter />
-			<NavbarMenu />
+			<NavbarCombined />
 			{data && data.subcategory && (
 				<h4 className="category-gig-name">
 					<Link to="/">
@@ -90,7 +82,7 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 					{data.subcategory.name}
 				</h4>
 			)}
-			{loading && <p>Loading...</p>}
+			{loading && <Loading />}
 			{error && <p>Something went wrong ! </p>}
 			{!loading && !error && (
 				<div className="services-wrapper">
@@ -129,7 +121,14 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 				</div>
 			)}
 			{!loading && !error && (
-				<div className="pagination-controls" style={{ margin: "50px 0" }}>
+				<div
+					className="pagination-controls"
+					style={{
+						margin: "50px 0",
+						display: "flex",
+						justifyContent: "center",
+					}}
+				>
 					<button
 						className="pagination-btn"
 						onClick={handlePrevPage}

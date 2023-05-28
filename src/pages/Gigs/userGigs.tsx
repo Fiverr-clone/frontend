@@ -9,6 +9,8 @@ import Swal from "sweetalert2";
 import "./GigsPage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import NavAfterLogin from "../../components/navAfterLogin/navAfterLogin";
+import Loading from "../../components/loading/loading";
 
 const GET_USER_SERVICES = gql`
 	query getUserServices($id: ID!, $page: Int, $limit: Int) {
@@ -94,7 +96,7 @@ const UserServicesPage: FunctionComponent<CatProps> = () => {
 
 	return (
 		<>
-			<NavbarAfter />
+			<NavAfterLogin />
 			<NavbarMenu />
 			<h4 className="category-gig-name">
 				<Link to="/">
@@ -103,7 +105,7 @@ const UserServicesPage: FunctionComponent<CatProps> = () => {
 				&nbsp; / &nbsp; My Gigs
 			</h4>
 			<span style={{ marginTop: "20px", marginBottom: "-40px" }}></span>
-			{loading && <p>Loading...</p>}
+			{loading && <Loading />}
 			{error && <p>Something went wrong ! </p>}
 			{!loading && !error && (
 				<div className="services-wrapper">
@@ -147,7 +149,14 @@ const UserServicesPage: FunctionComponent<CatProps> = () => {
 				</div>
 			)}
 			{!loading && !error && (
-				<div className="pagination-controls" style={{ margin: "50px 0" }}>
+				<div
+					className="pagination-controls"
+					style={{
+						margin: "50px 0",
+						display: "flex",
+						justifyContent: "center",
+					}}
+				>
 					<button
 						className="pagination-btn"
 						onClick={handlePrevPage}
