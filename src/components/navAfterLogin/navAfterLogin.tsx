@@ -10,7 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../../assets/FiverrLogoSVG.svg";
 import { Link, useNavigate } from "react-router-dom";
-import Searchbar from "./Searchbar";
+import Searchbar from "../navbarAfterComponent/Searchbar";
+// import Searchbar from "./Searchbar";
 import "./navAfterLogin.css";
 import NavbarMenu from "../navbarMenuComponent/navbarMenu";
 import bellImage from "../../assets/bell.png";
@@ -61,18 +62,21 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 				</ul>
 				<ul>
 					<li>
-						<img src={bellImage} alt="Bell Icon" className="small-icon" />
-					</li>
-					<li>
-						<img src={emailImage} alt="Email Icon" className="small-icon" />
-					</li>
-					<li>
-						<Link to="/add-service" className="add1">
+						<Link to="/add-gig" className="add1">
 							Add Gig
 						</Link>
 					</li>
 					<li>
-						<Link to="/">Orders</Link>
+						<Link to="/mypurchases">My Purchases</Link>
+					</li>
+					<li>
+						<Link to="/myorders">My Orders</Link>
+					</li>
+					<li>
+						<img src={bellImage} alt="Bell Icon" className="small-icon" />
+					</li>
+					<li>
+						<img src={emailImage} alt="Email Icon" className="small-icon" />
 					</li>
 					<li>
 						<div className="user-icon-container" onClick={HandleUserClick}>
