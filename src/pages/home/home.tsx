@@ -11,12 +11,7 @@ import CatCard from "../../components/catCard/CatCard";
 import { cards } from "../../data";
 
 const HomePage = () => {
-	const [subCatId, setSubCatId] = useState<String>("");
-
-	const handleSubCatId = (value: String) => {
-		setSubCatId(value);
-		// console.log(value);
-	};
+	
 	const [scrolled, setScrolled] = useState(false);
 
 	const handleScroll = () => {

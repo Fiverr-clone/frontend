@@ -124,7 +124,6 @@ const Gig: React.FC = () => {
 							</div>
 							<h2>About This Gig</h2>
 							<p>{service.description}</p>
-
 							<div className="seller">
 								<h2>About The Seller</h2>
 
