@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import NotFound from "./pages/NotFound/NotFound";
 import Loading from "./components/loading/loading";
+import Orders from "./pages/Orders/Orders";
 
 const client = new ApolloClient({
 	uri: "http://localhost:8000/graphql",
@@ -56,6 +57,7 @@ function App() {
 					<Route path="/:id/verify/:emailToken" element={<EmailVerify />} />
 					<Route path="/add-gig" element={<AddGig />} />
 					<Route path="/mygigs/:id" element={<UserServicesPage />} />
+					<Route path="/ord" element={<Orders />} />
 				</Routes>
 			</ApolloProvider>
 		</div>

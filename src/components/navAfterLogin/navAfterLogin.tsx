@@ -11,9 +11,7 @@ import {
 import Logo from "../../assets/FiverrLogoSVG.svg";
 import { Link, useNavigate } from "react-router-dom";
 import Searchbar from "../navbarAfterComponent/Searchbar";
-// import Searchbar from "./Searchbar";
 import "./navAfterLogin.css";
-import NavbarMenu from "../navbarMenuComponent/navbarMenu";
 import bellImage from "../../assets/bell.png";
 import userImage from "../../assets/user.png";
 import emailImage from "../../assets/email.png";
