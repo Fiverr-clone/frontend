@@ -26,37 +26,15 @@ function App() {
 			<ApolloProvider client={client}>
 				<Routes>
 					<Route path="/" element={<HomePage />} />
-					<Route path="/mygigs/:id" element={<UserServicesPage />} />
 					<Route path="/navlogin" element={<NavAfterLogin />} />
-					<Route path="/gig/:id" element={<Gig />} />
 					<Route path="/join" element={<Join />} />
 					<Route path="/signin" element={<Login />} />
 					<Route path="/add-gig" element={<AddGig />} />
 					<Route path="/:id/verify/:emailToken" element={<EmailVerify />} />
-					{/* <Route
-						path="/programming-development/:subcategoryName"
-						element={<SubCategoryPage />}
-					/>
-					<Route
-						path="/digital-marketing/:subcategoryName"
-						element={<SubCategoryPage />}
-					/>
-					<Route
-						path="/writing-translation/:subcategoryName"
-						element={<SubCategoryPage />}
-					/>
-					<Route
-						path="/online-courses/:subcategoryName"
-						element={<SubCategoryPage />}
-					/>
-					<Route
-						path="/design/:subcategoryName"
-						element={<SubCategoryPage />}
-					/> */}
-
 					<Route path="/subcategory/:id" element={<SubCategoryPage />} />
 					<Route path="/category/:id" element={<CategoryPage />} />
-					{/* <Route path="/:categoryName" element={<CategoryPage />} /> */}
+					<Route path="/gig/:id" element={<Gig />} />
+					<Route path="/mygigs/:id" element={<UserServicesPage />} />
 				</Routes>
 			</ApolloProvider>
 		</div>

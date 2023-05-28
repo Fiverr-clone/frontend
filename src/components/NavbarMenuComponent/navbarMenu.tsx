@@ -41,8 +41,8 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 					<li className="category-nav-li">
 						<span
 							className="category-span"
-							id="644e9aaaae1fb061ca402f45"
 							onClick={handleMenuItemClick}
+							id="644e9aaaae1fb061ca402f45"
 						>
 							Programming & Development
 						</span>
@@ -61,42 +61,33 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 							>
 								Java and .NET Programming
 							</li>
-							{/* /////////////////////////////////////////////// */}
-							<li className="subcategory-nav-li">
-								<Link
-									to="/programming-development/php-programming"
-									className="subcategory-nav-link"
-									id="644ed06dae1fb061ca402f67"
-								>
-									PHP Programming
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								id="644ed06dae1fb061ca402f67"
+								onClick={handleSubMenuItemClick}
+							>
+								PHP Programming
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/programming-development/python-programming"
-									className="subcategory-nav-link"
-									id="644ed08cae1fb061ca402f68"
-								>
-									Python Programming
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								id="644ed08cae1fb061ca402f68"
+								onClick={handleSubMenuItemClick}
+							>
+								Python Programming
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/programming-development/mobile-app-programming"
-									className="subcategory-nav-link"
-									id="644ed0abae1fb061ca402f69"
-								>
-									Mobile Application Programming
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								id="644ed0abae1fb061ca402f69"
+								onClick={handleSubMenuItemClick}
+							>
+								Mobile Application Programming
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/programming-development/wordpress-services"
-									className="subcategory-nav-link"
-									id="644ed0d2ae1fb061ca402f6a"
-								>
-									WordPress Services
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								id="644ed0d2ae1fb061ca402f6a"
+								onClick={handleSubMenuItemClick}
+							>
+								WordPress Services
 							</li>
 						</ul>
 					</li>
@@ -105,305 +96,162 @@ const NavbarMenu: FunctionComponent<NavbarMenuProps> = () => {
 					<li className="category-nav-li">
 						<span
 							className="category-span"
-							id="644e99fdae1fb061ca402f42"
 							onClick={handleMenuItemClick}
+							id="644e99fdae1fb061ca402f42"
 						>
 							Digital Marketing
 						</span>
 						<ul className="subcategory-nav-ul">
-							<li className="subcategory-nav-li">
-								<Link
-									to="/digital-marketing/website-ads"
-									className="subcategory-nav-link"
-									id="644ecdb4ae1fb061ca402f53"
-								>
-									Website Ads
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ecdb4ae1fb061ca402f53"
+							>
+								Website Ads
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/digital-marketing/content-marketing"
-									className="subcategory-nav-link"
-									id="644ecdf4ae1fb061ca402f54"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ecdf4ae1fb061ca402f54",
-											"/digital-marketing/content-marketing"
-										)
-									}
-								>
-									Content Marketing
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ecdf4ae1fb061ca402f54"
+							>
+								Content Marketing
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/digital-marketing/instagram-marketing"
-									className="subcategory-nav-link"
-									id="644ece18ae1fb061ca402f55"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ece18ae1fb061ca402f55",
-											"/digital-marketing/instagram-marketing"
-										)
-									}
-								>
-									Instagram Marketing
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ece18ae1fb061ca402f55"
+							>
+								Instagram Marketing
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/digital-marketing/facebook-marketing"
-									className="subcategory-nav-link"
-									id="644ece37ae1fb061ca402f56"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ece37ae1fb061ca402f56",
-											"/digital-marketing/facebook-marketing"
-										)
-									}
-								>
-									Facebook Marketing
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ece37ae1fb061ca402f56"
+							>
+								Facebook Marketing
 							</li>
 						</ul>
 					</li>
 
 					{/* Writing & Translation */}
 					<li className="category-nav-li">
-						<span className="category-span">
-							<Link
-								to="/writing-translation"
-								className="category-nav-link"
-								id="644e9a2eae1fb061ca402f43"
-								onClick={() =>
-									handleCategoryClick(
-										"644e9a2eae1fb061ca402f43",
-										"/writing-translation"
-									)
-								}
-							>
-								Writing & Translation
-							</Link>
+						<span
+							className="category-span"
+							id="644e9a2eae1fb061ca402f43"
+							onClick={handleMenuItemClick}
+						>
+							Writing & Translation
 						</span>
 						<ul className="subcategory-nav-ul">
-							<li className="subcategory-nav-li">
-								<Link
-									to="/writing-translation/translation-services"
-									className="subcategory-nav-link"
-									id="644ece62ae1fb061ca402f59"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ece62ae1fb061ca402f59",
-											"/writing-translation/translation-services"
-										)
-									}
-								>
-									Translation Services
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ece62ae1fb061ca402f59"
+							>
+								Translation Services
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/writing-translation/summarising-services"
-									className="subcategory-nav-link"
-									id="644eceaaae1fb061ca402f5a"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644eceaaae1fb061ca402f5a",
-											"/writing-translation/summarising-services"
-										)
-									}
-								>
-									Summarising Services
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644eceaaae1fb061ca402f5a"
+							>
+								Summarising Services
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/writing-translation/sales-copy"
-									className="subcategory-nav-link"
-									id="644ecedfae1fb061ca402f5b"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ecedfae1fb061ca402f5b",
-											"/writing-translation/sales-copy"
-										)
-									}
-								>
-									Sales Copy
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ecedfae1fb061ca402f5b"
+							>
+								Sales Copy
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/writing-translation/scriptwriting"
-									className="subcategory-nav-link"
-									id="644ecef8ae1fb061ca402f5c"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ecef8ae1fb061ca402f5c",
-											"/writing-translation/scriptwriting"
-										)
-									}
-								>
-									Scriptwriting
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ecef8ae1fb061ca402f5c"
+							>
+								Scriptwriting
 							</li>
 						</ul>
 					</li>
 
 					{/* Online Courses */}
 					<li className="category-nav-li">
-						<span className="category-span">
-							<Link
-								to="/online-courses"
-								className="category-nav-link"
-								id="644e9953ae1fb061ca402f40"
-								onClick={() =>
-									handleCategoryClick(
-										"644e9953ae1fb061ca402f40",
-										"/online-courses"
-									)
-								}
-							>
-								Online Courses
-							</Link>
+						<span
+							className="category-span"
+							onClick={handleMenuItemClick}
+							id="644e9953ae1fb061ca402f40"
+						>
+							Online Courses
 						</span>
 						<ul className="subcategory-nav-ul">
-							<li className="subcategory-nav-li">
-								<Link
-									to="/online-courses/learn-programming"
-									className="subcategory-nav-link"
-									id="644ecc0eae1fb061ca402f4b"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ecc0eae1fb061ca402f4b",
-											"/online-courses/learn-programming"
-										)
-									}
-								>
-									Learn Programming
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ecc0eae1fb061ca402f4b"
+							>
+								Learn Programming
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/online-courses/learn-digital-marketing"
-									className="subcategory-nav-link"
-									id="644ecd2bae1fb061ca402f4e"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ecd2bae1fb061ca402f4e",
-											"/online-courses/learn-digital-marketing"
-										)
-									}
-								>
-									Learn Digital Marketing
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ecd2bae1fb061ca402f4e"
+							>
+								Learn Digital Marketing
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/online-courses/learn-english"
-									className="subcategory-nav-link"
-									id="644ecd69ae1fb061ca402f4f"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ecd69ae1fb061ca402f4f",
-											"/online-courses/learn-english"
-										)
-									}
-								>
-									Learn English
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ecd69ae1fb061ca402f4f"
+							>
+								Learn English
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/online-courses/learn-french"
-									className="subcategory-nav-link"
-									id="644ecd8bae1fb061ca402f50"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ecd8bae1fb061ca402f50",
-											"/online-courses/learn-french"
-										)
-									}
-								>
-									Learn French
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ecd8bae1fb061ca402f50"
+							>
+								Learn French
 							</li>
 						</ul>
 					</li>
 
 					{/* Design */}
 					<li className="category-nav-li">
-						<span className="category-span">
-							<Link
-								to="/design"
-								className="category-nav-link"
-								id="644e9a8eae1fb061ca402f44"
-								onClick={() =>
-									handleCategoryClick("644e9a8eae1fb061ca402f44", "/design")
-								}
-							>
-								Design
-							</Link>
+						<span
+							className="category-span"
+							onClick={handleMenuItemClick}
+							id="644e9a8eae1fb061ca402f44"
+						>
+							Design
 						</span>
 						<ul className="subcategory-nav-ul">
-							<li className="subcategory-nav-li">
-								<Link
-									to="/design/book-cover-design"
-									className="subcategory-nav-link"
-									id="644ecd8bae1fb061ca402f50"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ecf28ae1fb061ca402f5f",
-											"/design/book-cover-design"
-										)
-									}
-								>
-									Book Cover Design
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ecd8bae1fb061ca402f50"
+							>
+								Book Cover Design
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/design/business-card-design"
-									className="subcategory-nav-link"
-									id="644ecf65ae1fb061ca402f60"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ecf65ae1fb061ca402f60",
-											"/design/business-card-design"
-										)
-									}
-								>
-									Business Card Design
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ecf65ae1fb061ca402f60"
+							>
+								Business Card Design
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/design/presentation-design"
-									className="subcategory-nav-link"
-									id="644ecf87ae1fb061ca402f61"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ecf87ae1fb061ca402f61",
-											"/design/presentation-design"
-										)
-									}
-								>
-									Presentation Design
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ecf87ae1fb061ca402f61"
+							>
+								Presentation Design
 							</li>
-							<li className="subcategory-nav-li">
-								<Link
-									to="/design/photo-editing-services"
-									className="subcategory-nav-link"
-									id="644ecfa6ae1fb061ca402f62"
-									onClick={() =>
-										handleSubcategoryClick(
-											"644ecfa6ae1fb061ca402f62",
-											"/design/photo-editing-services"
-										)
-									}
-								>
-									Photo Editing Services
-								</Link>
+							<li
+								className="subcategory-nav-li"
+								onClick={handleSubMenuItemClick}
+								id="644ecfa6ae1fb061ca402f62"
+							>
+								Photo Editing Services
 							</li>
 						</ul>
 					</li>
