@@ -110,7 +110,11 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 											Profile
 										</Link>
 									</li>
-									<li className="dropdown-li" onClick={HandleUserGigs}>
+									<li
+										className="dropdown-li"
+										style={{ borderTop: "1px solid #dadbdd" }}
+										onClick={HandleUserGigs}
+									>
 										<Link
 											to="#"
 											style={{ fontSize: "15px", fontWeight: "600" }}
@@ -125,7 +129,14 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 											My Gigs
 										</Link>
 									</li>
-									<li className="dropdown-li" onClick={HandleLogout}>
+									<li
+										className="dropdown-li"
+										style={{
+											borderTop: "1px solid #dadbdd",
+											marginRight: "20px",
+										}}
+										onClick={HandleLogout}
+									>
 										<Link
 											to="#"
 											style={{ fontSize: "15px", fontWeight: "600" }}

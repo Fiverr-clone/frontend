@@ -9,29 +9,34 @@
 	text-align: start;
 	justify-content: space-between;
 	align-items: center;
+	padding: 10px 5px;
 }
 .icons {
 	color: "#414046";
 }
 .triangle-icon {
-	margin: 8px 0px 0px -5px;
-	color: #f6f6f6;
+	margin: 0px -4px;
+	color: #f3f3f3;
 	position: absolute;
 }
-.dropdown-li:hover .icons {
+.dropdown-li a:hover .icons {
 	color: #1dbf73;
 }
 .dropdown {
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.05);
+	/* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); */
+	border: 1px solid #dadbdd;
 	/* display: none; */
-	background-color: #f6f6f6;
+	background-color: white;
+	/* background-color: #f6f6f6; */
 	position: absolute;
 	line-height: 30px;
-	margin-top: 21px;
-	margin-left: -20px;
+	margin-top: 13px;
+	right: 15px;
 	padding-top: 10px;
-	height: 120%;
-	width: 118px;
+	/* height: 120%; */
+	width: 10%;
+	border-radius: 3px;
 	z-index: 0;
 }
 .small-icon {
