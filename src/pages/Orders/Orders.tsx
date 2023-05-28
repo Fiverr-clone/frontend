@@ -1,5 +1,4 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import "./Orders.css";
 import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
@@ -28,13 +27,34 @@ const GET_ORDERS = gql`
 	}
 `;
 
+const COMPLETE_ORDER = gql`
+	mutation CompleteOrder($id: ID!) {
+		completeOrder(id: $id) {
+			id
+		}
+	}
+`;
+
 interface OrdersProps {}
 
 const Orders: FunctionComponent<OrdersProps> = () => {
 	const sellerId = Cookies.get("userId");
-	const [isCompleted, setIsCompleted] = useState(false);
-	const handleComplete = () => {
-		setIsCompleted(!isCompleted);
+
+	const [completeOrder] = useMutation(COMPLETE_ORDER);
+
+	const handleComplete = (id: String) => {
+		completeOrder({
+			variables: {
+				id: id,
+			},
+		})
+			.then((response) => {
+				console.log("Marked as completed");
+				window.location.reload();
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	};
 
 	const { loading, error, data } = useQuery(GET_ORDERS, {
@@ -68,7 +88,7 @@ const Orders: FunctionComponent<OrdersProps> = () => {
 							</thead>
 							<tbody>
 								{data.ordersBySellerId.map((order: any) => (
-									<tr>
+									<tr key={order.id}>
 										<td>
 											<img className="image" src={order.service.image} alt="" />
 										</td>
@@ -76,19 +96,12 @@ const Orders: FunctionComponent<OrdersProps> = () => {
 										<td>{order.service.price}$</td>
 										<td>{order.buyer.username}</td>
 										<td>
-											{isCompleted ? (
-												<FontAwesomeIcon
-													icon={faCheck}
-													style={{ color: "#555555", fontWeight: "25px" }}
-												/>
-											) : (
-												<button
-													className="order-completed"
-													onClick={() => handleComplete()}
-												>
-													Completed
-												</button>
-											)}
+											<button
+												className="order-completed"
+												onClick={() => handleComplete(order.id)}
+											>
+												Completed
+											</button>
 										</td>
 									</tr>
 								))}

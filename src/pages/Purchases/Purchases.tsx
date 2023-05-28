@@ -1,127 +1,107 @@
-import { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
+import { FunctionComponent, useState } from "react";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import "./Purchases.css";
 import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
 import Footer from "../../components/footerComponent/footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import Cookies from "js-cookie";
+import Loading from "../../components/loading/loading";
+
+const GET_PURCHAES = gql`
+	query getOrdersByBuyerId($buyerId: ID!) {
+		ordersByBuyerId(buyerId: $buyerId) {
+			id
+			service {
+				image
+				title
+				price
+			}
+			seller {
+				id
+				username
+			}
+			isCompleted
+			isComfirmed
+		}
+	}
+`;
 
 interface PurchasesProps {}
 
 const Purchases: FunctionComponent<PurchasesProps> = () => {
-	const currentUser = {
-		id: 1,
-		username: "Anna",
-		isSeller: true,
+	const buyerId = Cookies.get("userId");
+	const [isComfirmed, setIsComfirmed] = useState(false);
+	const handleComplete = () => {
+		setIsComfirmed(!isComfirmed);
 	};
+
+	const { loading, error, data } = useQuery(GET_PURCHAES, {
+		variables: { buyerId: buyerId },
+	});
+
+	if (!data) {
+		return null;
+	}
 
 	return (
 		<>
 			<NavbarCombined />
-			<div className="purchases">
-				<div className="container">
-					<div className="title">
-						<h1>My Purchases</h1>
+			{loading && <Loading />}
+			{error && <p>Something went wrong ! </p>}
+			{!loading && !error && (
+				<div className="purchases">
+					<div className="container">
+						<div className="title">
+							<h1>My Purchases</h1>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Image</th>
+									<th>Title</th>
+									<th>Price</th>
+									<th>Freelancer</th>
+									<th>Comfirm</th>
+									<th>Cancel</th>
+								</tr>
+							</thead>
+							<tbody>
+								{data.ordersByBuyerId.map((purchase: any) => (
+									<tr>
+										<td>
+											<img
+												className="image"
+												src={purchase.service.image}
+												alt=""
+											/>
+										</td>
+										<td>{purchase.service.title}</td>
+										<td>{purchase.service.price}$</td>
+										<td>{purchase.seller.username}</td>
+										<td>
+											{isComfirmed ? (
+												<FontAwesomeIcon
+													icon={faCheck}
+													style={{ color: "#555555", fontWeight: "25px" }}
+												/>
+											) : (
+												<button
+													className="order-completed"
+													onClick={() => handleComplete()}
+												>
+													Comfirm
+												</button>
+											)}
+										</td>
+										<td>Cancel</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
 					</div>
-					<table>
-						<tr>
-							<th>Image</th>
-							<th>Title</th>
-							<th>Price</th>
-							<th>Freelancer</th>
-							<th>Contact</th>
-						</tr>
-						<tr>
-							<td>
-								<img
-									className="image"
-									src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-									alt=""
-								/>
-							</td>
-							<td>Stunning concept art</td>
-							<td>59$</td>
-							<td>Maria Anders</td>
-							<td>
-								<img className="message" src="./img/message.png" alt="" />
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<img
-									className="image"
-									src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-									alt=""
-								/>
-							</td>
-							<td>Ai generated concept art</td>
-							<td>79$</td>
-							<td>Francisco Chang</td>
-							<td>
-								<img className="message" src="./img/message.png" alt="" />
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<img
-									className="image"
-									src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-									alt=""
-								/>
-							</td>
-							<td>High quality digital character</td>
-							<td>110$</td>
-							<td>Roland Mendel</td>
-							<td>
-								<img className="message" src="./img/message.png" alt="" />
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<img
-									className="image"
-									src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-									alt=""
-								/>
-							</td>
-							<td>Illustration hyper realistic painting</td>
-							<td>39$</td>
-							<td>Helen Bennett</td>
-							<td>
-								<img className="message" src="./img/message.png" alt="" />
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<img
-									className="image"
-									src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-									alt=""
-								/>
-							</td>
-							<td>Original ai generated digital art</td>
-							<td>119$</td>
-							<td>Yoshi Tannamuri</td>
-							<td>
-								<img className="message" src="./img/message.png" alt="" />
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<img
-									className="image"
-									src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-									alt=""
-								/>
-							</td>
-							<td>Text based ai generated art</td>
-							<td>49$</td>
-							<td>Giovanni Rovelli</td>
-							<td>
-								<img className="message" src="./img/message.png" alt="" />
-							</td>
-						</tr>
-					</table>
 				</div>
-			</div>
+			)}
 			<Footer />
 		</>
 	);

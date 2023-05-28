@@ -69,6 +69,11 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 			},
 		});
 	}, [page, fetchMore]);
+	if (!data) {
+		return null;
+	} else {
+		console.log(data);
+	}
 	return (
 		<>
 			<NavbarCombined />

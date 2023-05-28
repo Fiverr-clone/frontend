@@ -54,7 +54,6 @@ const UserServicesPage: FunctionComponent<CatProps> = () => {
 					showConfirmButton: false,
 					timer: 2000,
 				});
-				// window.location.reload();
 			})
 			.catch((error) => {
 				console.log(error);
