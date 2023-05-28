@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.purchases {
+	font-family: "Roboto", sans-serif;
+	display: flex;
+	justify-content: center;
+	color: #555;
+}
+.purchases .container {
+	width: 1400px;
+	padding: 50px 0px;
+}
+.purchases .container .title {
+	display: flex;
+	justify-content: space-between;
+}
+.purchases .container .title button {
+	background-color: #1dbf73;
+	color: white;
+	font-weight: 500;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+}
+.purchases .container table {
+	width: 100%;
+	text-align: left;
+}
+.purchases .container table tr {
+	height: 50px;
+}
+.purchases .container table tr th {
+	text-align: left;
+}
+.purchases .container table tr td sup {
+	font-size: 12px;
+}
+.purchases .container table tr td .image {
+	width: 50px;
+	height: 25px;
+	object-fit: cover;
+	margin-left: 15px;
+}
+.purchases .container table tr td .message {
+	width: 25px;
+	cursor: pointer;
+}
+.purchases .container tbody tr:nth-child(odd) {
+	background-color: #1dbf730f;
+}

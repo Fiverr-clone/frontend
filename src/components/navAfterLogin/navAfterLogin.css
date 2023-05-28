@@ -1,4 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 .navbar-after {
+	font-family: "Roboto", sans-serif;
 	align-items: baseline;
 	position: relative;
 	z-index: 5;

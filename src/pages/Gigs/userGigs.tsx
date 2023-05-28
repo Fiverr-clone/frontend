@@ -1,5 +1,4 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
 import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { Link, useNavigate } from "react-router-dom";
@@ -40,10 +39,8 @@ const UserServicesPage: FunctionComponent<CatProps> = () => {
 	const userid = Cookies.get("userId");
 	const ITEMS_PER_PAGE = 8;
 	const [page, setPage] = useState(1);
-	// const [serviceid, setServiceid] = useState("");
 
 	const handleServiceid = (serviceId: string) => {
-		// setServiceid(serviceId);
 		console.log(serviceId);
 		deleteService({
 			variables: {

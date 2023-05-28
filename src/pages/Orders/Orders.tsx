@@ -1,135 +1,104 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import "./Orders.css";
+import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
+import Footer from "../../components/footerComponent/footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import Cookies from "js-cookie";
+import Loading from "../../components/loading/loading";
+
+const GET_ORDERS = gql`
+	query getOrdersBySellerId($sellerId: ID!) {
+		ordersBySellerId(sellerId: $sellerId) {
+			id
+			service {
+				image
+				title
+				price
+			}
+			buyer {
+				id
+				username
+			}
+			isCompleted
+			isComfirmed
+		}
+	}
+`;
 
 interface OrdersProps {}
 
 const Orders: FunctionComponent<OrdersProps> = () => {
-	const currentUser = {
-		id: 1,
-		username: "Anna",
-		isSeller: true,
+	const sellerId = Cookies.get("userId");
+	const [isCompleted, setIsCompleted] = useState(false);
+	const handleComplete = () => {
+		setIsCompleted(!isCompleted);
 	};
 
+	const { loading, error, data } = useQuery(GET_ORDERS, {
+		variables: { sellerId: sellerId },
+	});
+
+	if (!data) {
+		return null;
+	}
+
 	return (
-		<div className="orders">
-			<div className="container">
-				<div className="title">
-					<h1>Orders</h1>
+		<>
+			<NavbarCombined />
+			{loading && <Loading />}
+			{error && <p>Something went wrong ! </p>}
+			{!loading && !error && (
+				<div className="orders">
+					<div className="container">
+						<div className="title">
+							<h1>My Orders</h1>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Image</th>
+									<th>Title</th>
+									<th>Price</th>
+									<th>Buyer</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								{data.ordersBySellerId.map((order: any) => (
+									<tr>
+										<td>
+											<img className="image" src={order.service.image} alt="" />
+										</td>
+										<td>{order.service.title}</td>
+										<td>{order.service.price}$</td>
+										<td>{order.buyer.username}</td>
+										<td>
+											{isCompleted ? (
+												<FontAwesomeIcon
+													icon={faCheck}
+													style={{ color: "#555555", fontWeight: "25px" }}
+												/>
+											) : (
+												<button
+													className="order-completed"
+													onClick={() => handleComplete()}
+												>
+													Completed
+												</button>
+											)}
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
 				</div>
-				<table>
-					<tr>
-						<th>Image</th>
-						<th>Title</th>
-						<th>Price</th>
-						{<th>{currentUser.isSeller ? "Buyer" : "Seller"}</th>}
-						<th>Contact</th>
-					</tr>
-					<tr>
-						<td>
-							<img
-								className="image"
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-						</td>
-						<td>Stunning concept art</td>
-						<td>
-							59.<sup>99</sup>
-						</td>
-						<td>Maria Anders</td>
-						<td>
-							<img className="message" src="./img/message.png" alt="" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<img
-								className="image"
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-						</td>
-						<td>Ai generated concept art</td>
-						<td>
-							79.<sup>99</sup>
-						</td>
-						<td>Francisco Chang</td>
-						<td>
-							<img className="message" src="./img/message.png" alt="" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<img
-								className="image"
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-						</td>
-						<td>High quality digital character</td>
-						<td>
-							110.<sup>99</sup>
-						</td>
-						<td>Roland Mendel</td>
-						<td>
-							<img className="message" src="./img/message.png" alt="" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<img
-								className="image"
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-						</td>
-						<td>Illustration hyper realistic painting</td>
-						<td>
-							39.<sup>99</sup>
-						</td>
-						<td>Helen Bennett</td>
-						<td>
-							<img className="message" src="./img/message.png" alt="" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<img
-								className="image"
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-						</td>
-						<td>Original ai generated digital art</td>
-						<td>
-							119.<sup>99</sup>
-						</td>
-						<td>Yoshi Tannamuri</td>
-						<td>
-							<img className="message" src="./img/message.png" alt="" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<img
-								className="image"
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-						</td>
-						<td>Text based ai generated art</td>
-						<td>
-							49.<sup>99</sup>
-						</td>
-						<td>Giovanni Rovelli</td>
-						<td>
-							<img className="message" src="./img/message.png" alt="" />
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
+			)}
+			<Footer />
+		</>
 	);
 };
 
