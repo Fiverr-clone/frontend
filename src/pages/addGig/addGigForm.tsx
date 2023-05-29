@@ -240,7 +240,7 @@ const AddGigForm: FunctionComponent<AddGigFormProps> = () => {
 						/>
 
 						<button type="submit" className="AddService-btn">
-							Add Service
+							Add Gig
 						</button>
 					</div>
 				</form>

@@ -1,85 +1,141 @@
-import React from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Conversations.css";
+import { gql, useMutation, useQuery } from "@apollo/client";
+import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
+import Footer from "../../components/footerComponent/footer";
+import Cookies from "js-cookie";
+import Loading from "../../components/loading/loading";
 
-const Conversations = () => {
-  const currentUser = {
-    id: 1,
-    username: "Anna",
-    isSeller: true,
-  };
+const GET_CONVERSATIONS = gql`
+	query getAllConversations($userId: ID!) {
+		conversationsByUserId(userId: $userId) {
+			id
+			lastMessage
+			readByUser
+			transmitter {
+				id
+				username
+			}
+			receiver {
+				id
+				username
+			}
+		}
+	}
+`;
 
-  const message = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-  maxime cum corporis esse aspernatur laborum dolorum? Animi
-  molestias aliquam, cum nesciunt, aut, ut quam vitae saepe repellat
-  nobis praesentium placeat.`;
+const COMPLETE_ORDER = gql`
+	mutation UpdateConversation($id: ID!) {
+		updateConversation(id: $id) {
+			id
+			readByUser
+		}
+	}
+`;
 
-  return (
-    <div className="messages">
-      <div className="container">
-        <div className="title">
-          <h1>Conversations
-          </h1>
-        </div>
-        <table>
-          <tr>
-            <th>{currentUser.isSeller ? "Buyer" : "Seller"}</th>
-            <th>Last Message</th>
-            <th>Date</th>
-            <th>Action</th>
-          </tr>
-          <tr className="active">
-            <td>Charley Sharp</td>
-            <td>
-              <Link to="/message/123" className="link">
-                {message.substring(0, 100)}...
-              </Link>
-            </td>
-            <td>1 hour ago</td>
-            <td>
-              <button>Mark as Read</button>
-            </td>
-          </tr>
-          <tr className="active">
-            <td>John Doe</td>
+interface ConversationsProps {}
 
-            <td>
-              <Link to="/message/123" className="link">
-                {message.substring(0, 100)}...
-              </Link>
-            </td>
-            <td>2 hours ago</td>
-            <td>
-              <button>Mark as Read</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Elinor Good</td>
-            <td>
-              <Link to="/message/123" className="link">
-                {message.substring(0, 100)}...
-              </Link>
-            </td>
-            <td>1 day ago</td>
-          </tr>
-          <tr>
-            <td>Garner David </td>
-            <td>
-              <Link to="/message/123" className="link">
-                {message.substring(0, 100)}...
-              </Link>
-            </td>
-            <td>2 days ago</td>
-          </tr>
-          <tr>
-            <td>Troy Oliver</td>
-            <td>{message.substring(0, 100)}</td>
-            <td>1 week ago</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  );
+const Conversations: FunctionComponent<ConversationsProps> = () => {
+	const userId = Cookies.get("userId");
+	const [updateConversation] = useMutation(COMPLETE_ORDER);
+
+	const [msgRead, setMsgRead] = useState<boolean[]>([]);
+	const { loading, error, data } = useQuery(GET_CONVERSATIONS, {
+		variables: { userId: userId },
+	});
+
+	useEffect(() => {
+		if (data) {
+			const initialReadStatus = data.conversationsByUserId.map(() => false);
+			setMsgRead(initialReadStatus);
+		}
+	}, [data]);
+	const HandleRead = (index: number, id: String) => {
+		updateConversation({
+			variables: {
+				id,
+			},
+		})
+			.then((response) => {
+				setMsgRead((prevState) => {
+					const updatedReadStatus = [...prevState];
+					updatedReadStatus[index] = !updatedReadStatus[index];
+					return updatedReadStatus;
+				});
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+
+	// const markAsRead = () => {
+	// 	setMsgRead(!msgRead);
+	// };
+	// useEffect(() => {
+	// 	if (!data && data.conversationsByUserId[0].readByUser == false) {
+	// 		console.log(data.conversationsByUserId[0].readByUser);
+	// 		// setMsgRead(true);
+	// 	}
+	// }, []);
+
+	if (!data) {
+		return null;
+	}
+
+	return (
+		<>
+			<NavbarCombined />
+			{loading && <Loading />}
+			{error && <p>Something went wrong ! </p>}
+			{!loading && !error && (
+				<div className="messages">
+					<div className="container">
+						<div className="title">
+							<h1>Conversations</h1>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Username</th>
+									<th>Last Message</th>
+									<th>Lien</th>
+									<th>Date</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								{data.conversationsByUserId.map((conv: any, index: number) => (
+									<tr className="active" key={conv.id}>
+										<td>{conv.receiver.username}</td>
+										<td>{conv.lastMessage}</td>
+										<td>
+											<Link to="/message/123" className="link">
+												link
+											</Link>
+										</td>
+										<td>2 hours ago</td>
+										{msgRead[index] ? (
+											<td>
+												<p>Read</p>
+											</td>
+										) : (
+											<td>
+												<button onClick={() => HandleRead(index, conv.id)}>
+													Mark as Read
+												</button>
+											</td>
+										)}
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			)}
+			<Footer />
+		</>
+	);
 };
 
 export default Conversations;

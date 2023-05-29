@@ -21,8 +21,6 @@ import Orders from "./pages/Orders/Orders";
 import Message from "./pages/Message/Message";
 import Conversations from "./pages/Conversations/Conversations";
 
-
-
 const client = new ApolloClient({
 	uri: "http://localhost:8000/graphql",
 	cache: new InMemoryCache(),
@@ -65,11 +63,9 @@ function App() {
 					<Route path="/mygigs/:id" element={<UserServicesPage />} />
 					<Route path="/ord" element={<Orders />} />
 					<Route path="/mess/:id" element={<Message />} />
-					{/* <Route path="/conversations/:id" element={<Conversations />} /> */}
-					
+					<Route path="/conv" element={<Conversations />} />
 				</Routes>
 			</ApolloProvider>
-		
 		</div>
 	);
 }
