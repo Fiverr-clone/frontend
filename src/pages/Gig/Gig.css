@@ -258,6 +258,9 @@
 .gig .container .right .features .item img {
 	width: 14px;
 }
+.gig .container .right button:hover {
+	background-color: #158852;
+}
 .gig .container .right button {
 	background-color: #1dbf73;
 	padding: 10px;
@@ -283,6 +286,9 @@
 	font-size: 18px;
 }
 
+.gig .container .left .seller .info button:hover {
+	background-color: #158852;
+}
 .gig .container .left .seller .info button {
 	background-color: #1dbf73;
 	color: white;
@@ -291,6 +297,7 @@
 	font-size: 18px;
 	width: 200px;
 	padding: 10px 20px;
+	margin-top: 35px;
 }
 .gig .container .left .seller .info p {
 	margin: 0;
