@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
 import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 // import { Types } from "mongoose";
 
 interface Service {
@@ -98,7 +99,18 @@ const Gig: React.FC = () => {
 				console.log(res);
 				navigate(`/conversations/${transmitterId}`);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				if (err.message === "Conversation already exists") {
+					Swal.fire({
+						icon: "error",
+						title: "Conversation already exists",
+						showConfirmButton: true,
+					});
+					navigate(`/conversations/${transmitterId}`);
+				} else {
+					console.log(err);
+				}
+			});
 	};
 
 	if (!data) {

@@ -60,7 +60,7 @@ function App() {
 					<Route path="/add-gig" element={<AddGig />} />
 					<Route path="/mygigs/:id" element={<UserServicesPage />} />
 					<Route path="/ord" element={<Orders />} />
-					<Route path="/mess/:id" element={<Message />} />
+					<Route path="/message/:id" element={<Message />} />
 					<Route path="/conversations/:id" element={<Conversations />} />
 				</Routes>
 			</ApolloProvider>

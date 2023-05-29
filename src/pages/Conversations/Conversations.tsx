@@ -104,7 +104,7 @@ const Conversations: FunctionComponent<ConversationsProps> = () => {
 										<td>{conv.lastMessage}</td>
 										<td>
 											<Link to="/message/123" className="link">
-												link
+												Conversation
 											</Link>
 										</td>
 										<td>2 hours ago</td>

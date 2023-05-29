@@ -39,6 +39,9 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 	const HandleUserGigs = () => {
 		navigate(`/mygigs/${userid}`);
 	};
+	const HandleConvos = () => {
+		navigate(`/conversations/${userid}`);
+	};
 	return (
 		<div>
 			<nav className="navbar-after">
@@ -74,7 +77,15 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 						<img src={bellImage} alt="Bell Icon" className="small-icon" />
 					</li>
 					<li>
-						<img src={emailImage} alt="Email Icon" className="small-icon" />
+						<img
+							src={emailImage}
+							alt="Email Icon"
+							className="small-icon"
+							style={{
+								cursor: "pointer",
+							}}
+							onClick={() => HandleConvos()}
+						/>
 					</li>
 					<li>
 						<div className="user-icon-container" onClick={HandleUserClick}>
