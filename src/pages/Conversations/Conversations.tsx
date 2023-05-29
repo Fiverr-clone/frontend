@@ -45,12 +45,26 @@ const Conversations: FunctionComponent<ConversationsProps> = () => {
 		variables: { userId: userId },
 	});
 
+	// useEffect(() => {
+	// 	if (data) {
+	// 		const initialReadStatus = data.conversationsByUserId.map(() => false);
+	// 		setMsgRead(initialReadStatus);
+	// 	}
+	// }, [data]);
+
+	// ...
+
 	useEffect(() => {
 		if (data) {
-			const initialReadStatus = data.conversationsByUserId.map(() => false);
+			const initialReadStatus = data.conversationsByUserId.map(
+				(conv: any) => conv.readByUser
+			);
 			setMsgRead(initialReadStatus);
 		}
 	}, [data]);
+
+	// ...
+
 	const HandleRead = (index: number, id: String) => {
 		updateConversation({
 			variables: {
@@ -68,16 +82,6 @@ const Conversations: FunctionComponent<ConversationsProps> = () => {
 				console.log(error);
 			});
 	};
-
-	// const markAsRead = () => {
-	// 	setMsgRead(!msgRead);
-	// };
-	// useEffect(() => {
-	// 	if (!data && data.conversationsByUserId[0].readByUser == false) {
-	// 		console.log(data.conversationsByUserId[0].readByUser);
-	// 		// setMsgRead(true);
-	// 	}
-	// }, []);
 
 	if (!data) {
 		return null;
