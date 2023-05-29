@@ -1,12 +1,13 @@
 import React from "react";
-import { gql, useQuery } from "@apollo/client";
-import { Link, useParams } from "react-router-dom";
+import { gql, useMutation, useQuery } from "@apollo/client";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../components/loading/loading";
 import Footer from "../../components/footerComponent/footer";
 import "./Gig.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
+import Cookies from "js-cookie";
 // import { Types } from "mongoose";
 
 interface Service {
@@ -63,8 +64,21 @@ const GET_ONE_SERVICE = gql`
 	}
 `;
 
+const CREATE_CONVERSATION = gql`
+	mutation CreateConversation($transmitterId: ID!, $receiverId: ID!) {
+		createConversation(transmitterId: $transmitterId, receiverId: $receiverId) {
+			id
+		}
+	}
+`;
+
 const Gig: React.FC = () => {
+	const navigate = useNavigate();
 	const serviceId = localStorage.getItem("serviceId") || "";
+
+	const [createConversation] = useMutation(CREATE_CONVERSATION);
+
+	const transmitterId = Cookies.get("userId");
 
 	const { loading, error, data } = useQuery<ServiceData, ServiceVariables>(
 		GET_ONE_SERVICE,
@@ -72,6 +86,20 @@ const Gig: React.FC = () => {
 			variables: { id: serviceId },
 		}
 	);
+
+	const HandleCreateConversation = (receiverId: string) => {
+		createConversation({
+			variables: {
+				transmitterId,
+				receiverId,
+			},
+		})
+			.then((res) => {
+				console.log(res);
+				navigate(`/conversations/${transmitterId}`);
+			})
+			.catch((err) => console.log(err));
+	};
 
 	if (!data) {
 		return null;
@@ -120,7 +148,7 @@ const Gig: React.FC = () => {
 							</div>
 							<h2>About This Gig</h2>
 							<p>{service.description}</p>
-							<div className="seller">
+							<div className="seller" key={service.userId}>
 								<h2>About The Seller</h2>
 
 								<div className="info">
@@ -134,7 +162,12 @@ const Gig: React.FC = () => {
 									</div>
 									<p>{service.user.email}</p>
 
-									<button>Contact Me</button>
+									<button
+										className="contact-me"
+										onClick={() => HandleCreateConversation(service.userId)}
+									>
+										Contact Me
+									</button>
 								</div>
 							</div>
 							<div className="reviews">

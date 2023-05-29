@@ -42,8 +42,6 @@ function App() {
 					<Route path="/category/:id" element={<CategoryPage />} />
 					<Route path="/gig/:id" element={<Gig />} />
 					<Route path="/:id/verify/:emailToken" element={<EmailVerify />} />
-					<Route path="/mess/:id" element={<Message />} />
-					<Route path="/conversations/:id" element={<Conversations />} />
 				</Routes>
 			</ApolloProvider>
 		);
@@ -63,7 +61,7 @@ function App() {
 					<Route path="/mygigs/:id" element={<UserServicesPage />} />
 					<Route path="/ord" element={<Orders />} />
 					<Route path="/mess/:id" element={<Message />} />
-					<Route path="/conv" element={<Conversations />} />
+					<Route path="/conversations/:id" element={<Conversations />} />
 				</Routes>
 			</ApolloProvider>
 		</div>

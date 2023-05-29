@@ -10,13 +10,29 @@
 	display: flex;
 	justify-content: space-between;
 }
-.messages .container .title button {
+/* .messages .container .title button {
 	background-color: #1dbf73;
 	color: white;
 	font-weight: 500;
 	border: none;
 	padding: 10px;
 	cursor: pointer;
+} */
+.btn-read {
+	cursor: pointer;
+	border: 1px solid #1dbf73;
+	border-radius: 5px;
+	padding: 5px 7px;
+	font-size: 16px;
+	font-weight: 600;
+	text-decoration: none;
+	color: #1dbf73;
+	background-color: white;
+	transition: all 0.3s ease-in-out;
+}
+.btn-read:hover {
+	color: white;
+	background-color: #18a865;
 }
 .messages .container table {
 	width: 100%;
@@ -37,13 +53,13 @@
 .messages .container table tr td:nth-child(3) {
 	color: gray;
 }
-.messages .container table tr button {
+/* .messages .container table tr button {
 	background-color: #1dbf73;
 	color: white;
 	padding: 10px;
 	border: none;
 	cursor: pointer;
-}
+} */
 .messages .container table tr.active {
 	background-color: #1dbf730f;
 }

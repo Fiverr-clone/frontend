@@ -45,15 +45,6 @@ const Conversations: FunctionComponent<ConversationsProps> = () => {
 		variables: { userId: userId },
 	});
 
-	// useEffect(() => {
-	// 	if (data) {
-	// 		const initialReadStatus = data.conversationsByUserId.map(() => false);
-	// 		setMsgRead(initialReadStatus);
-	// 	}
-	// }, [data]);
-
-	// ...
-
 	useEffect(() => {
 		if (data) {
 			const initialReadStatus = data.conversationsByUserId.map(
@@ -62,8 +53,6 @@ const Conversations: FunctionComponent<ConversationsProps> = () => {
 			setMsgRead(initialReadStatus);
 		}
 	}, [data]);
-
-	// ...
 
 	const HandleRead = (index: number, id: String) => {
 		updateConversation({
@@ -125,7 +114,10 @@ const Conversations: FunctionComponent<ConversationsProps> = () => {
 											</td>
 										) : (
 											<td>
-												<button onClick={() => HandleRead(index, conv.id)}>
+												<button
+													className="btn-read"
+													onClick={() => HandleRead(index, conv.id)}
+												>
 													Mark as Read
 												</button>
 											</td>

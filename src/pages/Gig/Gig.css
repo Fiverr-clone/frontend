@@ -283,15 +283,15 @@
 	font-size: 18px;
 }
 
-.gig .container .left .seller .info button {
+/* .gig .container .left .seller .info button {
 	background-color: #1dbf73;
 	color: white;
 	border: none;
 	font-weight: 500;
 	font-size: 18px;
 	width: 200px;
-	padding: 10px 20px;
-}
+	padding: 10px 20px; 
+}*/
 .gig .container .left .seller .info p {
 	margin: 0;
 }
@@ -302,4 +302,22 @@
 
 .gig .container .left .seller .info p:last-child {
 	align-self: flex-end;
+}
+
+.contact-me {
+	margin-top: 30px;
+	cursor: pointer;
+	border: 1px solid #1dbf73;
+	border-radius: 5px;
+	padding: 7px 10px;
+	font-size: 25px;
+	font-weight: 600;
+	text-decoration: none;
+	color: #1dbf73;
+	background-color: white;
+	transition: all 0.3s ease-in-out;
+}
+.contact-me:hover {
+	color: white;
+	background-color: #18a865;
 }
