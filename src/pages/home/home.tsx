@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import NavbarBefore from "../../components/navbarBeforeComponent/navbarBefore";
-import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
 
 import Featured from "../../components/featured/Featured";
 import Trusted from "../../components/trusted/Trusted";
 import Footer from "../../components/footerComponent/footer";
-import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
 import Slide from "../../components/Slide/Slide";
 import CatCard from "../../components/catCard/CatCard";
 import { cards } from "../../data";

@@ -1,5 +1,4 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import NavbarAfter from "../../components/navbarAfterComponent/navbarAfter";
 import NavbarMenu from "../../components/navbarMenuComponent/navbarMenu";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { Link, useNavigate } from "react-router-dom";
@@ -40,10 +39,8 @@ const UserServicesPage: FunctionComponent<CatProps> = () => {
 	const userid = Cookies.get("userId");
 	const ITEMS_PER_PAGE = 8;
 	const [page, setPage] = useState(1);
-	// const [serviceid, setServiceid] = useState("");
 
 	const handleServiceid = (serviceId: string) => {
-		// setServiceid(serviceId);
 		console.log(serviceId);
 		deleteService({
 			variables: {
@@ -53,11 +50,11 @@ const UserServicesPage: FunctionComponent<CatProps> = () => {
 			.then((response) => {
 				Swal.fire({
 					icon: "success",
-					title: "Your services has been deleted successfully",
+					title: "Your service has been deleted successfully",
 					showConfirmButton: false,
 					timer: 2000,
 				});
-				// window.location.reload();
+				window.location.reload();
 			})
 			.catch((error) => {
 				console.log(error);
@@ -110,12 +107,11 @@ const UserServicesPage: FunctionComponent<CatProps> = () => {
 			{!loading && !error && (
 				<div className="services-wrapper">
 					{data.user.services.map((service: any) => (
-						<div
-							className="service-whole-container"
-							key={service.id}
-							onClick={() => handleServiceClick(service.id)}
-						>
-							<div className="image-container">
+						<div className="service-whole-container" key={service.id}>
+							<div
+								className="image-container"
+								onClick={() => handleServiceClick(service.id)}
+							>
 								<img
 									src={service.image}
 									className="service-img"

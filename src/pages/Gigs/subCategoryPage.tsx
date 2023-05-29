@@ -69,6 +69,11 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 			},
 		});
 	}, [page, fetchMore]);
+	if (!data) {
+		return null;
+	} else {
+		console.log(data);
+	}
 	return (
 		<>
 			<NavbarCombined />
@@ -87,12 +92,11 @@ const SubCategoryPage: FunctionComponent<SubCatProps> = () => {
 			{!loading && !error && (
 				<div className="services-wrapper">
 					{data.subcategory.services.map((service: any) => (
-						<div
-							className="service-whole-container"
-							key={service.id}
-							onClick={() => handleServiceClick(service.id)}
-						>
-							<div className="image-container">
+						<div className="service-whole-container" key={service.id}>
+							<div
+								className="image-container"
+								onClick={() => handleServiceClick(service.id)}
+							>
 								<img
 									src={service.image}
 									className="service-img"

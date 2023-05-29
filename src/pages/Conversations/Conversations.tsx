@@ -92,7 +92,7 @@ const Conversations: FunctionComponent<ConversationsProps> = () => {
 								<tr>
 									<th>Username</th>
 									<th>Last Message</th>
-									<th>Lien</th>
+									<th>Link</th>
 									<th>Date</th>
 									<th>Action</th>
 								</tr>

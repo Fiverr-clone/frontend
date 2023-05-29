@@ -90,12 +90,11 @@ const CategoryPage: FunctionComponent<CategoryPageProps> = () => {
 			{!loading && !error && (
 				<div className="services-wrapper">
 					{data.category.services.map((service: any) => (
-						<div
-							className="service-whole-container"
-							key={service.id}
-							onClick={() => handleServiceClick(service.id)}
-						>
-							<div className="image-container">
+						<div className="service-whole-container" key={service.id}>
+							<div
+								className="image-container"
+								onClick={() => handleServiceClick(service.id)}
+							>
 								<img
 									src={service.image}
 									className="service-img"

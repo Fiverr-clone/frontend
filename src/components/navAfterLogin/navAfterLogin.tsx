@@ -39,6 +39,12 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 	const HandleUserGigs = () => {
 		navigate(`/mygigs/${userid}`);
 	};
+	const HandleOrders = () => {
+		navigate(`/myorders/${userid}`);
+	};
+	const HandlePurchases = () => {
+		navigate(`/mypurchases/${userid}`);
+	};
 	const HandleConvos = () => {
 		navigate(`/conversations/${userid}`);
 	};
@@ -67,11 +73,11 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 							Add Gig
 						</Link>
 					</li>
-					<li>
-						<Link to="/mypurchases">My Purchases</Link>
+					<li onClick={HandlePurchases}>
+						<Link to="#">My Purchases</Link>
 					</li>
-					<li>
-						<Link to="/myorders">My Orders</Link>
+					<li onClick={HandleOrders}>
+						<Link to="#">My Orders</Link>
 					</li>
 					<li>
 						<img src={bellImage} alt="Bell Icon" className="small-icon" />

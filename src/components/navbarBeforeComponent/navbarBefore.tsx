@@ -35,7 +35,7 @@ const NavbarBefore: FunctionComponent<NavbarBeforeProps> = () => {
 				</li>
 
 				<li>
-					<Link to="/">Become a Seller</Link>
+					<Link to="/">Contact Us</Link>
 				</li>
 				<li>
 					<Link to="/signin">Sign In</Link>

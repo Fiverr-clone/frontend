@@ -3,6 +3,7 @@ import "./addGig.css";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 interface AddGigFormProps {}
 
@@ -18,6 +19,7 @@ interface SubCategory {
 const AddGigForm: FunctionComponent<AddGigFormProps> = () => {
 	const navigate = useNavigate();
 	const token = Cookies.get("token");
+	const userid = Cookies.get("userId");
 	const [categories, setCategories] = useState<Category[]>([]);
 	const [subCategories, setSubCategories] = useState<SubCategory[]>([]);
 	const [fileData, setFileData] = useState("");
@@ -107,7 +109,6 @@ const AddGigForm: FunctionComponent<AddGigFormProps> = () => {
 		userServiceData.append("price", Servicedata.price);
 		userServiceData.append("deliveryTime", Servicedata.deliveryTime);
 		userServiceData.append("buyerInstruction", Servicedata.buyerInstruction);
-		// userServiceData.append("image", imageFile);
 		userServiceData.append("image", fileData);
 		axios
 			.post("http://localhost:8000/api/add-service", userServiceData, {
@@ -117,9 +118,13 @@ const AddGigForm: FunctionComponent<AddGigFormProps> = () => {
 			})
 			.then((response) => {
 				if (response.status === 201) {
-					console.log(response.data);
-					navigate("/");
+					Swal.fire({
+						icon: "success",
+						title: "Gig added",
+						showConfirmButton: true,
+					});
 				}
+				navigate(`/mygigs/${userid}`);
 			})
 			.catch((error) => {
 				if (error.response.status === 500) {

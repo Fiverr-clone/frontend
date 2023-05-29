@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
 import Login from "./pages/login/login";
@@ -11,13 +11,12 @@ import UserServicesPage from "./pages/Gigs/userGigs";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import CategoryPage from "./pages/Gigs/categoryPage";
 import HomePage from "./pages/home/home";
-import NavAfterLogin from "./components/navAfterLogin/navAfterLogin";
 import Gig from "./pages/Gig/Gig";
 import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import NotFound from "./pages/NotFound/NotFound";
-import Loading from "./components/loading/loading";
 import Orders from "./pages/Orders/Orders";
+import Purchases from "./pages/Purchases/Purchases";
 import Message from "./pages/Message/Message";
 import Conversations from "./pages/Conversations/Conversations";
 
@@ -53,13 +52,16 @@ function App() {
 					{/* need to be logged in */}
 					<Route path="*" element={<NotFound />} />
 					<Route path="/" element={<HomePage />} />
+					<Route path="/signin" element={<HomePage />} />
+					<Route path="/join" element={<HomePage />} />
 					<Route path="/subcategory/:id" element={<SubCategoryPage />} />
 					<Route path="/category/:id" element={<CategoryPage />} />
 					<Route path="/gig/:id" element={<Gig />} />
 					<Route path="/:id/verify/:emailToken" element={<EmailVerify />} />
 					<Route path="/add-gig" element={<AddGig />} />
 					<Route path="/mygigs/:id" element={<UserServicesPage />} />
-					<Route path="/ord" element={<Orders />} />
+					<Route path="/myorders/:id" element={<Orders />} />
+					<Route path="/mypurchases/:id" element={<Purchases />} />
 					<Route path="/message/:id" element={<Message />} />
 					<Route path="/conversations/:id" element={<Conversations />} />
 				</Routes>
