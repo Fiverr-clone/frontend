@@ -101,7 +101,7 @@ const LoginForm: FunctionComponent<LoginFormProps> = ({ onError }) => {
 							value={data.email}
 							onChange={handleChange}
 							className="input-field"
-							placeholder="Email / Username"
+							placeholder="Email"
 							style={{
 								border: error ? "1px solid red" : "1px solid #c5c6c9",
 							}}

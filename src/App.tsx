@@ -50,6 +50,8 @@ function App() {
 					{/* need to be logged in */}
 					<Route path="*" element={<NotFound />} />
 					<Route path="/" element={<HomePage />} />
+					<Route path="/signin" element={<HomePage />} />
+					<Route path="/join" element={<HomePage />} />
 					<Route path="/subcategory/:id" element={<SubCategoryPage />} />
 					<Route path="/category/:id" element={<CategoryPage />} />
 					<Route path="/gig/:id" element={<Gig />} />
