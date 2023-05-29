@@ -278,7 +278,7 @@ const Gig: React.FC = () => {
 							<div className="details">
 								<div className="item">
 									<img src="/img/clock.png" alt="" />
-									<span>2 Days Delivery</span>
+									<span>{service.deliveryTime} Days Delivery</span>
 								</div>
 							</div>
 							<div className="features">

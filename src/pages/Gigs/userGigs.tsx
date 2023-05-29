@@ -50,10 +50,11 @@ const UserServicesPage: FunctionComponent<CatProps> = () => {
 			.then((response) => {
 				Swal.fire({
 					icon: "success",
-					title: "Your services has been deleted successfully",
+					title: "Your service has been deleted successfully",
 					showConfirmButton: false,
 					timer: 2000,
 				});
+				window.location.reload();
 			})
 			.catch((error) => {
 				console.log(error);
@@ -106,12 +107,11 @@ const UserServicesPage: FunctionComponent<CatProps> = () => {
 			{!loading && !error && (
 				<div className="services-wrapper">
 					{data.user.services.map((service: any) => (
-						<div
-							className="service-whole-container"
-							key={service.id}
-							onClick={() => handleServiceClick(service.id)}
-						>
-							<div className="image-container">
+						<div className="service-whole-container" key={service.id}>
+							<div
+								className="image-container"
+								onClick={() => handleServiceClick(service.id)}
+							>
 								<img
 									src={service.image}
 									className="service-img"

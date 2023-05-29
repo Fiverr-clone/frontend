@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import Cookies from "js-cookie";
 import Loading from "../../components/loading/loading";
+import Swal from "sweetalert2";
 
 const GET_ORDERS = gql`
 	query getOrdersBySellerId($sellerId: ID!) {
@@ -49,8 +50,12 @@ const Orders: FunctionComponent<OrdersProps> = () => {
 			},
 		})
 			.then((response) => {
-				console.log("Marked as completed");
-				window.location.reload();
+				Swal.fire({
+					icon: "success",
+					title: "Your order is completed",
+					showConfirmButton: false,
+					timer: 2000,
+				});
 			})
 			.catch((error) => {
 				console.log(error);
