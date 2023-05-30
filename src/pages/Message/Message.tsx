@@ -1,207 +1,94 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import "./Message.css";
-import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
+import { FunctionComponent, useEffect, useState } from "react";
+import { gql, useMutation, useQuery } from "@apollo/client";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import Loading from "../../components/loading/loading";
 import Footer from "../../components/footerComponent/footer";
+import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
+import Cookies from "js-cookie";
 
-const Message = () => {
+const GET_MESSAGES = gql`
+	query getAllMessages($userId: ID!, $conversationId: ID!) {
+		message(userId: $userId, conversationId: $conversationId) {
+			id
+			userId
+			desc
+			User {
+				id
+				username
+			}
+			Conversation {
+				id
+				transmitter {
+					id
+					username
+				}
+				receiver {
+					id
+					username
+				}
+			}
+		}
+	}
+`;
+
+interface MessageProps {}
+
+const Message: FunctionComponent<MessageProps> = () => {
+	const { conversationId } = useParams<{ conversationId: string }>();
+	const userId = Cookies.get("userId");
+	// const [isTransmitter, setTransmitter] = useState(false);
+	const { loading, error, data } = useQuery(GET_MESSAGES, {
+		variables: { userId, conversationId },
+	});
+	// useEffect(() => {
+	// 	if (data && data.message.length > 0) {
+	// 		const conversation = data.message[0].Conversation;
+	// 		if (conversation && conversation.transmitter.id === userId) {
+	// 			setTransmitter(true);
+	// 		}
+	// 	}
+	// }, [data, userId]);
+	if (!data) {
+		return null;
+	}
+
 	return (
 		<>
 			<NavbarCombined />
-			<div className="message">
-				<div className="container">
-					<span className="breadcrumbs">
-						<Link to="/messages">Messages</Link> John Doe
-					</span>
-					<div className="messages">
-						<div className="item">
-							<img
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
+			{loading && <Loading />}
+			{error && <p>Something went wrong ! </p>}
+			{!loading && !error && (
+				<div className="message">
+					<div className="container">
+						<span className="breadcrumbs">
+							<Link to="/messages">Messages</Link> &nbsp;John Doe
+							{/* {data.message.Conversation.receiver.username} */}
+						</span>
+
+						<div className="messages">
+							{data.message.map((message: any) => {
+								// const isTransmitter =
+								// 	message.Conversation.transmitter.id === userId;
+								const isOwner = message.userId === userId;
+								return (
+									<div
+										className={isOwner ? "item owner" : "item "}
+										key={message.id}
+									>
+										<p>{message.desc}</p>
+									</div>
+								);
+							})}
 						</div>
-						<div className="item owner">
-							<img
-								src="https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
+						<hr />
+						<div className="write">
+							<textarea placeholder="write a message" />
+							<button>Send</button>
 						</div>
-						<div className="item">
-							<img
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
-						</div>
-						<div className="item owner">
-							<img
-								src="https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
-						</div>
-						<div className="item">
-							<img
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
-						</div>
-						<div className="item owner">
-							<img
-								src="https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
-						</div>
-						<div className="item">
-							<img
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
-						</div>
-						<div className="item owner">
-							<img
-								src="https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
-						</div>
-						<div className="item">
-							<img
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
-						</div>
-						<div className="item owner">
-							<img
-								src="https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
-						</div>
-						<div className="item">
-							<img
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
-						</div>
-						<div className="item">
-							<img
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
-						</div>
-						<div className="item owner">
-							<img
-								src="https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
-						</div>
-						<div className="item owner">
-							<img
-								src="https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
-						</div>
-						<div className="item">
-							<img
-								src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
-								alt=""
-							/>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-								iure mollitia perspiciatis officiis voluptate? Sequi quae
-								officia possimus, iusto labore alias mollitia eveniet nemo
-								placeat laboriosam nisi animi! Error, tenetur!
-							</p>
-						</div>
-					</div>
-					<hr />
-					<div className="write">
-						<textarea placeholder="write a message" />
-						<button>Send</button>
 					</div>
 				</div>
-			</div>
+			)}
 			<Footer />
 		</>
 	);

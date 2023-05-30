@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Loading from "../../components/loading/loading";
@@ -9,36 +9,6 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
 import Swal from "sweetalert2";
 import Cookies from "js-cookie";
-// import { Types } from "mongoose";
-
-interface Service {
-	id: string;
-	userId: string;
-	user: {
-		username: string;
-		email: string;
-	};
-	category: {
-		categoryName: string;
-	};
-	subCategory: {
-		name: string;
-	};
-	title: string;
-	price: number;
-	description: string;
-	image: string;
-	deliveryTime: string;
-	buyerInstruction: string;
-}
-
-interface ServiceData {
-	service: Service;
-}
-
-interface ServiceVariables {
-	id: string;
-}
 
 const GET_ONE_SERVICE = gql`
 	query getOneService($id: ID!) {
@@ -80,7 +50,9 @@ const CREATE_CONVERSATION = gql`
 	}
 `;
 
-const Gig: React.FC = () => {
+interface GigProps {}
+
+const Gig: FunctionComponent<GigProps> = () => {
 	const navigate = useNavigate();
 	const serviceId = localStorage.getItem("serviceId") || "";
 	const buyerId = Cookies.get("userId");
@@ -111,14 +83,10 @@ const Gig: React.FC = () => {
 	};
 	const [createConversation] = useMutation(CREATE_CONVERSATION);
 
+	const { loading, error, data } = useQuery(GET_ONE_SERVICE, {
+		variables: { id: serviceId },
+	});
 	const transmitterId = Cookies.get("userId");
-
-	const { loading, error, data } = useQuery<ServiceData, ServiceVariables>(
-		GET_ONE_SERVICE,
-		{
-			variables: { id: serviceId },
-		}
-	);
 
 	const HandleCreateConversation = (receiverId: string) => {
 		createConversation({

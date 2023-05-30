@@ -63,7 +63,7 @@ function App() {
 					<Route path="/myorders/:id" element={<Orders />} />
 					<Route path="/mypurchases/:id" element={<Purchases />} />
 					<Route path="/repertory/:id" element={<Conversations />} />
-					<Route path="/conversation/:id" element={<Message />} />
+					<Route path="/conversation/:conversationId" element={<Message />} />
 					{/* <Route path="/conversation/:id" element={<Conversations />} /> */}
 				</Routes>
 			</ApolloProvider>
