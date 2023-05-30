@@ -51,7 +51,7 @@ interface MessageProps {}
 const Message: FunctionComponent<MessageProps> = () => {
 	const { conversationId } = useParams<{ conversationId: string }>();
 	const userId = Cookies.get("userId");
-	// const [isTransmitter, setTransmitter] = useState(false);
+	const [receiverUsername, setReceiverUsername] = useState("");
 	const { loading, error, data } = useQuery(GET_MESSAGES, {
 		variables: { userId, conversationId },
 	});
@@ -78,6 +78,13 @@ const Message: FunctionComponent<MessageProps> = () => {
 				});
 			});
 	};
+	useEffect(() => {
+		if (data && data.message && data.message.length > 0) {
+			const username = data.message[0].Conversation.receiver.username;
+			setReceiverUsername(username);
+		}
+	}, [data]);
+
 	if (!data) {
 		return null;
 	}
@@ -87,18 +94,15 @@ const Message: FunctionComponent<MessageProps> = () => {
 			<NavbarCombined />
 			{loading && <Loading />}
 			{error && <p>Something went wrong ! </p>}
-			{!loading && !error && (
+			{!loading && !error && data && (
 				<div className="message">
 					<div className="container">
 						<span className="breadcrumbs">
-							<Link to="/messages">Messages</Link> &nbsp;John Doe
-							{/* {data.message.Conversation.receiver.username} */}
+							<div>{receiverUsername}</div>
 						</span>
-
+						<hr />
 						<div className="messages">
 							{data.message.map((message: any) => {
-								// const isTransmitter =
-								// 	message.Conversation.transmitter.id === userId;
 								const isOwner = message.userId === userId;
 								return (
 									<div

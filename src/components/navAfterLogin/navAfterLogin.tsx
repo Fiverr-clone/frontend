@@ -112,7 +112,7 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 								>
 									<li className="dropdown-li">
 										<Link
-											to="/profile"
+											to="#"
 											style={{ fontSize: "15px", fontWeight: "600" }}
 										>
 											<FontAwesomeIcon

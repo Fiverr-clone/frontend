@@ -5,10 +5,13 @@
 .message .container {
 	width: 1200px;
 	margin: 50px;
+	padding: 30px;
+	border: 1px solid #dadbdd;
+	/* box shadow */
 }
 .message .container .breadcrumbs {
-	font-weight: 300;
-	font-size: 13px;
+	font-weight: 500;
+	font-size: 25px;
 	color: #555;
 }
 .message .container .messages {
