@@ -6,6 +6,9 @@ import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
 import Footer from "../../components/footerComponent/footer";
 import Cookies from "js-cookie";
 import Loading from "../../components/loading/loading";
+import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const GET_CONVERSATIONS = gql`
 	query getAllConversations($userId: ID!) {
@@ -34,12 +37,21 @@ const COMPLETE_ORDER = gql`
 	}
 `;
 
+const DELETE_CONVERSATION = gql`
+	mutation DeleteConversation($conversationId: ID!) {
+		deleteConversation(conversationId: $conversationId) {
+			id
+		}
+	}
+`;
+
 interface ConversationsProps {}
 
 const Conversations: FunctionComponent<ConversationsProps> = () => {
 	const navigate = useNavigate();
 	const userId = Cookies.get("userId");
 	const [updateConversation] = useMutation(COMPLETE_ORDER);
+	const [deleteConversation] = useMutation(DELETE_CONVERSATION);
 
 	const [msgRead, setMsgRead] = useState<boolean[]>([]);
 	const { loading, error, data } = useQuery(GET_CONVERSATIONS, {
@@ -67,6 +79,25 @@ const Conversations: FunctionComponent<ConversationsProps> = () => {
 					updatedReadStatus[index] = !updatedReadStatus[index];
 					return updatedReadStatus;
 				});
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+	const HandleDelete = (conversationId: String) => {
+		deleteConversation({
+			variables: {
+				conversationId: conversationId,
+			},
+		})
+			.then((response) => {
+				Swal.fire({
+					icon: "success",
+					title: "Your conversation is deleted",
+					showConfirmButton: false,
+					timer: 2000,
+				});
+				window.location.reload();
 			})
 			.catch((error) => {
 				console.log(error);
@@ -127,6 +158,14 @@ const Conversations: FunctionComponent<ConversationsProps> = () => {
 												</button>
 											</td>
 										)}
+										<td>
+											<button
+												className="convo-delete-btn"
+												onClick={() => HandleDelete(conv.id)}
+											>
+												<FontAwesomeIcon icon={faTrash} style={{color: "#b41616",}} />
+											</button>
+										</td>
 									</tr>
 								))}
 							</tbody>

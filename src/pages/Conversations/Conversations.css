@@ -40,9 +40,6 @@
 .messages .container table tr {
 	height: 100px;
 }
-/* .messages .container table tr th {
-	text-align: left;
-} */
 .messages .container table tr td {
 	padding: 10px;
 }
@@ -53,13 +50,6 @@
 .messages .container table tr td:nth-child(3) {
 	color: gray;
 }
-/* .messages .container table tr button {
-	background-color: #1dbf73;
-	color: white;
-	padding: 10px;
-	border: none;
-	cursor: pointer;
-} */
 .messages .container table tr.active {
 	cursor: pointer;
 }
@@ -68,4 +58,25 @@
 }
 .messages .container table tr.active:hover {
 	background-color: #1dbf7336;
+}
+.convo-delete-btn {
+	cursor: pointer;
+	border: none;
+	padding: 5px 10px;
+	font-size: 25px;
+	font-weight: 600;
+	text-decoration: none;
+	color: #b41616;
+	background-color: inherit;
+	transition: all 0.3s ease-in-out;
+
+	/* transition: background-color 0.15s; */
+	height: 100%;
+	width: 85%;
+	padding: 0;
+	border-radius: 50%;
+}
+.convo-delete-btn:hover {
+	background-color: #cc3c3c3b;
+	cursor: pointer;
 }

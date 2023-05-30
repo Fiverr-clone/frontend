@@ -100,7 +100,6 @@ const Gig: FunctionComponent<GigProps> = () => {
 				const conversationId = res.data.createConversation.id;
 				navigate(`/conversation/${conversationId}`);
 				console.log(res);
-				// navigate(`/repertory/${transmitterId}`);
 			})
 			.catch((err) => {
 				if (err.message === "Conversation already exists") {
