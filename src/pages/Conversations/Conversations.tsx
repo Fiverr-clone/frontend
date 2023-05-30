@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Conversations.css";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
@@ -37,6 +37,7 @@ const COMPLETE_ORDER = gql`
 interface ConversationsProps {}
 
 const Conversations: FunctionComponent<ConversationsProps> = () => {
+	const navigate = useNavigate();
 	const userId = Cookies.get("userId");
 	const [updateConversation] = useMutation(COMPLETE_ORDER);
 
@@ -72,6 +73,10 @@ const Conversations: FunctionComponent<ConversationsProps> = () => {
 			});
 	};
 
+	const HandleConversation = (conversationId: String) => {
+		navigate(`/conversation/${conversationId}`);
+	};
+
 	if (!data) {
 		return null;
 	}
@@ -92,22 +97,22 @@ const Conversations: FunctionComponent<ConversationsProps> = () => {
 								<tr>
 									<th>Username</th>
 									<th>Last Message</th>
-									<th>Link</th>
 									<th>Date</th>
-									<th>Action</th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody>
 								{data.conversationsByUserId.map((conv: any, index: number) => (
 									<tr className="active" key={conv.id}>
-										<td>{conv.receiver.username}</td>
-										<td>{conv.lastMessage}</td>
-										<td>
-											<Link to="/message/123" className="link">
-												Conversation
-											</Link>
+										<td onClick={() => HandleConversation(conv.id)}>
+											{conv.receiver.username}
 										</td>
-										<td>2 hours ago</td>
+										<td onClick={() => HandleConversation(conv.id)}>
+											{conv.lastMessage}
+										</td>
+										<td onClick={() => HandleConversation(conv.id)}>
+											2 hours ago
+										</td>
 										{msgRead[index] ? (
 											<td>
 												<p>Read</p>

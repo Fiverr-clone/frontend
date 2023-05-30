@@ -61,5 +61,11 @@
 	cursor: pointer;
 } */
 .messages .container table tr.active {
+	cursor: pointer;
+}
+.messages .container table tr.active:nth-child(odd) {
 	background-color: #1dbf730f;
+}
+.messages .container table tr.active:hover {
+	background-color: #1dbf7336;
 }

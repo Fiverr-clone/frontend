@@ -13,7 +13,7 @@ const NavbarCombined: FunctionComponent<NavbarCombinedProps> = () => {
 	const tokenRedux = useSelector((state: any) => state.auth.token);
 	const [isAuth, setIsAuth] = useState(false);
 	useEffect(() => {
-		if (tokenCookie || tokenRedux) {
+		if (tokenCookie && tokenRedux) {
 			setIsAuth(true);
 		}
 	}, []);

@@ -128,8 +128,10 @@ const Gig: React.FC = () => {
 			},
 		})
 			.then((res) => {
+				const conversationId = res.data.createConversation.id;
+				navigate(`/conversation/${conversationId}`);
 				console.log(res);
-				navigate(`/conversations/${transmitterId}`);
+				// navigate(`/repertory/${transmitterId}`);
 			})
 			.catch((err) => {
 				if (err.message === "Conversation already exists") {
@@ -138,7 +140,7 @@ const Gig: React.FC = () => {
 						title: "Conversation already exists",
 						showConfirmButton: true,
 					});
-					navigate(`/conversations/${transmitterId}`);
+					navigate(`/repertory/${transmitterId}`);
 				} else {
 					console.log(err);
 				}

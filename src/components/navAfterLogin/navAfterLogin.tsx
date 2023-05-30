@@ -46,7 +46,7 @@ const NavAfterLogin: FunctionComponent<NavAfterLoginProps> = () => {
 		navigate(`/mypurchases/${userid}`);
 	};
 	const HandleConvos = () => {
-		navigate(`/conversations/${userid}`);
+		navigate(`/repertory/${userid}`);
 	};
 	return (
 		<div>

@@ -62,8 +62,9 @@ function App() {
 					<Route path="/mygigs/:id" element={<UserServicesPage />} />
 					<Route path="/myorders/:id" element={<Orders />} />
 					<Route path="/mypurchases/:id" element={<Purchases />} />
-					<Route path="/message/:id" element={<Message />} />
-					<Route path="/conversations/:id" element={<Conversations />} />
+					<Route path="/repertory/:id" element={<Conversations />} />
+					<Route path="/conversation/:id" element={<Message />} />
+					{/* <Route path="/conversation/:id" element={<Conversations />} /> */}
 				</Routes>
 			</ApolloProvider>
 		</div>
