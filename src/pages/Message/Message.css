@@ -68,13 +68,19 @@
 	border: 1px solid lightgray;
 	border-radius: 10px;
 }
-.message .container .write button {
-	background-color: #1dbf73;
-	padding: 20px;
-	color: white;
-	font-weight: 500;
-	border: none;
-	border-radius: 10px;
+.send-msg {
 	cursor: pointer;
-	width: 100px;
+	border: 1px solid #1dbf73;
+	border-radius: 5px;
+	padding: 10px;
+	font-size: 25px;
+	font-weight: 600;
+	text-decoration: none;
+	color: #1dbf73;
+	background-color: white;
+	transition: all 0.3s ease-in-out;
+}
+.send-msg:hover {
+	color: white;
+	background-color: #18a865;
 }

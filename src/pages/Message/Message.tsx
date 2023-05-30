@@ -5,7 +5,9 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import Loading from "../../components/loading/loading";
 import Footer from "../../components/footerComponent/footer";
 import NavbarCombined from "../../components/navbarCombined/NavbarCombined";
+import UserIcon from "../../assets/user.png";
 import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 
 const GET_MESSAGES = gql`
 	query getAllMessages($userId: ID!, $conversationId: ID!) {
@@ -32,6 +34,18 @@ const GET_MESSAGES = gql`
 	}
 `;
 
+const CREATE_MESSAGE = gql`
+	mutation CreateMessage($conversationId: ID!, $userId: ID!, $desc: String!) {
+		createMessage(
+			conversationId: $conversationId
+			userId: $userId
+			desc: $desc
+		) {
+			id
+		}
+	}
+`;
+
 interface MessageProps {}
 
 const Message: FunctionComponent<MessageProps> = () => {
@@ -41,14 +55,29 @@ const Message: FunctionComponent<MessageProps> = () => {
 	const { loading, error, data } = useQuery(GET_MESSAGES, {
 		variables: { userId, conversationId },
 	});
-	// useEffect(() => {
-	// 	if (data && data.message.length > 0) {
-	// 		const conversation = data.message[0].Conversation;
-	// 		if (conversation && conversation.transmitter.id === userId) {
-	// 			setTransmitter(true);
-	// 		}
-	// 	}
-	// }, [data, userId]);
+	const [createMessage] = useMutation(CREATE_MESSAGE);
+	const [message, setMessage] = useState("");
+	const HandleCreateMessage = () => {
+		createMessage({
+			variables: {
+				conversationId,
+				userId,
+				desc: message,
+			},
+		})
+			.then((response) => {
+				window.location.reload();
+				setMessage("");
+			})
+			.catch((error) => {
+				Swal.fire({
+					icon: "error",
+					title: "Something went wrong",
+					showConfirmButton: false,
+					timer: 2000,
+				});
+			});
+	};
 	if (!data) {
 		return null;
 	}
@@ -76,6 +105,7 @@ const Message: FunctionComponent<MessageProps> = () => {
 										className={isOwner ? "item owner" : "item "}
 										key={message.id}
 									>
+										<img src={UserIcon} alt="User-Icon" />
 										<p>{message.desc}</p>
 									</div>
 								);
@@ -83,8 +113,19 @@ const Message: FunctionComponent<MessageProps> = () => {
 						</div>
 						<hr />
 						<div className="write">
-							<textarea placeholder="write a message" />
-							<button>Send</button>
+							<textarea
+								placeholder="Write a message"
+								value={message}
+								onChange={(e) => setMessage(e.target.value)}
+							/>
+							<button
+								className="send-msg"
+								onClick={() => {
+									HandleCreateMessage();
+								}}
+							>
+								Send
+							</button>
 						</div>
 					</div>
 				</div>
