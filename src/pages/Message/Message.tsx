@@ -78,12 +78,22 @@ const Message: FunctionComponent<MessageProps> = () => {
 				});
 			});
 	};
+	// useEffect(() => {
+	// 	if (data && data.message && data.message.length > 0) {
+	// 		const username = data.message[0].Conversation.receiver.username;
+	// 		setReceiverUsername(username);
+	// 	}
+	// }, [data]);
 	useEffect(() => {
 		if (data && data.message && data.message.length > 0) {
-			const username = data.message[0].Conversation.receiver.username;
+			const message = data.message[0];
+			const isTransmitter = message.Conversation.transmitter.id === userId;
+			const username = isTransmitter
+				? message.Conversation.receiver.username
+				: message.Conversation.transmitter.username;
 			setReceiverUsername(username);
 		}
-	}, [data]);
+	}, [data, userId]);
 
 	if (!data) {
 		return null;
