@@ -3,6 +3,7 @@ import { gql, useMutation, useQuery } from "@apollo/client";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Loading from "../../components/loading/loading";
 import Footer from "../../components/footerComponent/footer";
+import UserIcon from "../../assets/user.png";
 import "./Gig.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
@@ -142,11 +143,7 @@ const Gig: FunctionComponent<GigProps> = () => {
 
 							<h1>{service.title}</h1>
 							<div className="user">
-								<img
-									className="pp"
-									src="https://images.pexels.com/photos/720327/pexels-photo-720327.jpeg?auto=compress&cs=tinysrgb&w=1600"
-									alt=""
-								/>
+								<img className="pp" src={UserIcon} alt="UserIcon" />
 								<span>{service.user.username}</span>
 								<div className="stars">
 									<img src="/img/star.png" alt="" />
