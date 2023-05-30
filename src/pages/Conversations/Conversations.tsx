@@ -16,6 +16,7 @@ const GET_CONVERSATIONS = gql`
 			id
 			lastMessage
 			readByUser
+			createdAt
 			transmitter {
 				id
 				username
@@ -133,41 +134,51 @@ const Conversations: FunctionComponent<ConversationsProps> = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{data.conversationsByUserId.map((conv: any, index: number) => (
-									<tr className="active" key={conv.id}>
-										<td onClick={() => HandleConversation(conv.id)}>
-											{conv.receiver.username}
-										</td>
-										<td onClick={() => HandleConversation(conv.id)}>
-											{conv.lastMessage}
-										</td>
-										<td onClick={() => HandleConversation(conv.id)}>
-											2 hours ago
-										</td>
-										{msgRead[index] ? (
-											<td>
-												<p>Read</p>
+								{data.conversationsByUserId.map((conv: any, index: number) => {
+									const timestamp = new Date(
+										parseInt(conv.createdAt)
+									).toLocaleString();
+									return (
+										<tr className="active" key={conv.id}>
+											<td onClick={() => HandleConversation(conv.id)}>
+												{userId === conv.transmitter.id
+													? conv.receiver.username
+													: conv.transmitter.username}
 											</td>
-										) : (
+											<td onClick={() => HandleConversation(conv.id)}>
+												{conv.lastMessage}
+											</td>
+											<td onClick={() => HandleConversation(conv.id)}>
+												{timestamp}
+											</td>
+											{msgRead[index] ? (
+												<td>
+													<p>Read</p>
+												</td>
+											) : (
+												<td>
+													<button
+														className="btn-read"
+														onClick={() => HandleRead(index, conv.id)}
+													>
+														Mark as Read
+													</button>
+												</td>
+											)}
 											<td>
 												<button
-													className="btn-read"
-													onClick={() => HandleRead(index, conv.id)}
+													className="convo-delete-btn"
+													onClick={() => HandleDelete(conv.id)}
 												>
-													Mark as Read
+													<FontAwesomeIcon
+														icon={faTrash}
+														style={{ color: "#b41616" }}
+													/>
 												</button>
 											</td>
-										)}
-										<td>
-											<button
-												className="convo-delete-btn"
-												onClick={() => HandleDelete(conv.id)}
-											>
-												<FontAwesomeIcon icon={faTrash} style={{color: "#b41616",}} />
-											</button>
-										</td>
-									</tr>
-								))}
+										</tr>
+									);
+								})}
 							</tbody>
 						</table>
 					</div>

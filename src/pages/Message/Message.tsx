@@ -15,6 +15,7 @@ const GET_MESSAGES = gql`
 			id
 			userId
 			desc
+			createdAt
 			User {
 				id
 				username
@@ -114,6 +115,10 @@ const Message: FunctionComponent<MessageProps> = () => {
 						<div className="messages">
 							{data.message.map((message: any) => {
 								const isOwner = message.userId === userId;
+								const timestamp = new Date(
+									parseInt(message.createdAt)
+								).toLocaleString();
+
 								return (
 									<div
 										className={isOwner ? "item owner" : "item "}

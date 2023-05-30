@@ -10,14 +10,7 @@
 	display: flex;
 	justify-content: space-between;
 }
-/* .messages .container .title button {
-	background-color: #1dbf73;
-	color: white;
-	font-weight: 500;
-	border: none;
-	padding: 10px;
-	cursor: pointer;
-} */
+
 .btn-read {
 	cursor: pointer;
 	border: 1px solid #1dbf73;
